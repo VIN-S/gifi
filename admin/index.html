@@ -1,0 +1,24 @@
+<html ng-app="myApp">
+    <head>
+    <link rel="stylesheet" type="text/css" href="css/admin.css"/>
+    </head>
+    <body ng-controller="gifiAdminController">
+    <div class="container">
+        <div class="content content-container">
+            <form class="form-signin">
+
+                <input type="text" id="inputUser" class="form-control" placeholder="UserID" ng-model="signinUserID" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="signinPassword" required>
+
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" ng-click="adminSignIn(signinUserID, signinPassword)">Sign in</button>
+
+                <h>{{signinMessage}}</h>
+            </form><!-- /form -->
+        </div><!-- /content-container -->
+    </div><!-- /container -->
+    
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <script type="text/javascript" src="app/app.js"></script>
+    </body>
+</html>
+    
