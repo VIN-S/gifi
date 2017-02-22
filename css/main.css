@@ -15,7 +15,7 @@ body, html {
 /* ------------- index css ------------- */
 .container{
 	margin: 0 auto;
-	padding-top: 4%; 
+	padding-top: 3%; 
 	width: 90%;
 }
 
@@ -33,7 +33,7 @@ body, html {
 }
 
 .header{
-	padding-top: 15px;
+	padding-top: 5px;
 }
 
 .main-header{
@@ -43,7 +43,7 @@ body, html {
 
 .sub-header{
 	font-size: 1.5vw;
-	padding-top: 0.9vw;
+	padding-top: 1.1vw;
 }
 
 .navbar{
@@ -108,6 +108,53 @@ body, html {
 }
 /* ------------- end of index css ------------- */
 
+
+/* ------------- vmap -------------*/
+#vmap{
+	border: 1px solid #aaaaaa;
+	border-radius: 5px;
+}
+
+.jqvmap-label{
+	position: absolute;
+    background: #555555;
+    color: white;
+    padding: 2px 5px 2px 5px;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+.jqvmap-zoomin{
+	top: 10px;
+}
+
+.jqvmap-zoomout{
+	top: 30px;
+}
+
+.jqvmap-zoomin,
+.jqvmap-zoomout {
+    position: absolute;
+    left: 10px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #064480;
+    padding: 3px;
+    color: white;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    line-height: 8px;
+    text-align: center;
+}
+
+@media screen and (max-width : 768px)
+{
+	.map-container #vmap{
+		height:50vw !important;
+	}
+}
+/* ------------- end of vmap -------------*/
 
 
 .blue{

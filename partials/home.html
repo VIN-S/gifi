@@ -1,3 +1,60 @@
-<div>
-  Home Navigation panel.
+<script type="text/javascript" src="js/jquery.vmap.js"></script>
+<script type="text/javascript" src="js/jquery.vmap.world.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/jquery.vmap.sampledata.js"></script>
+
+<script>
+	jQuery(document).ready(function () {
+        jQuery('#vmap').vectorMap({
+          	map: 'world_en',
+		    backgroundColor: '#ffffff',
+		    borderColor: '#444444',
+		    borderOpacity: 0.4,
+		    borderWidth: 1,
+		    color: '#cccccc',
+		    enableZoom: true,
+		    hoverColor: '#064480',
+		    hoverOpacity: null,
+		    normalizeFunction: 'linear',
+		    scaleColors: ['#b6d6ff', '#005ace'],
+		    selectedColor: '#064480',
+		    selectedRegions: null,
+		    showTooltip: true,
+		    onRegionClick: function(element, code, region)
+		    {
+		        var message = 'You clicked "'
+		            + region
+		            + '" which has the code: '
+		            + code.toUpperCase();
+
+		        alert(message);
+		    }
+        });
+    });
+</script>
+
+<div class="map-container">
+	<div class="row">
+		<div class="col-md-7 col-sm-12">
+			<div id="vmap" style="height: 30vw;"></div>
+		</div>
+		<div class="col-md-5">
+			<div class="search-container">
+				
+			</div>
+			<div class="graph-header">
+				
+			</div>
+			<div class="ranking-container">
+				<div class="ranking">
+					
+				</div>
+				<div class="region">
+					
+				</div>
+			</div>
+			<div class="graph-container">
+				
+			</div>
+		</div>
+	</div>
 </div>
