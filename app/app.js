@@ -2,16 +2,28 @@
 var app = angular.module('myApp', ["ngRoute"]);
 app.config(function ($routeProvider) {
 
-    $routeProvider.when('/home',
+    $routeProvider
+    .when('/home',
     {
-      templateUrl:    'home.html'
-    }).when('/about',
+      templateUrl:    'partials/home.html',
+      controller:     'HomeCtrl'
+    })
+    .when('/ranking',
     {
-      templateUrl:    'about.html'
-    }).when('/contact',
+      templateUrl:    'partials/ranking.html',
+      controller:     'RankingCtrl'
+    })
+    .when('/research_publication',
     {
-      templateUrl:    'contact.html'
-    }).otherwise(
+      templateUrl:    'partials/research_publication.html',
+      controller:     'ResearchPublicationCtrl'
+    })
+    .when('/about',
+    {
+      templateUrl:    'partials/about.html',
+      controller:     'AboutCtrl'
+    })
+    .otherwise(
     {
       redirectTo:     '/home'
     }
@@ -25,17 +37,37 @@ app.controller('gifiMainController',
     return page === currentRoute ? 'active' : '';
   };
   
-  $scope.loadHome = function () {
+      $scope.loadHome = function () {
         $location.url('/home');
     };
     
+      $scope.loadRanking = function () {
+        $location.url('/ranking');
+    };
+    
+      $scope.loadResearchPublication = function () {
+        $location.url('/research_publication');
+    };
+
       $scope.loadAbout = function () {
         $location.url('/about');
     };
-    
-      $scope.loadContact = function () {
-        $location.url('/contact');
-    };
 }]);
+
+app.controller('HomeCtrl', function($scope, $compile) {
+  console.log('inside home controller');
+});
+
+app.controller('RankingCtrl', function($scope, $compile) {
+  console.log('inside ranking controller');
+});
+
+app.controller('ResearchPublicationCtrl', function($scope, $compile) {
+  console.log('inside research & publication controller');
+});
+
+app.controller('AboutCtrl', function($scope, $compile) {
+  console.log('inside about controller');
+});
 
 
