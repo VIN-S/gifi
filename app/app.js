@@ -77,13 +77,23 @@ app.controller("dataCtrl", function ($http, $scope) {
 
   $scope.goal.series = [ 'Ranks' ];
   $scope.goal.labels = [
-    '', '', '', '', '', '', '', '', ''
+    'Legal & Regulatory Environment', 
+    'Market Development', 
+    'Exchange Controls & Capital Restrictions', 
+    'Corporate Governance', 
+    'AUM Levels & Capital Restrictions', 
+    'Banking System', 
+    'Ease of Doing Business', 
+    'Political Environment', 
+    'Account System'
   ];
 
-  //set no.1 region as the selected region
-  setDefaultRanking();
+  var maxRanks = 170;
 
-  function setDefaultRanking(){
+  //set no.1 region as the selected region
+  setDefaultRanking(maxRanks);
+
+  function setDefaultRanking(maxRanks){
     $http.post("ajax/getTopRegionRanking.php")
     .then(function(response) {
         var results = response.data;
@@ -96,15 +106,15 @@ app.controller("dataCtrl", function ($http, $scope) {
 
         $scope.goal.data = [
           [
-            150-results['legal_and_regulatory_environment'], 
-            150-results['market_development'], 
-            150-results['exchange_controls_and_capital_restrictions'],
-            150-results['corporate_governance'],
-            150-results['aum_levels_and_growth'],
-            150-results['banking_system'],
-            150-results['ease_of_doing_business'],
-            150-results['political_environment'],
-            150-results['accounting_system']
+            maxRanks-results['legal_and_regulatory_environment'], 
+            maxRanks-results['market_development'], 
+            maxRanks-results['exchange_controls_and_capital_restrictions'],
+            maxRanks-results['corporate_governance'],
+            maxRanks-results['aum_levels_and_growth'],
+            maxRanks-results['banking_system'],
+            maxRanks-results['ease_of_doing_business'],
+            maxRanks-results['political_environment'],
+            maxRanks-results['accounting_system']
           ],
         ];
   })};
@@ -128,11 +138,51 @@ app.controller("dataCtrl", function ($http, $scope) {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 150,
-          stepSize: 20
+          max: 200,
+          stepSize: 20,
         },
         display: false
+      }],
+      xAxes: [{
+        ticks: {
+          display: false,
+          userCallback: function(value, index, values) {
+            return "";
+          }
+        }
       }]
+    },
+    animation: {
+      duration: 400,
+      onComplete: function () {
+          // render the value of the chart above the bar
+          var ctx = this.chart.ctx;
+          ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, 'normal', Chart.defaults.global.defaultFontFamily);
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'bottom';
+          this.data.datasets.forEach(function (dataset) {
+              for (var i = 0; i < dataset.data.length; i++) {
+                  var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
+                  ctx.fillStyle = colors[i];
+                  ctx.fillText("No."+(maxRanks-dataset.data[i]), model.x, model.y - 5);
+
+              }
+          });
+      }
+    },
+    hover: {
+      animationDuration: 0
+    },
+    tooltips: {
+      enabled: false,
+      mode: 'single',
+      callbacks: {
+        label: function(tooltipItem, data) {
+          var label = data.labels[tooltipItem.index];
+          var datasetLabel = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+          return label + ': No.' + (maxRanks-datasetLabel);
+        }
+      }
     }
   };
 
@@ -141,30 +191,40 @@ app.controller("dataCtrl", function ($http, $scope) {
     $http.post("ajax/getRegionRanking.php?region="+selectedRegion)
     .then(function(response) {
         var results = response.data;
+        if (typeof results === 'undefined' || results === null || results === ""){
+          $scope.selectedRegion =  "";
+          $scope.nameOfSelectedRegion = "No Record";
+          $scope.rankOfSelectedRegion = "N.A.";
+          $scope.goal.data = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+          ];
+        }else{
 
-        $scope.goal = [];
+          $scope.goal = [];
 
-        $scope.nameOfSelectedRegion = results['country'];
-        if(results['investor_friendliness_rank'] < 1)
-            $scope.rankOfSelectedRegion = ">100"
-        else{
-            $scope.rankOfSelectedRegion = results['investor_friendliness_rank'];
-            
+          $scope.selectedRegion = String(selectedRegion);
+          $scope.nameOfSelectedRegion = results['country'];
+          if(results['investor_friendliness_rank'] < 1)
+              $scope.rankOfSelectedRegion = ">100"
+          else{
+              $scope.rankOfSelectedRegion = results['investor_friendliness_rank'];
+              
+          }
+
+          $scope.goal.data = [
+            [
+              maxRanks-results['legal_and_regulatory_environment'], 
+              maxRanks-results['market_development'], 
+              maxRanks-results['exchange_controls_and_capital_restrictions'],
+              maxRanks-results['corporate_governance'],
+              maxRanks-results['aum_levels_and_growth'],
+              maxRanks-results['banking_system'],
+              maxRanks-results['ease_of_doing_business'],
+              maxRanks-results['political_environment'],
+              maxRanks-results['accounting_system']
+            ],
+          ];
         }
-
-        $scope.goal.data = [
-          [
-            150-results['legal_and_regulatory_environment'], 
-            150-results['market_development'], 
-            150-results['exchange_controls_and_capital_restrictions'],
-            150-results['corporate_governance'],
-            150-results['aum_levels_and_growth'],
-            150-results['banking_system'],
-            150-results['ease_of_doing_business'],
-            150-results['political_environment'],
-            150-results['accounting_system']
-          ],
-        ];
     });
   }
 });

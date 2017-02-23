@@ -23,6 +23,10 @@ body, html {
 	padding: 0 !important;
 }
 
+.nomargin{
+	margin: 0 !important;
+}
+
 .nus-logo img{
 	width: 70%;
 	max-width: 200px;
@@ -109,9 +113,7 @@ body, html {
 /* ------------- end of index css ------------- */
 
 /* ------------- home css -------------*/
-.search-container{
-	padding-top: 10px;
-}
+
 
 .search-container select{
 	float: right;
@@ -129,13 +131,13 @@ body, html {
 }
 
 .ranking-container{
-	padding-bottom: 10px;
-	margin-left: 10px;
+	padding-top: 5px;
+	margin-top: -1vw;
 }
 
 .ranking-container .ranking{
 	position: relative;
-	bottom: 0.8vw;
+	bottom: 0.7vw;
     font-size: 2.4vw;
     font-weight: 800;
     padding-left: 6px;
@@ -144,15 +146,92 @@ body, html {
 
 .ranking-container .region{
 	padding-left: 10px;
-	font-size: 3.6vw;
+	font-size: 3.4vw;
 	color: rgb(58, 153, 216);
 }
+
+.legend-container{
+	margin-top: 5px;
+	border: 1px solid #aaaaaa;
+	padding: 2px 2px 1px 2px;
+	border-radius: 5px;
+}
+
+.legend-container .inline{
+	display: inline-flex;;
+}
+
+.legend-container .name{
+	font-size: 5px;
+}
+
+.legend-1 .color{
+	color: #e54d42;
+}
+.legend-2 .color{
+	color: #f19b2c;
+}
+.legend-3 .color{
+	color: #f0c330;
+}
+.legend-4 .color{
+	color: #239f85;
+}
+.legend-5 .color{
+	color: #3a99d8;
+}
+.legend-6 .color{
+	color: #2f81b7;
+}
+.legend-7 .color{
+	color: #9a5cb4;
+}
+.legend-8 .color{
+	color: #be3a31;
+}
+.legend-9 .color{
+	color: #29bb9c;
+}
+
+@media screen and (max-width : 510px)
+{
+	.legend-1 .name{
+		color: #e54d42;
+	}
+	.legend-2 .name{
+		color: #f19b2c;
+	}
+	.legend-3 .name{
+		color: #f0c330;
+	}
+	.legend-4 .name{
+		color: #239f85;
+	}
+	.legend-5 .name{
+		color: #3a99d8;
+	}
+	.legend-6 .name{
+		color: #2f81b7;
+	}
+	.legend-7 .name{
+		color: #9a5cb4;
+	}
+	.legend-8 .name{
+		color: #be3a31;
+	}
+	.legend-9 .name{
+		color: #29bb9c;
+	}
+}
+
 /* ------------- end of home css -------------*/
 
 /* ------------- vmap -------------*/
 #vmap{
 	border: 1px solid #aaaaaa;
 	border-radius: 5px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .jqvmap-label{
