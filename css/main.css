@@ -108,6 +108,46 @@ body, html {
 }
 /* ------------- end of index css ------------- */
 
+/* ------------- home css -------------*/
+.search-container{
+	padding-top: 10px;
+}
+
+.search-container select{
+	float: right;
+    width: 70%;
+}
+
+.graph-header{
+	font-size: 1.2vw;
+	display: inline-block;
+	padding:5px 0 0 0;
+}
+
+.graph-header .red{ 
+	font-weight: 600;
+}
+
+.ranking-container{
+	padding-bottom: 10px;
+	margin-left: 10px;
+}
+
+.ranking-container .ranking{
+	position: relative;
+	bottom: 0.8vw;
+    font-size: 2.4vw;
+    font-weight: 800;
+    padding-left: 6px;
+    border-bottom: 0.4vw solid rgb(181,46,52);
+}
+
+.ranking-container .region{
+	padding-left: 10px;
+	font-size: 3.6vw;
+	color: rgb(58, 153, 216);
+}
+/* ------------- end of home css -------------*/
 
 /* ------------- vmap -------------*/
 #vmap{

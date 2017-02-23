@@ -15,3 +15,4 @@ app.controller('gifiAdminController', function($scope, $http, $window) {
         }
     });
   };
+});
