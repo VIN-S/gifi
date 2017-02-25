@@ -22,18 +22,22 @@
 		    showTooltip: true,
 		    onRegionClick: function(element, code, region)
 		    {
-		        angular.element('#dataCtrl').scope().updateGraph(region);
-		        angular.element('#dataCtrl').scope().$apply();
+		        angular.element('#homeCtrl').scope().updateGraph(region);
+		        angular.element('#homeCtrl').scope().$apply();
 		    }
         });
     });
 </script>
 
 <div class="map-container">
-	<div class="row" id="dataCtrl" ng-controller="dataCtrl">
+	<div class="row" id="homeCtrl" ng-controller="homeCtrl">
+		<!-- Map -->
 		<div class="col-md-7 col-sm-12">
 			<div id="vmap" style="height: 32vw;"></div>
 		</div>
+		<!-- End of Map -->
+
+		<!-- Ranking Info -->
 		<div class="col-md-5" >
 			<div class="search-container">
 				<span>
@@ -71,9 +75,9 @@
 			</div>
 			<div class="legend-container">
 				<div class="row nomargin">
-					<div class="col-sm-4 col-xs-12 inline nopadding legend-1">
+					<div class="col-sm-4 col-xs-6 inline nopadding legend-1">
 						<div class="color">
-							<span class="glyphicon glyphicon-stop "></span>
+							<span class="glyphicon glyphicon-stop gi-1x"></span>
 						</div>
 						<div class="name">
 							<span>
@@ -81,9 +85,9 @@
 							</span>
 						</div>
 					</div>
-					<div class="col-sm-4 col-xs-12 inline nopadding legend-2">
+					<div class="col-sm-4 col-xs-6 inline nopadding legend-2">
 						<div class="color">
-							<span class="glyphicon glyphicon-stop"></span>
+							<span class="glyphicon glyphicon-stop gi-1x"></span>
 						</div>
 						<div class="name">
 							<span>
@@ -93,7 +97,7 @@
 					</div>
 					<div class="col-sm-4 col-xs-12 inline nopadding legend-3">
 						<div class="color">
-							<span class="glyphicon glyphicon-stop"></span>
+							<span class="glyphicon glyphicon-stop gi-1x"></span>
 						</div>
 						<div class="name">
 							<span>
@@ -101,9 +105,9 @@
 							</span>
 						</div>
 					</div>
-					<div class="col-sm-4 col-xs-12 inline nopadding legend-4">
+					<div class="col-sm-4 col-xs-6 inline nopadding legend-4">
 						<div class="color">
-							<span class="glyphicon glyphicon-stop"></span>
+							<span class="glyphicon glyphicon-stop gi-1x"></span>
 						</div>
 						<div class="name">
 							<span>
@@ -111,9 +115,9 @@
 							</span>
 						</div>
 					</div>
-					<div class="col-sm-4 col-xs-12 inline nopadding legend-5">
+					<div class="col-sm-4 col-xs-6 inline nopadding legend-5">
 						<div class="color">
-							<span class="glyphicon glyphicon-stop"></span>
+							<span class="glyphicon glyphicon-stop gi-1x"></span>
 						</div>
 						<div class="name">
 							<span>
@@ -121,9 +125,9 @@
 							</span>
 						</div>
 					</div>
-					<div class="col-sm-4 col-xs-12 inline nopadding legend-6">
+					<div class="col-sm-4 col-xs-6 inline nopadding legend-6">
 						<div class="color">
-							<span class="glyphicon glyphicon-stop"></span>
+							<span class="glyphicon glyphicon-stop gi-1x"></span>
 						</div>
 						<div class="name">
 							<span>
@@ -131,9 +135,9 @@
 							</span>
 						</div>
 					</div>
-					<div class="col-sm-4 col-xs-12 inline nopadding legend-7">
+					<div class="col-sm-4 col-xs-6 inline nopadding legend-7">
 						<div class="color">
-							<span class="glyphicon glyphicon-stop"></span>
+							<span class="glyphicon glyphicon-stop gi-1x"></span>
 						</div>
 						<div class="name">
 							<span>
@@ -141,9 +145,9 @@
 							</span>
 						</div>
 					</div>
-					<div class="col-sm-4 col-xs-12 inline nopadding legend-8">
+					<div class="col-sm-4 col-xs-6 inline nopadding legend-8">
 						<div class="color">
-							<span class="glyphicon glyphicon-stop"></span>
+							<span class="glyphicon glyphicon-stop gi-1x"></span>
 						</div>
 						<div class="name">
 							<span>
@@ -151,9 +155,9 @@
 							</span>
 						</div>
 					</div>
-					<div class="col-sm-4 col-xs-12 inline nopadding legend-9">
+					<div class="col-sm-4 col-xs-6 inline nopadding legend-9">
 						<div class="color">
-							<span class="glyphicon glyphicon-stop"></span>
+							<span class="glyphicon glyphicon-stop gi-1x"></span>
 						</div>
 						<div class="name">
 							<span>
@@ -164,5 +168,61 @@
 				</div>
 			</div>
 		</div>
+		<!-- End of Ranking Info -->
+
+		<!-- Introduction -->
+		<div class="col-xs-12 home-title-container">
+			<div class="home-title blue">
+				Introduction
+			</div>
+			<div class="introduction-content">
+				The internationalization of financial markets has progressed hand-in-hand with advancements in technology, providing investors with opportunities to diversify risks and increase returns. It has also provided governments and corporations additional options to finance investments and fuel growth. With the growing inter-linkages between providers and recipients of capital across the globe, the ability for investors to assess the risks of domestic and foreign investments as well as the need for policy makers to regulate and ensure stability in their domestic financial markets, have acquired increased significance. <br/><br/>
+
+				Our Global Investor Friendliness Index (GIFI) is designed to measure the degree to which various countries are investor-friendly. With the publication of this index, our goal is to facilitate a greater understanding of global market structures and to promote financial market transparency. <br/><br/>
+
+				This beta-release of the GIFI provides the investor friendliness rankings for 143 countries across the globe, with the final release expected in Q4 of 2016.<br/><br/>
+			</div>
+		</div>
+		<!-- End of Introduction -->
+
+		<!-- Components -->
+		<div class="col-xs-12 home-title-container">
+			<div class="home-title blue">
+				Components of the Global Investor Friendliness Index
+			</div>
+		</div>
+		<div class="component-selector">
+			<div class="row">
+				<div class="col-sm-4 col-xs-6 nopadding-right">
+			      <ul class="nopadding nomargin-bottom">
+			         <li ng-class="getTabClass(1)" ng-click="setActiveTab(1)"><span class="component-title">Legal & Regulatory Environment</span></li>
+			         <li ng-class="getTabClass(2)" ng-click="setActiveTab(2)"><span class="component-title">Market Development</span></li>
+			         <li ng-class="getTabClass(3)" ng-click="setActiveTab(3)"><span class="component-title">Exchange Controls & Capital Restrictions</span></li>
+			         <li ng-class="getTabClass(4)" ng-click="setActiveTab(4)"><span class="component-title">Corporate Governance</span></li>
+			         <li ng-class="getTabClass(5)" ng-click="setActiveTab(5)"><span class="component-title">AUM Levels & Growth</span></li>
+			         <li ng-class="getTabClass(6)" ng-click="setActiveTab(6)"><span class="component-title">Banking System</span></li>
+			         <li ng-class="getTabClass(7)" ng-click="setActiveTab(7)"><span class="component-title">Ease of Doing Business</span></li>
+			         <li ng-class="getTabClass(8)" ng-click="setActiveTab(8)"><span class="component-title">Political Environment</span></li>
+			         <li ng-class="getTabClass(9)" ng-click="setActiveTab(9)"><span class="component-title">Accounting System</span></li>
+			      </ul>
+			     </div>
+			     <div class="col-sm-8 col-xs-6 nopadding tab-content-container">
+			     	<div class="tab-content">
+			     		<div class='content-title'>
+			     			
+			     		</div>
+				        <div class='content'>    
+				        	{{content}}
+				        </div>     
+				        <div ng-repeat="factor in factors" class='content-factor'>
+				        	{{factor}}
+				        </div>
+				     </div>
+			     </div>
+		    </div>
+		</div>
+		<!-- End of Components -->
+		</div>
+		
 	</div>
 </div>

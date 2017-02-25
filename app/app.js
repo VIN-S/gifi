@@ -54,7 +54,7 @@ app.controller('gifiMainController',
     };
 }]);
 
-app.controller("dataCtrl", function ($http, $scope) {
+app.controller("homeCtrl", function ($http, $scope) {
   //Get list of regions
   getListOfRegions();
 
@@ -226,7 +226,39 @@ app.controller("dataCtrl", function ($http, $scope) {
           ];
         }
     });
+  };
+
+  var tabClasses;
+  var tabContents = 
+      [
+        {
+          'contents': 'Measures the degree to which the rule of the law is implemented',
+          'factor':[
+            'Strength of Institutions',
+            'Effectiveness of enforcement',
+            'Commitment to Global AML'
+          ]
+        },
+      ];
+  
+  function initTabs() {
+    tabClasses = ["","","","","","","","",""];
   }
+  
+  $scope.getTabClass = function (tabNum) {
+    return tabClasses[tabNum];
+  };
+  
+  $scope.setActiveTab = function (tabNum) {
+    initTabs();
+    tabClasses[tabNum] = "active";
+    $scope.content = tabContents[tabNum-1]['contents'];
+    $scope.factors = tabContents[tabNum-1]['factor'];
+  };
+  
+  //Initialize 
+  initTabs();
+  $scope.setActiveTab(1);
 });
 
 
