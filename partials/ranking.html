@@ -6,5 +6,13 @@
 		</span>
 		<select ng-model="selectedYear" ng-options="x for x in yearLists" ng-change="updateRanking(selectedYear)"></select>
   	</div>
+  	<div class="quick-links">
+  		<span>
+  			Quick Links: 
+  		</span>
+  		<span ng-repeat="year in yearLists" class="link" ng-click="updateRanking(year)">
+			{{ year }} Ranking  			
+  		</span>
+  	</div>
   </div>
 </div>

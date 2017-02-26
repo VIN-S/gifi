@@ -1,4 +1,4 @@
-//controler for home page
+//controller for home page
 app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $scope, $rootScope) {
   //Get list of regions
   getListOfRegions();

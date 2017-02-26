@@ -401,7 +401,33 @@ body, html {
 /* ------------- end of home css -------------*/
 
 /* ------------- ranking css -------------*/
+.ranking-container{
+	margin-top: 4%;
+}
 
+.year-selector{
+	font-size: 1.4vw;
+	text-align: center;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.year-selector select{
+	width: 20%;
+}
+
+.quick-links{
+	font-size: 1vw;
+	text-align: center;
+	width: 90%;
+	padding-top: 1vw;
+	margin: 0 auto;
+}
+
+.quick-links .link{
+	color: rgb(6,100,160);
+	cursor: pointer;
+}
 
 /* ------------- end of ranking css -------------*/
 
