@@ -193,7 +193,7 @@
 		</div>
 		<div class="component-selector">
 			<div class="row">
-				<div class="col-sm-4 col-xs-6 nopadding-right">
+				<div class="col-sm-4 col-xs-6 nopadding-right tab-panel">
 			      <ul class="nopadding nomargin-bottom">
 			         <li ng-class="getTabClass(1)" ng-click="setActiveTab(1)"><span class="component-title">Legal & Regulatory Environment</span></li>
 			         <li ng-class="getTabClass(2)" ng-click="setActiveTab(2)"><span class="component-title">Market Development</span></li>
@@ -209,13 +209,21 @@
 			     <div class="col-sm-8 col-xs-6 nopadding tab-content-container">
 			     	<div class="tab-content">
 			     		<div class='content-title'>
-			     			
+			     			{{componentName}}
 			     		</div>
-				        <div class='content'>    
-				        	{{content}}
-				        </div>     
-				        <div ng-repeat="factor in factors" class='content-factor'>
-				        	{{factor}}
+			     		<div class="row">
+				     		<div class="col-sm-5 component-img-holder">
+				     			<img ng-src="{{ componentImgSrc }}"/>
+				     		</div>
+				     		<div class="col-sm-7 col-xs-12 component-content-container">
+				     			<div class='content'>    
+						        	{{content}}
+						        </div> 
+						        <br/>    
+						        <div ng-repeat="factor in factors" class='content-factor'>
+						        	<span class="glyphicon glyphicon-chevron-right orange gi-1x"></span>&nbsp;{{factor}}
+						        </div>
+				     		</div>
 				        </div>
 				     </div>
 			     </div>

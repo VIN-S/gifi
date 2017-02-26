@@ -16,7 +16,7 @@ body, html {
 .container{
 	margin: 0 auto;
 	padding-top: 3%; 
-	width: 90%;
+	width: 85%;
 }
 
 .nopadding{
@@ -50,7 +50,7 @@ body, html {
 
 .main-header{
 	font-weight: 500;
-	font-size: 2.4vw;
+	font-size: 2.3vw;
 }
 
 .sub-header{
@@ -125,7 +125,7 @@ body, html {
 
 .search-container select{
 	float: right;
-    width: 70%;
+    width: 60%;
 }
 
 .graph-header{
@@ -263,6 +263,11 @@ body, html {
 	font-size: 1vw;
 }
 
+.tab-panel{
+	cursor: pointer;
+	padding-left: 30px !important;
+}
+
 .component-selector .active{
 	color:white;
 	background-color: rgb(6,68,128);
@@ -300,7 +305,40 @@ body, html {
     vertical-align: top;
 }
 
+.component-selector .tab-content .content-title{
+	font-size: 2vw;
+	padding-bottom: 10px;
+}
 
+.tab-content .row .content{
+	font-size: 1.2vw;
+}
+
+.content-factor{
+	font-size: 1.2vw;
+}
+
+.content-factor .gi-1x{
+	display: -webkit-inline-box;
+}
+
+.component-img-holder img{
+	width:100%;
+}
+
+@media screen and (max-width : 767px)
+{
+	.content-title{
+		display: none !important;
+	}
+}
+
+@media screen and (max-width : 767px)
+{
+	.component-content-container, .component-img-holder{
+		padding: 0 !important;
+	}
+}
 /* ------------- end of home css -------------*/
 
 /* ------------- vmap -------------*/
@@ -359,4 +397,8 @@ body, html {
 
 .red{
 	color: rgb(181,46,52);
+}
+
+.orange{
+	color: rgb(255,128,0);
 }

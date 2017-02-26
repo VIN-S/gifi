@@ -31,8 +31,21 @@ app.config(function ($routeProvider) {
 });
  
 app.controller('gifiMainController', 
-['$scope', '$location', function ($scope, $location) {  
+['$scope', '$location', '$rootScope', function ($scope, $location, $rootScope) {  
   $scope.navClass = function (page) {
+
+    $rootScope.rankComponentNames = [
+      'Legal & Regulatory Environment', 
+      'Market Development', 
+      'Exchange Controls & Capital Restrictions', 
+      'Corporate Governance', 
+      'AUM Levels & Capital Restrictions', 
+      'Banking System', 
+      'Ease of Doing Business', 
+      'Political Environment', 
+      'Account System'
+    ];
+
     var currentRoute = $location.path().substring(1) || 'home';
     return page === currentRoute ? 'active' : '';
   };
@@ -54,7 +67,7 @@ app.controller('gifiMainController',
     };
 }]);
 
-app.controller("homeCtrl", function ($http, $scope) {
+app.controller("homeCtrl", function ($http, $scope, $rootScope) {
   //Get list of regions
   getListOfRegions();
 
@@ -76,17 +89,7 @@ app.controller("homeCtrl", function ($http, $scope) {
   ];
 
   $scope.goal.series = [ 'Ranks' ];
-  $scope.goal.labels = [
-    'Legal & Regulatory Environment', 
-    'Market Development', 
-    'Exchange Controls & Capital Restrictions', 
-    'Corporate Governance', 
-    'AUM Levels & Capital Restrictions', 
-    'Banking System', 
-    'Ease of Doing Business', 
-    'Political Environment', 
-    'Account System'
-  ];
+  $scope.goal.labels = $rootScope.rankComponentNames;
 
   var maxRanks = 170;
 
@@ -232,13 +235,74 @@ app.controller("homeCtrl", function ($http, $scope) {
   var tabContents = 
       [
         {
-          'contents': 'Measures the degree to which the rule of the law is implemented',
+          'contents': 'Measures the degree to which the rule of the law is implemented: ',
           'factor':[
             'Strength of Institutions',
             'Effectiveness of enforcement',
             'Commitment to Global AML'
           ]
         },
+        {
+          'contents': 'Measures the volume, breadth and depth of the instruments and facilities to investors: ',
+          'factor':[
+            'Market activity',
+            'Access to credit',
+            'Efficiency of Financial services sector'
+          ]
+        },
+        {
+          'contents': 'Measures the ease with which investments can flow in and out of the country: ',
+          'factor':[
+            'Currecy stability',
+            'Investment Flow'
+          ]
+        },
+        {
+          'contents': 'Measures the state of corporate governance in the country: ',
+          'factor':[
+            'Shareholder protection',
+            'Ethical Behaviour of firms',
+            'Efficacy of Corporate Boards'
+          ]
+        },
+        {
+          'contents': 'Measures the level of growth of assets under management by managers: ',
+          'factor':[
+            'Growth of assets under management',
+            'Global inflows and outflows of assets'
+          ]
+        },
+        {
+          'contents': 'Measures the development of the banking system in terms of the soundness of banks, their ability to handle financial crisis as well as confidence in the banking system: ',
+          'factor':[
+            'Banking system stability',
+            'Risk of sovereign debt crisis',
+            'Size of banking sector',
+            'Efficieny of banking system'
+          ]
+        },
+        {
+          'contents': 'Measures the ease with which business can be conducted and an investment advisor(corporate form) can be setup: ',
+          'factor':[
+            'Cost of doing business',
+            'Taxation',
+            'Infrastructure'
+          ]
+        },
+        {
+          'contents': 'Measures the stability of the political environment, including policy making, transfer of political power and political risk: ',
+          'factor':[
+            'Ethics and corruption',
+            'Government Efficiency',
+            'Constraints on government policies'
+          ]
+        },
+        {
+          'contents': 'Measures the degree to which international accounting standards are adopted and implemented: ',
+          'factor':[
+            'Commitment to Global Financial Reporting Standards'
+          ]
+        }
       ];
   
   function initTabs() {
@@ -252,8 +316,11 @@ app.controller("homeCtrl", function ($http, $scope) {
   $scope.setActiveTab = function (tabNum) {
     initTabs();
     tabClasses[tabNum] = "active";
+    $scope.componentName = $rootScope.rankComponentNames[tabNum-1];
     $scope.content = tabContents[tabNum-1]['contents'];
     $scope.factors = tabContents[tabNum-1]['factor'];
+    $scope.componentImgSrc = '../img/components/component_'+tabNum+'.jpg';
+
   };
   
   //Initialize 
