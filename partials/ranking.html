@@ -1,3 +1,10 @@
-<div>
-  Ranking Navigation panel.
+<div class="ranking-container">
+  <div class="row" id="rankingCtrl" ng-controller="rankingCtrl">
+  	<div class="year-selector">
+	  	<span>
+			Select Rankings by Year:		
+		</span>
+		<select ng-model="selectedYear" ng-options="x for x in yearLists" ng-change="updateRanking(selectedYear)"></select>
+  	</div>
+  </div>
 </div>
