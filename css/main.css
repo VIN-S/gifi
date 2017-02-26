@@ -118,6 +118,15 @@ body, html {
 	background-color: white;
 	border-radius: 5px;
 }
+
+.footer{
+	margin: 5% 0 3% 0;
+	padding: 1vw 0 1vw 0;
+	text-align: center;
+	background-color: rgb(6,68,128);
+	font-size:1.2vw;
+	color:white;
+}
 /* ------------- end of index css ------------- */
 
 /* ------------- home css -------------*/
@@ -315,7 +324,7 @@ body, html {
 }
 
 .content-factor{
-	font-size: 1.2vw;
+	font-size: 1.1vw;
 }
 
 .content-factor .gi-1x{
