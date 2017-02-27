@@ -34,7 +34,7 @@ if(isset($_POST["import"]) && !empty($_FILES)) {
 			 $investor_friendliness_rank = (int)mysqli_real_escape_string($connect ,$columnData[1]);
 			 $legal_and_regulatory_environment = (int)mysqli_real_escape_string($connect ,$columnData[2]);
 			 $market_development = (int)mysqli_real_escape_string($connect ,$columnData[3]);
-			 $exchange_controls_and_capital_restrictions = (int)mysqli_real_escape_string($connect ,$columnData[4]);
+			 $exchange_controls_and_capital_restriction = (int)mysqli_real_escape_string($connect ,$columnData[4]);
 			 $corporate_governance = (int)mysqli_real_escape_string($connect ,$columnData[5]);
 			 $aum_levels_and_growth = (int)mysqli_real_escape_string($connect ,$columnData[6]);
 			 $banking_system = (int)mysqli_real_escape_string($connect ,$columnData[7]);
@@ -44,13 +44,13 @@ if(isset($_POST["import"]) && !empty($_FILES)) {
 			 $year_of_data = (int)mysqli_real_escape_string($connect ,$columnData[11]);
 			 $region = mysqli_real_escape_string($connect ,$columnData[12]);
 
-			 $import_data[]=" ( '".$country."',".$investor_friendliness_rank.",".$legal_and_regulatory_environment.",".$market_development.",".$exchange_controls_and_capital_restrictions.",".$corporate_governance.",".$aum_levels_and_growth.",".$banking_system.",".$ease_of_doing_business.",".$political_environment.",".$accounting_system.",".$year_of_data.",'".$region."' ) ";
+			 $import_data[]=" ( '".$country."',".$investor_friendliness_rank.",".$legal_and_regulatory_environment.",".$market_development.",".$exchange_controls_and_capital_restriction.",".$corporate_governance.",".$aum_levels_and_growth.",".$banking_system.",".$ease_of_doing_business.",".$political_environment.",".$accounting_system.",".$year_of_data.",'".$region."' ) ";
 			// SQL Query to insert data into DataBase
 			 }
 
 			 $import_data = implode(",", $import_data);
 
-			 $query = "INSERT INTO ranks(country, investor_friendliness_rank,legal_and_regulatory_environment,market_development,exchange_controls_and_capital_restrictions,corporate_governance,aum_levels_and_growth,banking_system,ease_of_doing_business,political_environment,accounting_system,year_of_data,region) VALUES  $import_data ;";
+			 $query = "INSERT INTO ranks(country, investor_friendliness_rank,legal_and_regulatory_environment,market_development,exchange_controls_and_capital_restriction,corporate_governance,aum_levels_and_growth,banking_system,ease_of_doing_business,political_environment,accounting_system,year_of_data,region) VALUES  $import_data ;";
 			 $result = mysqli_query($connect ,$query);
 			 $message .="Data imported successfully.";
 			 fclose($getdata);

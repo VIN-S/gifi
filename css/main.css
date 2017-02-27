@@ -403,13 +403,16 @@ body, html {
 /* ------------- ranking css -------------*/
 .ranking-container{
 	margin-top: 4%;
+}
+
+.year-selector{
 	padding-top: 5px;
     padding-bottom: 15px;
     border-bottom: 1px solid #666666;
     border-bottom-style: dashed;
 }
 
-.year-selector{
+.selector{
 	font-size: 1.4vw;
 	text-align: center;
 	width: 90%;
@@ -431,6 +434,33 @@ body, html {
 .quick-links .link{
 	color: rgb(6,100,160);
 	cursor: pointer;
+}
+
+.ranking-options{
+	margin-top: 4%;
+	font-size: 1.2vw;
+}
+
+.ranking-options select{
+	width:20%;
+}
+
+.ranking-options button{
+	padding: 5px 4vw 5px 4vw;
+	float:right;
+	background-color: rgb(6,68,128);
+	color:white;
+	border: none;
+}
+
+.ranking-table{
+	width: 100%;
+	margin-top: 4%;
+}
+
+.ranking-table table{
+	display: block;
+    overflow-x: auto; 
 }
 
 /* ------------- end of ranking css -------------*/

@@ -1,5 +1,5 @@
 //Define an angular module for our app
-var app = angular.module('myApp', ["ngRoute", "chart.js"]);
+var app = angular.module('myApp', ["ngRoute", "chart.js", "ngTable"]);
 app.config(function ($routeProvider) {
 
     $routeProvider

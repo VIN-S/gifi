@@ -1,32 +1,50 @@
 <div class="ranking-container">
-  <div class="row" id="rankingCtrl" ng-controller="rankingCtrl">
+  <div class="row nopadding nomargin" id="rankingCtrl" ng-controller="rankingCtrl">
     <!-- Year Selector -->
   	<div class="year-selector">
-	  	<span>
-			Select Rankings by Year:		
-		</span>
-		<select ng-model="selectedYear" ng-options="x for x in yearLists" ng-change="updateRankingByYear(selectedYear)"></select>
-  	</div>
-  	<div class="quick-links">
-  		<span>
-  			Quick Links: 
+      <div class="selector">
+  	  	<span>
+  			Select Rankings by Year:		
   		</span>
-  		<span ng-repeat="year in yearLists" class="link" ng-click="updateRankingByYear(year)">
-			  {{ year }} Ranking  			
-  		</span>
-  	</div>
+  		<select ng-model="selectedYear" ng-options="x for x in yearLists" ng-change="updateRankingByYear(selectedYear)"></select>
+    	</div>
+    	<div class="quick-links">
+    		<span>
+    			Quick Links: 
+    		</span>
+    		<span ng-repeat="year in yearLists" class="link" ng-click="updateRankingByYear(year)">
+  			  {{ year }} Ranking  			
+    		</span>
+    	</div>
+    </div>
     <!-- End of Year Selector -->
 
     <div class="ranking-options">
-      <div class="region-selector">
         <span>
           Select Rankings by Region:    
         </span>
         <select ng-model="selectedRegion" ng-options="x for x in regionLists" ng-change="updateRankingByRegion(selectedRegion)"></select>
-      </div>
-      <div class="download">
-        
-      </div>
+
+
+        <button>Download</button>
+    </div>
+
+    <div class="ranking-table">
+      <table ng-table="tableParams" class="table" show-filter="false">
+        <tr ng-repeat="country in $data">
+            <td title="'Country'" filter="{ country: 'text'}" sortable="'country'">{{country.country}}</td>
+            <td title="'Investor Friendliness Rank'" filter="{ investor_friendliness_rank: 'text'}" sortable="'investor_friendliness_rank'">{{country.investor_friendliness_rank}}</td>
+            <td title="'Legal & Regulatory Environment'" filter="{ legal_and_regulatory_environment: 'number'}" sortable="'legal_and_regulatory_environment'">{{country.legal_and_regulatory_environment}}</td>
+            <td title="'Market Development'" filter="{ market_development: 'number'}" sortable="'market_development'">{{country.market_development}}</td>
+            <td title="'Exchange Controls & Capital Restriction'" filter="{ exchange_controls_and_capital_restriction: 'number'}" sortable="'exchange_controls_and_capital_restriction'">{{country.exchange_controls_and_capital_restriction}}</td>
+            <td title="'Corporate Goverance'" filter="{ corporate_governance: 'number'}" sortable="'corporate_governance'">{{country.corporate_governance}}</td>
+            <td title="'AUM Levels & Growth'" filter="{ aum_levels_and_growth: 'number'}" sortable="'aum_levels_and_growth'">{{country.aum_levels_and_growth}}</td>
+            <td title="'Banking System'" filter="{ banking_system: 'number'}" sortable="'banking_system'">{{country.banking_system}}</td>
+            <td title="'Ease of Doing Business'" filter="{ ease_of_doing_business: 'number'}" sortable="'ease_of_doing_business'">{{country.ease_of_doing_business}}</td>
+            <td title="'Political Environment'" filter="{ political_environment: 'number'}" sortable="'political_environment'">{{country.political_environment}}</td>
+            <td title="'Accounting System'" filter="{ accounting_system: 'number'}" sortable="'accounting_system'">{{country.accounting_system}}</td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
