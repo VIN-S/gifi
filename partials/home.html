@@ -43,7 +43,7 @@
 				<span>
 					Select Country:
 				</span>
-				<select ng-model="selectedRegion" ng-options="x for x in regionLists" ng-change="updateGraph(selectedRegion)"></select>
+				<select ng-model="selectedCountry" ng-options="x for x in countryLists" ng-change="updateGraph(selectedCountry)"></select>
 			</div>
 			<div class="graph-header">
 				<span class="blue">
@@ -56,12 +56,12 @@
     				RANK
     			</span>
 			</div>
-			<div class="ranking-container">
+			<div class="home-ranking-container">
 				<span class="ranking blue">
-					{{ rankOfSelectedRegion }}
+					{{ rankOfSelectedCountry }}
 				</span>
-				<span class="region">
-					{{ nameOfSelectedRegion }}
+				<span class="country">
+					{{ nameOfSelectedCountry }}
 				</span>
 			</div>
 			<div>

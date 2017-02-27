@@ -1,13 +1,13 @@
 //controller for home page
 app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $scope, $rootScope) {
-  //Get list of regions
-  getListOfRegions();
+  //Get list of countries
+  getListOfCountries();
 
-  function getListOfRegions() {
-    $http.post("ajax/getListOfRegions.php")
+  function getListOfCountries() {
+    $http.post("ajax/getListOfCountries.php")
     .then(function(response) {
         var temp = response.data.substring(1, response.data.length-1);
-        $scope.regionLists = temp.split("\"\"");
+        $scope.countryLists = temp.split("\"\"");
     });
   };
 
@@ -25,17 +25,17 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
 
   var maxRanks = 170;
 
-  //set no.1 region as the selected region
+  //set no.1 country as the selected country
   setDefaultRanking(maxRanks);
 
   function setDefaultRanking(maxRanks){
-    $http.post("ajax/getTopRegionRanking.php")
+    $http.post("ajax/getTopCountryRanking.php")
     .then(function(response) {
         var results = response.data;
         
-        $scope.rankOfSelectedRegion = results['investor_friendliness_rank'];
-        $scope.nameOfSelectedRegion = results['country'];
-        $scope.selectedRegion =  results['country'];
+        $scope.rankOfSelectedCountry = results['investor_friendliness_rank'];
+        $scope.nameOfSelectedCountry = results['country'];
+        $scope.selectedCountry =  results['country'];
 
         $scope.goal = [];
 
@@ -122,30 +122,29 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
   };
 
   //update graph when select
-  $scope.updateGraph = function(selectedRegion){
-    $http.post("ajax/getRegionRanking.php?region="+selectedRegion)
+  $scope.updateGraph = function(selectedCountry){
+    $http.post("ajax/getCountryRanking.php?country="+selectedCountry)
     .then(function(response) {
         var results = response.data;
         if (typeof results === 'undefined' || results === null || results === ""){
-          $scope.selectedRegion =  "";
-          $scope.nameOfSelectedRegion = "No Record";
-          $scope.rankOfSelectedRegion = "N.A.";
+          $scope.selectedCountry =  "";
+          $scope.nameOfSelectedCountry = "No Record";
+          $scope.rankOfSelectedCountry = "N.A.";
           $scope.goal.data = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0],
           ];
         }else{
-
           $scope.goal = [];
+          
+          $scope.selectedCountry = String(selectedCountry);
+          $scope.nameOfSelectedCountry = results['country'];
 
-          $scope.selectedRegion = String(selectedRegion);
-          $scope.nameOfSelectedRegion = results['country'];
           if(results['investor_friendliness_rank'] < 1)
-              $scope.rankOfSelectedRegion = ">100"
+              $scope.rankOfSelectedCountry = ">100"
           else{
-              $scope.rankOfSelectedRegion = results['investor_friendliness_rank'];
+              $scope.rankOfSelectedCountry = results['investor_friendliness_rank'];
               
           }
-
           $scope.goal.data = [
             [
               maxRanks-results['legal_and_regulatory_environment'], 

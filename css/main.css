@@ -147,12 +147,12 @@ body, html {
 	font-weight: 600;
 }
 
-.ranking-container{
+.home-ranking-container{
 	padding-top: 5px;
 	margin-top: -1vw;
 }
 
-.ranking-container .ranking{
+.home-ranking-container .ranking{
 	position: relative;
 	bottom: 0.7vw;
     font-size: 2.4vw;
@@ -161,7 +161,7 @@ body, html {
     border-bottom: 0.4vw solid rgb(181,46,52);
 }
 
-.ranking-container .region{
+.home-ranking-container .country{
 	padding-left: 10px;
 	font-size: 3.4vw;
 	color: rgb(58, 153, 216);
@@ -403,6 +403,10 @@ body, html {
 /* ------------- ranking css -------------*/
 .ranking-container{
 	margin-top: 4%;
+	padding-top: 5px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #666666;
+    border-bottom-style: dashed;
 }
 
 .year-selector{

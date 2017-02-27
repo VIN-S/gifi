@@ -2,6 +2,7 @@
 app.controller("rankingCtrl", ['$http', '$scope', '$rootScope',  function ($http, $scope, $rootScope) {
   //Get list of years
   getListOfYears();
+  getListOfRegions();
 
   function getListOfYears() {
     $http.post("ajax/getListOfYears.php")

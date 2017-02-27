@@ -1,18 +1,32 @@
 <div class="ranking-container">
   <div class="row" id="rankingCtrl" ng-controller="rankingCtrl">
+    <!-- Year Selector -->
   	<div class="year-selector">
 	  	<span>
 			Select Rankings by Year:		
 		</span>
-		<select ng-model="selectedYear" ng-options="x for x in yearLists" ng-change="updateRanking(selectedYear)"></select>
+		<select ng-model="selectedYear" ng-options="x for x in yearLists" ng-change="updateRankingByYear(selectedYear)"></select>
   	</div>
   	<div class="quick-links">
   		<span>
   			Quick Links: 
   		</span>
-  		<span ng-repeat="year in yearLists" class="link" ng-click="updateRanking(year)">
-			{{ year }} Ranking  			
+  		<span ng-repeat="year in yearLists" class="link" ng-click="updateRankingByYear(year)">
+			  {{ year }} Ranking  			
   		</span>
   	</div>
+    <!-- End of Year Selector -->
+
+    <div class="ranking-options">
+      <div class="region-selector">
+        <span>
+          Select Rankings by Region:    
+        </span>
+        <select ng-model="selectedRegion" ng-options="x for x in regionLists" ng-change="updateRankingByRegion(selectedRegion)"></select>
+      </div>
+      <div class="download">
+        
+      </div>
+    </div>
   </div>
 </div>

@@ -1,9 +1,9 @@
 <?php 
 require_once '../includes/db.php'; // The mysql database connection script
 
-if(isset($_GET['region'])){
-	$selectedRegion = (string)$_GET['region'];
-	$query="SELECT * FROM ranks WHERE country = '$selectedRegion'";
+if(isset($_GET['country'])){
+	$selectedCountry = (string)$_GET['country'];
+	$query="SELECT * FROM ranks WHERE country = '$selectedCountry'";
 	$result = mysql_query($query);
 
 	while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
