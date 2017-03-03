@@ -25,6 +25,8 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
 
   var maxRanks = 170;
 
+  var activeTab = ["active", "inactive"];
+
   //set no.1 country as the selected country
   setDefaultRanking(maxRanks);
 
@@ -43,7 +45,7 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
           [
             maxRanks-results['legal_and_regulatory_environment'], 
             maxRanks-results['market_development'], 
-            maxRanks-results['exchange_controls_and_capital_restrictions'],
+            maxRanks-results['exchange_controls_and_capital_restriction'],
             maxRanks-results['corporate_governance'],
             maxRanks-results['aum_levels_and_growth'],
             maxRanks-results['banking_system'],
@@ -52,6 +54,17 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
             maxRanks-results['accounting_system']
           ],
         ];
+  })};
+
+  //Get the ranking of top ten countries
+  getTopTenCountries();
+
+  function getTopTenCountries(){
+    $http.post("ajax/getTopTenCountries.php")
+    .then(function(response) {
+      var results = response.data;
+      var temp = results.substring(1, response.data.length-1);
+      $scope.topTenCountries = temp.split("\"\"");
   })};
 
   //set background color of the bar
@@ -125,6 +138,9 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
   $scope.updateGraph = function(selectedCountry){
     $http.post("ajax/getCountryRanking.php?country="+selectedCountry)
     .then(function(response) {
+        activeTab[0] = 'inactive'
+        activeTab[1] = 'active';
+
         var results = response.data;
         if (typeof results === 'undefined' || results === null || results === ""){
           $scope.selectedCountry =  "";
@@ -149,7 +165,7 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
             [
               maxRanks-results['legal_and_regulatory_environment'], 
               maxRanks-results['market_development'], 
-              maxRanks-results['exchange_controls_and_capital_restrictions'],
+              maxRanks-results['exchange_controls_and_capital_restriction'],
               maxRanks-results['corporate_governance'],
               maxRanks-results['aum_levels_and_growth'],
               maxRanks-results['banking_system'],
@@ -160,6 +176,10 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
           ];
         }
     });
+  };
+
+  $scope.getActiveTab = function (tabNum) {
+    return activeTab[tabNum];
   };
 
   var tabClasses;

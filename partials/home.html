@@ -38,131 +38,148 @@
 		<!-- End of Map -->
 
 		<!-- Ranking Info -->
-		<div class="col-md-5" >
+		<div class="col-md-5 info-container">
 			<div class="search-container">
 				<span>
 					Select Country:
 				</span>
 				<select ng-model="selectedCountry" ng-options="x for x in countryLists" ng-change="updateGraph(selectedCountry)"></select>
 			</div>
-			<div class="graph-header">
-				<span class="blue">
-    				INVESTER
-    			</span>
-    			<span class="red"> 
-    				FRIENDLINESS
-    			</span>
-    			<span class="blue">
-    				RANK
-    			</span>
+			<div class="top-ten-tab" ng-class="getActiveTab(0)">
+				<div class="row">
+					<div class="col-xs-6 ranking-container" ng-repeat="country in topTenCountries">
+						<span class="ranking blue">
+							{{ $index+1 }}
+						</span>
+						<span class="country">
+							{{ country }}
+						</span>
+					</div>
+					<div class="col-xs-6">
+						
+					</div>
+				</div>
 			</div>
-			<div class="home-ranking-container">
-				<span class="ranking blue">
-					{{ rankOfSelectedCountry }}
-				</span>
-				<span class="country">
-					{{ nameOfSelectedCountry }}
-				</span>
-			</div>
-			<div>
-			  <canvas id="bar" class="chart chart-bar" 
-			    chart-data="goal.data" 
-			    chart-labels="goal.labels" 
-			    chart-options="goal.options" 
-			    chart-series="goal.series" 
-			    chart-dataset-override="goal.datasetOverride">			    	
-			   </canvas>
-			</div>
-			<div class="legend-container">
-				<div class="row nomargin">
-					<div class="col-sm-4 col-xs-6 inline nopadding legend-1">
-						<div class="color">
-							<span class="glyphicon glyphicon-stop gi-1x"></span>
+			<div class="bar-chart-tab" ng-class="getActiveTab(1)">
+				<div class="graph-header">
+					<span class="blue">
+	    				INVESTER
+	    			</span>
+	    			<span class="red"> 
+	    				FRIENDLINESS
+	    			</span>
+	    			<span class="blue">
+	    				RANK
+	    			</span>
+				</div>
+				<div class="home-ranking-container">
+					<span class="ranking blue">
+						{{ rankOfSelectedCountry }}
+					</span>
+					<span class="country">
+						{{ nameOfSelectedCountry }}
+					</span>
+				</div>
+				<div>
+				  <canvas id="bar" class="chart chart-bar" 
+				    chart-data="goal.data" 
+				    chart-labels="goal.labels" 
+				    chart-options="goal.options" 
+				    chart-series="goal.series" 
+				    chart-dataset-override="goal.datasetOverride">			    	
+				   </canvas>
+				</div>
+				<div class="legend-container">
+					<div class="row nomargin">
+						<div class="col-sm-4 col-xs-6 inline nopadding legend-1">
+							<div class="color">
+								<span class="glyphicon glyphicon-stop gi-1x"></span>
+							</div>
+							<div class="name">
+								<span>
+									Legal & Regular Environment
+								</span>
+							</div>
 						</div>
-						<div class="name">
-							<span>
-								Legal & Regular Environment
-							</span>
+						<div class="col-sm-4 col-xs-6 inline nopadding legend-2">
+							<div class="color">
+								<span class="glyphicon glyphicon-stop gi-1x"></span>
+							</div>
+							<div class="name">
+								<span>
+									Market Development
+								</span>
+							</div>
 						</div>
-					</div>
-					<div class="col-sm-4 col-xs-6 inline nopadding legend-2">
-						<div class="color">
-							<span class="glyphicon glyphicon-stop gi-1x"></span>
+						<div class="col-sm-4 col-xs-12 inline nopadding legend-3">
+							<div class="color">
+								<span class="glyphicon glyphicon-stop gi-1x"></span>
+							</div>
+							<div class="name">
+								<span>
+									Exchange Controls & Capital Restrictions
+								</span>
+							</div>
 						</div>
-						<div class="name">
-							<span>
-								Market Development
-							</span>
+						<div class="col-sm-4 col-xs-6 inline nopadding legend-4">
+							<div class="color">
+								<span class="glyphicon glyphicon-stop gi-1x"></span>
+							</div>
+							<div class="name">
+								<span>
+									Corporate Governance
+								</span>
+							</div>
 						</div>
-					</div>
-					<div class="col-sm-4 col-xs-12 inline nopadding legend-3">
-						<div class="color">
-							<span class="glyphicon glyphicon-stop gi-1x"></span>
+						<div class="col-sm-4 col-xs-6 inline nopadding legend-5">
+							<div class="color">
+								<span class="glyphicon glyphicon-stop gi-1x"></span>
+							</div>
+							<div class="name">
+								<span>
+									AUM Levels & Growth
+								</span>
+							</div>
 						</div>
-						<div class="name">
-							<span>
-								Exchange Controls & Capital Restrictions
-							</span>
+						<div class="col-sm-4 col-xs-6 inline nopadding legend-6">
+							<div class="color">
+								<span class="glyphicon glyphicon-stop gi-1x"></span>
+							</div>
+							<div class="name">
+								<span>
+									Banking System
+								</span>
+							</div>
 						</div>
-					</div>
-					<div class="col-sm-4 col-xs-6 inline nopadding legend-4">
-						<div class="color">
-							<span class="glyphicon glyphicon-stop gi-1x"></span>
+						<div class="col-sm-4 col-xs-6 inline nopadding legend-7">
+							<div class="color">
+								<span class="glyphicon glyphicon-stop gi-1x"></span>
+							</div>
+							<div class="name">
+								<span>
+									Ease of Doing Business
+								</span>
+							</div>
 						</div>
-						<div class="name">
-							<span>
-								Corporate Governance
-							</span>
+						<div class="col-sm-4 col-xs-6 inline nopadding legend-8">
+							<div class="color">
+								<span class="glyphicon glyphicon-stop gi-1x"></span>
+							</div>
+							<div class="name">
+								<span>
+									Political Environment
+								</span>
+							</div>
 						</div>
-					</div>
-					<div class="col-sm-4 col-xs-6 inline nopadding legend-5">
-						<div class="color">
-							<span class="glyphicon glyphicon-stop gi-1x"></span>
-						</div>
-						<div class="name">
-							<span>
-								AUM Levels & Growth
-							</span>
-						</div>
-					</div>
-					<div class="col-sm-4 col-xs-6 inline nopadding legend-6">
-						<div class="color">
-							<span class="glyphicon glyphicon-stop gi-1x"></span>
-						</div>
-						<div class="name">
-							<span>
-								Banking System
-							</span>
-						</div>
-					</div>
-					<div class="col-sm-4 col-xs-6 inline nopadding legend-7">
-						<div class="color">
-							<span class="glyphicon glyphicon-stop gi-1x"></span>
-						</div>
-						<div class="name">
-							<span>
-								Ease of Doing Business
-							</span>
-						</div>
-					</div>
-					<div class="col-sm-4 col-xs-6 inline nopadding legend-8">
-						<div class="color">
-							<span class="glyphicon glyphicon-stop gi-1x"></span>
-						</div>
-						<div class="name">
-							<span>
-								Political Environment
-							</span>
-						</div>
-					</div>
-					<div class="col-sm-4 col-xs-6 inline nopadding legend-9">
-						<div class="color">
-							<span class="glyphicon glyphicon-stop gi-1x"></span>
-						</div>
-						<div class="name">
-							<span>
-								Accounting System
-							</span>
+						<div class="col-sm-4 col-xs-6 inline nopadding legend-9">
+							<div class="color">
+								<span class="glyphicon glyphicon-stop gi-1x"></span>
+							</div>
+							<div class="name">
+								<span>
+									Accounting System
+								</span>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -19,6 +19,15 @@ body, html {
 	width: 85%;
 }
 
+@media screen and (max-width : 510px)
+{
+	.container{
+		margin: 0 auto;
+		padding-top: 3%; 
+		width: 98%;
+	}
+}
+
 .nopadding{
 	padding: 0 !important;
 }
@@ -130,7 +139,28 @@ body, html {
 /* ------------- end of index css ------------- */
 
 /* ------------- home css -------------*/
+.info-container .inactive{
+	display: none;
+}
 
+.ranking-container{
+	margin:2vw 0 2vw 0;
+}
+
+.top-ten-tab .ranking-container .ranking{
+	position: relative;
+	bottom: 0.3vw;
+    font-size: 1.4vw;
+    font-weight: 800;
+    padding-left: 6px;
+    border-bottom: 0.4vw solid rgb(181,46,52);
+}
+
+.top-ten-tab .ranking-container .country{
+	padding-left: 10px;
+	font-size: 1.4vw;
+	color: rgb(58, 153, 216);
+}
 
 .search-container select{
 	float: right;
@@ -456,14 +486,68 @@ body, html {
 .ranking-table{
 	width: 100%;
 	margin-top: 4%;
+	font-size: 8px;
+}
+
+.ranking-table .btn{
+	font-size: 10px;
 }
 
 .ranking-table table{
 	display: block;
-    overflow-x: auto; 
+    overflow-x: auto;   
 }
 
-/* ------------- end of ranking css -------------*/
+.ng-table th{
+	text-align: left !important;
+	vertical-align: middle !important;
+}
+
+.ranking-table td p {
+  	text-overflow: ellipsis !important;
+    overflow: hidden; 
+    white-space: nowrap;
+    width:150px;
+}
+
+.ranking-table thead{
+	background-color: rgb(6,68,128);
+	color: white;
+}
+
+.ng-table th.sortable .sort-indicator:after, .ng-table th.sortable .sort-indicator:before{
+	border-color: #fff transparent !important;
+}
+
+.ng-table th.sortable .sort-indicator {
+    padding-right: 115px !important;
+    position: relative !important;
+}
+
+.ng-table th.sortable.sort-desc, .ng-table th.sortable.sort-asc {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    text-shadow: none !important;
+}
+
+.table>thead:first-child>tr:first-child>th {
+    border-right: 1px solid !important;
+}
+
+.ranking-table .table>tbody>tr>td {
+	padding: 8px !important;
+    border: 1px solid #ddd !important;
+    vertical-align: middle !important;
+}
+
+.ranking-table .table>tbody>tr>td p{
+	margin: 0 !important; 
+}
+
+.row0 {
+        background-color: #eeeeee;
+}
+
+/* ------------- end of ranking css ------------- */
 
 .blue{
 	color: rgb(6,68,128);
