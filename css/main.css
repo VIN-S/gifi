@@ -147,6 +147,17 @@ body, html {
 	margin:2vw 0 2vw 0;
 }
 
+.top-country-container{
+	margin-top: 8px;
+    font-weight: 600;
+    font-size: 1.5vw;
+}
+
+.back-to-top-ten-container{
+	cursor: pointer;
+	color: rgb(58, 153, 216);
+}
+
 .top-ten-tab .ranking-container .ranking{
 	position: relative;
 	bottom: 0.3vw;
@@ -160,6 +171,7 @@ body, html {
 	padding-left: 10px;
 	font-size: 1.4vw;
 	color: rgb(58, 153, 216);
+	cursor: pointer;
 }
 
 .search-container select{

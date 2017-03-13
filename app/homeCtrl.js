@@ -23,16 +23,27 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
   $scope.goal.series = [ 'Ranks' ];
   $scope.goal.labels = $rootScope.rankComponentNames;
 
+  $scope.latestYear;
+
+  
+
   var maxRanks = 170;
 
   var activeTab = ["active", "inactive"];
+
+  $scope.backToTopTen = function(){
+    activeTab[0] = 'active'
+    activeTab[1] = 'inactive';
+  }
 
   //set no.1 country as the selected country
   setDefaultRanking(maxRanks);
 
   function setDefaultRanking(maxRanks){
-    $http.post("ajax/getTopCountryRanking.php")
+    $http.post("ajax/getTopCountryRanking.php?year="+$rootScope.latestYear)
     .then(function(response) {
+        
+
         var results = response.data;
         
         $scope.rankOfSelectedCountry = results['investor_friendliness_rank'];
@@ -60,7 +71,7 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
   getTopTenCountries();
 
   function getTopTenCountries(){
-    $http.post("ajax/getTopTenCountries.php")
+    $http.post("ajax/getTopTenCountries.php?year="+$rootScope.latestYear)
     .then(function(response) {
       var results = response.data;
       var temp = results.substring(1, response.data.length-1);
@@ -136,7 +147,7 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
 
   //update graph when select
   $scope.updateGraph = function(selectedCountry){
-    $http.post("ajax/getCountryRanking.php?country="+selectedCountry)
+    $http.post("ajax/getCountryRanking.php?country="+selectedCountry+"&year="+$rootScope.latestYear)
     .then(function(response) {
         activeTab[0] = 'inactive'
         activeTab[1] = 'active';

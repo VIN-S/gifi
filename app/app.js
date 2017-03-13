@@ -32,7 +32,7 @@ app.config(function ($routeProvider) {
  
 //gifiMainController
 app.controller('gifiMainController', 
-['$scope', '$location', '$rootScope', function ($scope, $location, $rootScope) {  
+['$scope', '$location', '$rootScope', '$http', function ($scope, $location, $rootScope, $http) {  
   $scope.navClass = function (page) {
 
     $rootScope.rankComponentNames = [
@@ -50,8 +50,20 @@ app.controller('gifiMainController',
     var currentRoute = $location.path().substring(1) || 'home';
     return page === currentRoute ? 'active' : '';
   };
+
+    getLatestYearRanking();
+
+    //Get latest year that has the ranking data
+    function getLatestYearRanking(){
+      $http.post("ajax/getLatestYear.php")
+      .then(function(response) {
+          $rootScope.latestYear = response.data['latestYear'];
+          $scope.latestYear = response.data['latestYear'];
+        });
+    }
   
-      $scope.loadHome = function () {
+  
+    $scope.loadHome = function () {
         $location.url('/home');
     };
     

@@ -47,11 +47,22 @@
 			</div>
 			<div class="top-ten-tab" ng-class="getActiveTab(0)">
 				<div class="row">
+					<div class="col-xs-12 top-country-container">
+						<span class="blue">
+	    					{{ latestYear }} Top 
+	    				</span>
+	    				<span class="red"> 
+	    					INVESTOR FRIENDLY
+	    				</span>
+	    				<span class="blue">
+	    					Economies
+	    				</span>
+    				</div>
 					<div class="col-xs-6 ranking-container" ng-repeat="country in topTenCountries">
 						<span class="ranking blue">
 							{{ $index+1 }}
 						</span>
-						<span class="country">
+						<span class="country" ng-click="updateGraph(country)">
 							{{ country }}
 						</span>
 					</div>
@@ -62,15 +73,10 @@
 			</div>
 			<div class="bar-chart-tab" ng-class="getActiveTab(1)">
 				<div class="graph-header">
-					<span class="blue">
-	    				INVESTER
+					<span class="back-to-top-ten-container" ng-click="backToTopTen()">
+	    				<- Back to Top Ten Countries
 	    			</span>
-	    			<span class="red"> 
-	    				FRIENDLINESS
-	    			</span>
-	    			<span class="blue">
-	    				RANK
-	    			</span>
+	    			
 				</div>
 				<div class="home-ranking-container">
 					<span class="ranking blue">
