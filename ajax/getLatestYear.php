@@ -2,9 +2,9 @@
 require_once '../includes/db.php'; // The mysql database connection script
 
 	$query="SELECT MAX(year_of_data) AS latestYear FROM ranks";
-	$result = mysql_query($query);
+	$result = mysqli_query($connect, $query);
 
-	while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while ($row = mysqli_fetch_array($result)) {
 		echo json_encode($row, JSON_FORCE_OBJECT);
 	}
 ?>

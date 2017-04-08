@@ -25,8 +25,6 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
 
   $scope.latestYear;
 
-  
-
   var maxRanks = 170;
 
   var activeTab = ["active", "inactive"];
@@ -35,48 +33,6 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
     activeTab[0] = 'active'
     activeTab[1] = 'inactive';
   }
-
-  //set no.1 country as the selected country
-  setDefaultRanking(maxRanks);
-
-  function setDefaultRanking(maxRanks){
-    $http.post("ajax/getTopCountryRanking.php?year="+$rootScope.latestYear)
-    .then(function(response) {
-        
-
-        var results = response.data;
-        
-        $scope.rankOfSelectedCountry = results['investor_friendliness_rank'];
-        $scope.nameOfSelectedCountry = results['country'];
-        $scope.selectedCountry =  results['country'];
-
-        $scope.goal = [];
-
-        $scope.goal.data = [
-          [
-            maxRanks-results['legal_and_regulatory_environment'], 
-            maxRanks-results['market_development'], 
-            maxRanks-results['exchange_controls_and_capital_restriction'],
-            maxRanks-results['corporate_governance'],
-            maxRanks-results['aum_levels_and_growth'],
-            maxRanks-results['banking_system'],
-            maxRanks-results['ease_of_doing_business'],
-            maxRanks-results['political_environment'],
-            maxRanks-results['accounting_system']
-          ],
-        ];
-  })};
-
-  //Get the ranking of top ten countries
-  getTopTenCountries();
-
-  function getTopTenCountries(){
-    $http.post("ajax/getTopTenCountries.php?year="+$rootScope.latestYear)
-    .then(function(response) {
-      var results = response.data;
-      var temp = results.substring(1, response.data.length-1);
-      $scope.topTenCountries = temp.split("\"\"");
-  })};
 
   //set background color of the bar
   var backgroundColours = [];
@@ -281,7 +237,7 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
     $scope.componentName = $rootScope.rankComponentNames[tabNum-1];
     $scope.content = tabContents[tabNum-1]['contents'];
     $scope.factors = tabContents[tabNum-1]['factor'];
-    $scope.componentImgSrc = '../img/components/component_'+tabNum+'.jpg';
+    $scope.componentImgSrc = 'img/components/component_'+tabNum+'.jpg';
 
   };
   

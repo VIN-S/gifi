@@ -2,11 +2,11 @@
 require_once '../includes/db.php'; // The mysql database connection script
  
 $query="SELECT DISTINCT year_of_data from ranks";
-$result = mysql_query($query);
+$result = mysqli_query($connect, $query);
 
 $i=0;
 
-while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+while ($row = mysqli_fetch_array($result)) {
 	$year = (string) $row['year_of_data'];
 
 	echo json_encode($year);

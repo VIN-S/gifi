@@ -6,9 +6,9 @@ if(isset($_GET['year']) and isset($_GET['region'])){
 	$region = $_GET['region'];
 	if($region == 'All'){
 		$query="SELECT * FROM ranks WHERE year_of_data = '$year' AND investor_friendliness_rank != 0 ORDER BY investor_friendliness_rank ASC";
-		$result = mysql_query($query);
+		$result = mysqli_query($connect, $query);
 
-		while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$data = $row;
 
 			echo json_encode($data, JSON_FORCE_OBJECT);
@@ -16,9 +16,9 @@ if(isset($_GET['year']) and isset($_GET['region'])){
 		}
 	}else{
 		$query="SELECT * FROM ranks WHERE year_of_data = '$year' AND investor_friendliness_rank != 0 AND region='$region' ORDER BY investor_friendliness_rank ASC";
-		$result = mysql_query($query);
+		$result = mysqli_query($connect, $query);
 
-		while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$data = $row;
 
 			echo json_encode($data, JSON_FORCE_OBJECT);

@@ -79,7 +79,6 @@ body, html {
 @media screen and (max-width : 510px)
 {
 	.nav{
-		font-size: 1px !important;
 		width: auto !important;
 		padding-left: 10px;
 		padding-right: 10px;

@@ -59,8 +59,53 @@ app.controller('gifiMainController',
       .then(function(response) {
           $rootScope.latestYear = response.data['latestYear'];
           $scope.latestYear = response.data['latestYear'];
+          var latestYear = response.data['latestYear'];
+          getTopTenCountries(latestYear);
+          var maxRanks = 170;
+          //set no.1 country as the selected country
+          setDefaultRanking(maxRanks, latestYear);
+
+          function getTopTenCountries(latestYear){
+            $http.post("ajax/getTopTenCountries.php?year="+latestYear)
+            .then(function(response) {
+              var results = response.data;
+              var temp = results.substring(1, response.data.length-1);
+              $scope.topTenCountries = temp.split("\"\"");
+          })};
+
+          function setDefaultRanking(maxRanks, latestYear){
+            $http.post("ajax/getTopCountryRanking.php?year="+latestYear)
+            .then(function(response) {
+                
+
+                var results = response.data;
+                
+                $scope.rankOfSelectedCountry = results['investor_friendliness_rank'];
+                $scope.nameOfSelectedCountry = results['country'];
+                $scope.selectedCountry =  results['country'];
+
+                $scope.goal = [];
+
+                $scope.goal.data = [
+                  [
+                    maxRanks-results['legal_and_regulatory_environment'], 
+                    maxRanks-results['market_development'], 
+                    maxRanks-results['exchange_controls_and_capital_restriction'],
+                    maxRanks-results['corporate_governance'],
+                    maxRanks-results['aum_levels_and_growth'],
+                    maxRanks-results['banking_system'],
+                    maxRanks-results['ease_of_doing_business'],
+                    maxRanks-results['political_environment'],
+                    maxRanks-results['accounting_system']
+                  ],
+                ];
+            })};
         });
     }
+
+    
+
+  
   
   
     $scope.loadHome = function () {
