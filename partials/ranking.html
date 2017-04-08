@@ -26,7 +26,7 @@
         <select ng-model="selectedRegion" ng-options="x for x in regionLists" ng-change="updateRankingByRegion(selectedRegion)"></select>
 
 
-        <button>Download</button>
+        <button ng-click="exportToCsv()">Download</button>
     </div>
 
     <div class="ranking-table">

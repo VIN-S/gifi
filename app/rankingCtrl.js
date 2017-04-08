@@ -102,6 +102,84 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
     });
   }
 
+  $scope.exportToCsv = function(){
+    var filename = "Global_Investor_Friendliness_Rank_"+$scope.selectedYear+".csv";
+
+    var dataset = [];
+
+    $http.post("ajax/updateRankingByYear.php?year="+$scope.selectedYear)
+    .then(function(response) {
+        var temp=response.data.split("//");
+
+        var field = ['Country', 'Investor Friendliness Rank', 'Legal and Regulatory Environment', 'Market Development', 'Exchange Controls and Capital Restriction',
+         'Corporate Governance', 'Aum Levels and Growth', 'Banking System', 'Ease of Doing Business', 'Political Environment', 'Accounting System'];
+
+        var excelData = [];
+        excelData[0] = field;
+
+        for(var i=0;i<temp.length;i++){
+          if(temp[i] !== undefined && temp[i] !==null && temp[i] !== ""){
+            dataset[i] = JSON.parse(temp[i]);
+            var row = [];
+            row.push(dataset[i]['country']);
+            row.push(parseInt(dataset[i]['investor_friendliness_rank']));
+            row.push(parseInt(dataset[i]['legal_and_regulatory_environment']));
+            row.push(parseInt(dataset[i]['market_development']));
+            row.push(parseInt(dataset[i]['exchange_controls_and_capital_restriction']));
+            row.push(parseInt(dataset[i]['corporate_governance']));
+            row.push(parseInt(dataset[i]['aum_levels_and_growth']));
+            row.push(parseInt(dataset[i]['banking_system']));
+            row.push(parseInt(dataset[i]['ease_of_doing_business']));
+            row.push(parseInt(dataset[i]['political_environment']));
+            row.push(parseInt(dataset[i]['accounting_system']));
+
+            excelData[i+1] = row;
+          }
+        }
+
+        var rows=excelData;
+
+        var processRow = function (row) {
+                var finalVal = '';
+                for (var j = 0; j < row.length; j++) {
+                    var innerValue = row[j] === null ? '' : row[j].toString();
+                    if (row[j] instanceof Date) {
+                        innerValue = row[j].toLocaleString();
+                    };
+                    var result = innerValue.replace(/"/g, '""');
+                    if (result.search(/("|,|\n)/g) >= 0)
+                        result = '"' + result + '"';
+                    if (j > 0)
+                        finalVal += ',';
+                    finalVal += result;
+                }
+                return finalVal + '\n';
+            };
+
+            var csvFile = '';
+            for (var i = 0; i < rows.length; i++) {
+                csvFile += processRow(rows[i]);
+            }
+
+            var blob = new Blob([csvFile], { type: 'text/csv;charset=utf-8;' });
+            if (navigator.msSaveBlob) { // IE 10+
+                navigator.msSaveBlob(blob, filename);
+            } else {
+                var link = document.createElement("a");
+                if (link.download !== undefined) { // feature detection
+                    // Browsers that support HTML5 download attribute
+                    var url = URL.createObjectURL(blob);
+                    link.setAttribute("href", url);
+                    link.setAttribute("download", filename);
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            }
+    });    
+}
+
 //   var dataset = [{name: "Moroni", age: 50}, {name: "hi", age: 30} /*,*/];
 // console.log(dataset);
   // $scope.tableParams = new NgTableParams({
