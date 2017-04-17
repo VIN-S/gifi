@@ -41,7 +41,7 @@ app.service('cookieService', function() {
 app.controller('adminMainController', 
 ['$scope', '$location', '$http', 'cookieService', function($scope, $location, $http, cookieService) {
     $scope.adminSignIn = function(username, pwd) {
-        $http.post("ajax/adminSignIn.php?username="+username+"&pwd="+pwd)
+        $http.post("ajax/adminSignIn.php?username="+username+"&pwd="+sha512(pwd))
         .then(function(response) {
             $scope.signinStatus = response.data.status;
             $scope.signinMessage = response.data.message;
