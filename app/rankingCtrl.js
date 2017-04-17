@@ -178,6 +178,17 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
                 }
             }
     });    
+
+    updateDownloadCount();
+
+    function updateDownloadCount(){
+      var today = new Date();
+      today=today.toISOString().substring(0, 10); //yyyy-mm-dd
+
+      $http.post("ajax/updateDownloadCount.php?today="+today)
+      .then(function(response) {
+      });
+    }
 }
 
 //   var dataset = [{name: "Moroni", age: 50}, {name: "hi", age: 30} /*,*/];
