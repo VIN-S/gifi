@@ -5,11 +5,11 @@ $username = $_GET['username'];
 $pwd = $_GET['pwd'];
 
 $query = "SELECT * from admin WHERE username='$username' AND password='$pwd'";
-$result = mysql_query($query);
+$result = mysqli_query($connect, $query);
 
 $tblCnt=0;
 
-while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+while ($row = mysqli_fetch_array($result)) {
     $tblCnt++;
 }
 
@@ -18,6 +18,7 @@ $response=array();
 if ($tblCnt>0) {
 	$response['status'] = 'success';
 	$response['message'] = 'Log in successful!';
+	$response['userName'] = $username;
 
 	echo json_encode($response);
 } else {

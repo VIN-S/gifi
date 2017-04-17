@@ -1,24 +1,68 @@
-<html ng-app="myApp">
-    <head>
-    <link rel="stylesheet" type="text/css" href="css/admin.css"/>
-    </head>
-    <body ng-controller="gifiAdminController">
-    <div class="container">
-        <div class="content content-container">
-            <form class="form-signin">
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-                <input type="text" id="inputUser" class="form-control" placeholder="UserID" ng-model="signinUserID" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="signinPassword" required>
+    <title>Admin Login </title>
 
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" ng-click="adminSignIn(signinUserID, signinPassword)">Sign in</button>
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="vendors/animate.min.css" rel="stylesheet">
 
-                <h>{{failInfo}}</h>
-            </form><!-- /form -->
-        </div><!-- /content-container -->
-    </div><!-- /container -->
+    <!-- Custom Theme Style -->
+    <link href="vendors/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="login" ng-controller="gifiAdminController">
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form>
+              <h1>Welcome, admin!</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Username" ng-model="signinUserID" required autofocus/>
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Password" ng-model="signinPassword" required/>
+              </div>
+              <div>
+                <button class="btn btn-default submit" href="index.html" type="submit" ng-click="adminSignIn(signinUserID, signinPassword)">Log in</button>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
     
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <p>&copy;2017 All Rights Reserved.</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+
     <script type="text/javascript" src="../js/angular.min.js"></script>
     <script type="text/javascript" src="app/app.js"></script>
-    </body>
+  </body>
 </html>
+
     
