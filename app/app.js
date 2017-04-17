@@ -32,9 +32,7 @@ app.config(function ($routeProvider) {
  
 //gifiMainController
 app.controller('gifiMainController', 
-['$scope', '$location', '$rootScope', '$http', function ($scope, $location, $rootScope, $http) {  
-  $scope.navClass = function (page) {
-
+['$scope', '$location', '$rootScope', '$http', function ($scope, $location, $rootScope, $http) { 
     $rootScope.rankComponentNames = [
       'Legal & Regulatory Environment', 
       'Market Development', 
@@ -47,9 +45,16 @@ app.controller('gifiMainController',
       'Account System'
     ];
 
-    var currentRoute = $location.path().substring(1) || 'home';
-    return page === currentRoute ? 'active' : '';
-  };
+    updateViewCount();
+
+    function updateViewCount(){
+      var today = new Date();
+      today=today.toISOString().substring(0, 10); //yyyy-mm-dd
+
+      $http.post("ajax/updateViewCount.php?today="+today)
+      .then(function(response) {
+      });
+    }
 
     getLatestYearRanking();
 
@@ -103,24 +108,24 @@ app.controller('gifiMainController',
         });
     }
 
-    
+    $scope.navClass = function (page) {
+      var currentRoute = $location.path().substring(1) || 'home';
+      return page === currentRoute ? 'active' : '';
+    };
 
-  
-  
-  
     $scope.loadHome = function () {
         $location.url('/home');
     };
     
-      $scope.loadRanking = function () {
+    $scope.loadRanking = function () {
         $location.url('/ranking');
     };
     
-      $scope.loadResearchPublication = function () {
+    $scope.loadResearchPublication = function () {
         $location.url('/research_publication');
     };
 
-      $scope.loadAbout = function () {
+    $scope.loadAbout = function () {
         $location.url('/about');
     };
 }]);
