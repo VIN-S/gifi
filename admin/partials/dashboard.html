@@ -65,35 +65,21 @@
         <div class="right_col" role="main">
           <!-- top tiles -->
           <div class="row tile_count">
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-file"></i> Ongoing Initiatives</span>
-              <div class="count">5</div>
-              <span class="count_bottom"><i class="green">25% </i> From last Week</span>
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Views</span>
+              <div class="count">{{todayViewCount}}</div>
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> Avg. Translation Time</span>
-              <div class="count">52.3</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-download"></i> Downloads</span>
+              <div class="count">{{todayDownloadCount}}</div>
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-file"></i> Total TS</span>
-              <div class="count ">12</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-desc"></i>34% </i> From last Week</span>
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Views</span>
+              <div class="count ">{{totalViewCount}}</div>     
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-file"></i> Confirmed TS</span>
-              <div class="count">4</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-asc"></i>25% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-inbox"></i> Unread Messages</span>
-              <div class="count">6</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-file"></i> Total Initiatives</span>
-              <div class="count">89</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Year</span>
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-download"></i> Total Downloads</span>
+              <div class="count">{{totalDownloadCount}}</div>
             </div>
           </div>
           <!-- /top tiles -->

@@ -59,24 +59,6 @@ app.controller('adminMainController',
     };
 }]);
 
-app.controller('dashboardController', 
-['$scope', '$location', '$http', 'cookieService', function($scope, $location, $http, cookieService) {
-    if(cookieService.getUserName() == undefined || cookieService.getUserName() == ''){
-        $location.url('/login');
-    }
-
-    $scope.adminLogout = function(){
-        cookieService.setUserName('');
-        $location.url('/login');
-    }
-
-    $scope.loadDashboard = function(){
-        $location.url('/dashboard');
-    }
-}]);
-
-
-
 app.controller('DashboardCtrl', function($scope, $compile) {
   console.log('inside dashboard controller');
 });
