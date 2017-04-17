@@ -1,44 +1,86 @@
 //Define an angular module for our app
-var app = angular.module('myApp', []);
- 
-app.controller('gifiAdminController', function($scope, $http, $window) {
-  $scope.adminSignIn = function(username, pwd) {
-    // if($cookies.getCookieData != null || $cookies.getCookieData != undefined){
-    //     $window.location.href = 'partials/dashboard.html';
-    // }else{
+var app = angular.module('myApp', ['ngRoute']);
+
+app.config(['$routeProvider', function ($routeProvider) {
+
+    $routeProvider
+    .when('/dashboard',
+    {
+      templateUrl:    'partials/dashboard.html',
+      controller:     'DashboardCtrl'
+    })
+    .when('/login',
+    {
+      templateUrl:    'partials/login.html',
+      controller:     'LoginCtrl'
+    })
+    .otherwise(
+    {
+      redirectTo:     '/login'
+    }
+  );
+}]);
+
+app.service('cookieService', function() {
+  var userName = '';
+
+  var setUserName = function(newUser) {
+      userName = newUser;
+  };
+
+  var getUserName = function(){
+      return userName;
+  };
+
+  return {
+    setUserName: setUserName,
+    getUserName: getUserName
+  };
+});
+
+app.controller('adminMainController', 
+['$scope', '$location', '$http', 'cookieService', function($scope, $location, $http, cookieService) {
+    $scope.adminSignIn = function(username, pwd) {
         $http.post("ajax/adminSignIn.php?username="+username+"&pwd="+pwd)
         .then(function(response) {
             $scope.signinStatus = response.data.status;
             $scope.signinMessage = response.data.message;
+            var userName = response.data.userName;
             if($scope.signinStatus === 'success'){
-            	$window.location.href = 'partials/dashboard.html';
-                // $cookies.setCookieData(response.data.userName);
+                $location.url('/dashboard');
+                cookieService.setUserName(userName);
+                
             }else{
             	$scope.failInfo = 'Incorrect username or password';
             	alert($scope.signinMessage);
             }
         }); 
-    // }
-  };
+     
+    };
+}]);
+
+app.controller('dashboardController', 
+['$scope', '$location', '$http', 'cookieService', function($scope, $location, $http, cookieService) {
+    if(cookieService.getUserName() == undefined || cookieService.getUserName() == ''){
+        $location.url('/login');
+    }
+
+    $scope.adminLogout = function(){
+        cookieService.setUserName('');
+        $location.url('/login');
+    }
+
+    $scope.loadDashboard = function(){
+        $location.url('/dashboard');
+    }
+}]);
+
+
+
+app.controller('DashboardCtrl', function($scope, $compile) {
+  console.log('inside dashboard controller');
 });
 
-// app.factory("userPersistenceService", [
-//     "$cookies", function($cookies) {
-//         var userName = "";
-
-//         return {
-//             setCookieData: function(username) {
-//                 userName = username;
-//                 $cookies.put("userName", username);
-//             },
-//             getCookieData: function() {
-//                 userName = $cookies.get("userName");
-//                 return userName;
-//             },
-//             clearCookieData: function() {
-//                 userName = "";
-//                 $cookies.remove("userName");
-//             }
-//         }
-//     }
-// ]);
+app.controller('LoginCtrl', function($scope, $compile) {
+  console.log('inside login controller');
+});

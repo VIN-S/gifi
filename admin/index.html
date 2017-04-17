@@ -1,66 +1,74 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Admin Login </title>
+    <title>Admin Portal</title>
 
     <!-- Bootstrap -->
-    <link href="vendors/bootstrap.min.css" rel="stylesheet">
+    <link href="../admin/vendors/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="vendors/font-awesome.min.css" rel="stylesheet">
+    <link href="../admin/vendors/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="vendors/nprogress.css" rel="stylesheet">
-    <!-- Animate.css -->
-    <link href="vendors/animate.min.css" rel="stylesheet">
+    <link href="../admin/vendors/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../admin/vendors/green.css" rel="stylesheet">
+    
+    <!-- bootstrap-progressbar -->
+    <link href="../admin/vendors/bootstrap-progressbar-3.3.4.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../admin/vendors/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../admin/vendors/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="vendors/custom.min.css" rel="stylesheet">
+    <link href="../admin/vendors/custom.min.css" rel="stylesheet">
   </head>
 
-  <body class="login" ng-controller="gifiAdminController">
-    <div>
-      <a class="hiddenanchor" id="signup"></a>
-      <a class="hiddenanchor" id="signin"></a>
-
-      <div class="login_wrapper">
-        <div class="animate form login_form">
-          <section class="login_content">
-            <form>
-              <h1>Welcome, admin!</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" ng-model="signinUserID" required autofocus/>
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" ng-model="signinPassword" required/>
-              </div>
-              <div>
-                <button class="btn btn-default submit" href="index.html" type="submit" ng-click="adminSignIn(signinUserID, signinPassword)">Log in</button>
-              </div>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
+  <body class="login" ng-controller="adminMainController">
     
+    <div ng-view></div>
 
-                <div class="clearfix"></div>
-                <br />
+    <!-- jQuery -->
+    <script src="../admin/vendors/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../admin/vendors/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../admin/vendors/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../admin/vendors/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="../admin/vendors/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="../admin/vendors/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../admin/vendors/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../admin/vendors/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="../admin/vendors/skycons.js"></script>
+    <!-- Flot -->
+    <script src="../admin/vendors/jquery.flot.js"></script>
+    <script src="../admin/vendors/jquery.flot.pie.js"></script>
+    <script src="../admin/vendors/jquery.flot.time.js"></script>
+    <script src="../admin/vendors/jquery.flot.stack.js"></script>
+    <script src="../admin/vendors/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="../admin/vendors/jquery.flot.orderBars.js"></script>
+    <script src="../admin/vendors/jquery.flot.spline.min.js"></script>
+    <script src="../admin/vendors/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="../admin/vendors/date.js"></script>
+    <!-- JQVMap -->
+    <script src="../admin/vendors/jquery.vmap.js"></script>
+    <script src="../admin/vendors/jquery.vmap.world.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../admin/vendors/moment.min.js"></script>
+    <script src="../admin/vendors/daterangepicker.js"></script>
 
-                <div>
-                  <p>&copy;2017 All Rights Reserved.</p>
-                </div>
-              </div>
-            </form>
-          </section>
-        </div>
-      </div>
-    </div>
-
-    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../admin/vendors/custom.min.js"></script>
+    
+    <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script type="text/javascript" src="app/app.js"></script>
   </body>
 </html>
