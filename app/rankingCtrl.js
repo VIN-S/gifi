@@ -1,6 +1,6 @@
 //controller for home page
-app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams', '$location', 
-  function ($http, $scope, $rootScope, NgTableParams, $location) {
+app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams', '$location', '$anchorScroll',  
+  function ($http, $scope, $rootScope, NgTableParams, $location, $anchorScroll) {
   //Get list of years
   getListOfYears();
   getListOfRegions();
@@ -35,6 +35,7 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
 
   $scope.loadDetail = function(country, selectedYear){
     $location.url('/countryDetail/'+country+'/year/'+selectedYear);
+    $anchorScroll();
   }
 
   $scope.updateRankingByYear = function(year){
