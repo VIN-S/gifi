@@ -86,68 +86,31 @@
 
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="dashboard_graph">
-
+              <div class="dashboard_graph" ng-controller="LineCtrl">
                 <div class="row x_title">
-                  <div class="col-md-6">
-                    <h3>Initiatives Submission<small></small></h3>
+                  <div class="col-md-5">
+                    <h3>View Count<small></small></h3>
                   </div>
-                  <div class="col-md-6">
-                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                  <div class="col-md-7">
+                    <div id="reportrange" class="pull-right" style="padding: 5px 10px; border: 1px solid #ccc">
+                      Start Date:  <input type="date" name="input" ng-model="startDate"
+       placeholder="yyyy-MM-dd" />
+                      End Date: <input type="date" name="input" ng-model="endDate"
+       placeholder="yyyy-MM-dd" />
+                      <button ng-click="updateGraph(startDate, endDate)">Update</button>
                     </div>
                   </div>
                 </div>
 
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <div id="chart_plot_01" class="demo-placeholder"></div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div id="chart_plot_01" class="demo-placeholder">
+                    <canvas id="line" class="chart chart-line" chart-data="data"
+                    chart-labels="labels" chart-series="series" chart-options="options"
+                    chart-dataset-override="datasetOverride" chart-click="onClick">
+                    </canvas>
+                  </div>
                 </div>
-                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
-                  <div class="x_title">
-                    <h2>Business Units Submission</h2>
-                    <div class="clearfix"></div>
-                  </div>
-
-                  <div class="col-md-12 col-sm-12 col-xs-6">
-                    <div>
-                      <p>Logistics</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p>Marketing</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-6">
-                    <div>
-                      <p>Risk</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p>Human Resource</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
+                
                 <div class="clearfix"></div>
               </div>
             </div>
@@ -157,15 +120,5 @@
       </div>
     </div>
     <!-- /page content -->
-
-
-    <!-- footer content -->
-    <footer>
-      <div class="pull-right">
-        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-      </div>
-      <div class="clearfix"></div>
-    </footer>
-    <!-- /footer content -->
 </div>
 

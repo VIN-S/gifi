@@ -52,3 +52,85 @@ app.controller('dashboardController',
       });
     }
 }]);
+
+app.controller("LineCtrl", ['$http', '$scope', function ($http, $scope) {
+    var today = new Date();
+    var oneWeekBefore = new Date();
+    oneWeekBefore.setDate(oneWeekBefore.getDate() - 6);
+    today=today.toISOString().substring(0, 10); //yyyy-mm-dd
+    oneWeekBefore = oneWeekBefore.toISOString().substring(0, 10);
+
+    getOneWeekViewCount();
+
+    function getOneWeekViewCount(){
+        $http.post("ajax/updateGraph.php?startDate="+oneWeekBefore+"&endDate="+today)
+      .then(function(response) {
+        var temp=response.data.split("//");
+
+        $scope.labels = [];
+        $scope.series = ['Views'];
+        $scope.data = [[]];
+
+        for(var i=0;i<temp.length;i++){
+            if(temp[i] !== undefined && temp[i] !==null && temp[i] !== ""){
+                var row = JSON.parse(temp[i]);
+                $scope.labels.push(row['dateOfUpdate']);
+                $scope.data[0].push(row['viewcount']);
+            }
+        }
+
+        $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }];
+        $scope.options = {
+            scales: {
+            yAxes: [
+                        {
+                            id: 'y-axis-1',
+                            type: 'linear',
+                            display: true,
+                            position: 'left'
+                        }
+                    ]
+                }
+            };
+        });
+
+    $scope.updateGraph = function(startDate, endDate){
+        if(startDate != null && startDate != undefined && endDate != null && endDate != undefined){
+            startDate = startDate.toISOString().substring(0, 10);
+            endDate = endDate.toISOString().substring(0, 10);
+
+            $http.post("ajax/updateGraph.php?startDate="+startDate+"&endDate="+endDate)
+            .then(function(response) {
+                var temp=response.data.split("//");
+
+                $scope.labels = [];
+                $scope.series = ['Views'];
+                $scope.data = [[]];
+
+                for(var i=0;i<temp.length;i++){
+                    if(temp[i] !== undefined && temp[i] !==null && temp[i] !== ""){
+                        var row = JSON.parse(temp[i]);
+                        $scope.labels.push(row['dateOfUpdate']);
+                        $scope.data[0].push(row['viewcount']);
+                    }
+                }
+
+                $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }];
+                $scope.options = {
+                    scales: {
+                    yAxes: [
+                                {
+                                    id: 'y-axis-1',
+                                    type: 'linear',
+                                    display: true,
+                                    position: 'left'
+                                }
+                            ]
+                        }
+                    };
+                });
+            }
+        }
+    };
+
+}]);
