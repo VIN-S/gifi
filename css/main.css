@@ -570,6 +570,42 @@ body, html {
 
 /* ------------- end of ranking css ------------- */
 
+/* ------------- detail css ------------- */
+.detail-table table{
+	overflow-x: auto;   
+}
+
+.detail-table table .column-1{
+	text-align: center;
+	width: 16%;
+	background-color: rgb(6,68,128);
+	color: white;
+}
+
+.detail-table table .column-2{
+	color: rgb(6,68,128);
+	font-weight: 500;
+	font-size: 20px;
+}
+
+.detail-table table .column-3{
+	color: #94ce58;
+	font-weight: 500;
+	font-size: 20px;
+}
+
+.detail-table table .column-2, .column-3, .column-4{
+	text-align: center;
+	width: 28%;
+} 
+
+.detail-table table .column-5{
+	text-align: center;
+	width: 84%;
+} 
+
+/* ------------- end of detail css ------------- */
+
 .blue{
 	color: rgb(6,68,128);
 }

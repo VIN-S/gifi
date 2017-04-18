@@ -23,7 +23,7 @@ app.config(function ($routeProvider) {
       templateUrl:    'partials/about.html',
       controller:     'AboutCtrl'
     })
-    .when('/countryDetail/:countryName',
+    .when('/countryDetail/:countryName/year/:selectedYear',
     {
       templateUrl:    'partials/countryDetail.html'
     })
