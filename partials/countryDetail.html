@@ -13,8 +13,10 @@
           <td class="column-3"> 
             {{region.regionName}}
           </td>
-          <td class="column-4">    
-              Compare
+          <td class="compared">    
+              Compare with another country: <br/><br/>
+              <select ng-model="comparedCountry" ng-options="x for x in countryLists" ng-change="selectComparedCountry(comparedCountry)"></select> <br/><br/>
+              <span>{{comparedCountry}}</span>
           </td>
         </tr>
 
@@ -29,7 +31,7 @@
             {{region.investor_friendliness_rank}}
           </td>
           <td class="column-4">    
-              Compare
+            {{compared.investor_friendliness_rank}}
           </td>
         </tr>
 
@@ -53,7 +55,7 @@
             {{region.legal_and_regulatory_environment}}
           </td>
           <td class="column-4">    
-              Compare
+            {{compared.legal_and_regulatory_environment}}
           </td>
         </tr>
 
@@ -68,7 +70,7 @@
             {{region.market_development}}
           </td>
           <td class="column-4">    
-              Compare
+            {{compared.market_development}}
           </td>
         </tr>
 
@@ -83,7 +85,7 @@
             {{region.exchange_controls_and_capital_restriction}}
           </td>
           <td class="column-4">    
-              Compare
+            {{compared.exchange_controls_and_capital_restriction}}
           </td>
         </tr>
 
@@ -98,7 +100,7 @@
             {{region.corporate_governance}}
           </td>
           <td class="column-4">    
-              Compare
+            {{compared.corporate_governance}}
           </td>
         </tr>
 
@@ -113,7 +115,7 @@
             {{region.aum_levels_and_growth}}
           </td>
           <td class="column-4">    
-              Compare
+            {{compared.aum_levels_and_growth}}
           </td>
         </tr>
 
@@ -128,7 +130,7 @@
             {{region.banking_system}}
           </td>
           <td class="column-4">    
-              Compare
+            {{compared.banking_system}}
           </td>
         </tr>
 
@@ -143,7 +145,7 @@
             {{region.ease_of_doing_business}}
           </td>
           <td class="column-4">    
-              Compare
+            {{compared.ease_of_doing_business}}
           </td>
         </tr>
 
@@ -158,7 +160,7 @@
             {{region.political_environment}}
           </td>
           <td class="column-4">    
-              Compare
+            {{compared.political_environment}}
           </td>
         </tr>
 
@@ -173,7 +175,7 @@
             {{region.accounting_system}}
           </td>
           <td class="column-4">    
-              Compare
+            {{compared.accounting_system}}
           </td>
         </tr>
       </table>

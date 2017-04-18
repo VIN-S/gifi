@@ -594,6 +594,22 @@ body, html {
 	font-size: 20px;
 }
 
+.detail-table table .column-4{
+	color: rgb(255,128,0);
+	font-weight: 500;
+	font-size: 20px;
+}
+
+.detail-table table .compared{
+	text-align: center;
+}
+
+.detail-table table .compared span{
+	color: rgb(255,128,0);
+	font-weight: 500;
+	font-size: 20px;
+}
+
 .detail-table table .column-2, .column-3, .column-4{
 	text-align: center;
 	width: 28%;
