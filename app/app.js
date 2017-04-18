@@ -23,6 +23,10 @@ app.config(function ($routeProvider) {
       templateUrl:    'partials/about.html',
       controller:     'AboutCtrl'
     })
+    .when('/countryDetail/:countryName',
+    {
+      templateUrl:    'partials/countryDetail.html'
+    })
     .otherwise(
     {
       redirectTo:     '/home'

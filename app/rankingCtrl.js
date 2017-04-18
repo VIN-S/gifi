@@ -1,5 +1,6 @@
 //controller for home page
-app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams', function ($http, $scope, $rootScope, NgTableParams) {
+app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams', '$location', 
+  function ($http, $scope, $rootScope, NgTableParams, $location) {
   //Get list of years
   getListOfYears();
   getListOfRegions();
@@ -30,6 +31,10 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
         $scope.updateRankingByYear(latestYear);
         $scope.selectedYear = latestYear;
     });
+  }
+
+  $scope.loadDetail = function(country){
+    $location.url('/countryDetail/'+country);
   }
 
   $scope.updateRankingByYear = function(year){
@@ -190,6 +195,7 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
       });
     }
 }
+
 
 //   var dataset = [{name: "Moroni", age: 50}, {name: "hi", age: 30} /*,*/];
 // console.log(dataset);

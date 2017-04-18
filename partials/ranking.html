@@ -31,7 +31,7 @@
 
     <div class="ranking-table">
       <table ng-table="tableParams" class="table" show-filter="false">
-        <tr ng-repeat="country in $data" ng-class="'row' + ($index % 2)">
+        <tr ng-repeat="country in $data" ng-class="'row' + ($index % 2)" ng-click="loadDetail(country.country)">
             <td title="'Country'" filter="{ country: 'text'}" sortable="'country'"><p>{{country.country}}</p></td>
             <td title="'Investor Friendliness Rank'" filter="{ investor_friendliness_rank: 'text'}" sortable="'investor_friendliness_rank'"><p>{{country.investor_friendliness_rank}}</p></td>
             <td title="'Legal & Regulatory Environment'" filter="{ legal_and_regulatory_environment: 'number'}" sortable="'legal_and_regulatory_environment'"><p>{{country.legal_and_regulatory_environment}}</p></td>

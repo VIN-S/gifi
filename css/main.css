@@ -558,6 +558,16 @@ body, html {
         background-color: #eeeeee;
 }
 
+.ranking-table .table>tbody>tr{
+	cursor: pointer;
+}
+
+.ranking-table .table>tbody>tr:hover{
+	background: #cccccc;
+	color: black;
+	box-shadow: inset 0 0 0 3px #3a79
+}
+
 /* ------------- end of ranking css ------------- */
 
 .blue{
