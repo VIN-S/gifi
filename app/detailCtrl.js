@@ -1,8 +1,29 @@
 //controller for home page
-app.controller("detailCtrl", ['$http', '$scope', '$routeParams', function ($http, $scope, $routeParams) {
+app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', function ($http, $scope, $rootScope, $routeParams) {
   var country = $routeParams.countryName;
   var year = $routeParams.selectedYear;
   $scope.comparedCountry = "None"
+
+  $scope.options = {  
+                      legend: { display: true },
+                      scale: {
+                          reverse: true,
+                          ticks: {
+                              min: 0, max:160
+                          }
+                      }
+                    };
+
+  $scope.series = [];
+  $scope.labels = $rootScope.rankComponentNames;
+  $scope.colours = ["#064480", "#94ce58", "#ff8000"];
+
+
+  $scope.data = [
+    [],
+    [],
+    []
+  ];
 
   getCountryDetail();
   getRegionDetail();
@@ -48,6 +69,12 @@ app.controller("detailCtrl", ['$http', '$scope', '$routeParams', function ($http
           $scope.selected.ease_of_doing_business = results['ease_of_doing_business'];
           $scope.selected.political_environment = results['political_environment'];
           $scope.selected.accounting_system = results['accounting_system'];
+
+          $scope.series.push(country);
+          $scope.data[0] = [$scope.selected.legal_and_regulatory_environment, $scope.selected.market_development,
+          $scope.selected.exchange_controls_and_capital_restriction,  $scope.selected.corporate_governance, 
+          $scope.selected.aum_levels_and_growth, $scope.selected.banking_system, $scope.selected.ease_of_doing_business,
+          $scope.selected.political_environment, $scope.selected.accounting_system];
         }
     });
   };
@@ -88,6 +115,12 @@ app.controller("detailCtrl", ['$http', '$scope', '$routeParams', function ($http
           $scope.region.ease_of_doing_business = parseInt(results['ease_of_doing_business']);
           $scope.region.political_environment = parseInt(results['political_environment']);
           $scope.region.accounting_system = parseInt(results['accounting_system']);
+
+          $scope.series.push($scope.region.regionName);
+          $scope.data[1] = [$scope.region.legal_and_regulatory_environment, $scope.region.market_development,
+          $scope.region.exchange_controls_and_capital_restriction,  $scope.region.corporate_governance, 
+          $scope.region.aum_levels_and_growth, $scope.region.banking_system, $scope.region.ease_of_doing_business,
+          $scope.region.political_environment, $scope.region.accounting_system];
         }
     });
   };
@@ -125,7 +158,13 @@ app.controller("detailCtrl", ['$http', '$scope', '$routeParams', function ($http
           $scope.compared.ease_of_doing_business = results['ease_of_doing_business'];
           $scope.compared.political_environment = results['political_environment'];
           $scope.compared.accounting_system = results['accounting_system'];
+
+          $scope.series.push($scope.compared.countryName);
+          $scope.data[2] = [$scope.compared.legal_and_regulatory_environment, $scope.compared.market_development,
+          $scope.compared.exchange_controls_and_capital_restriction,  $scope.compared.corporate_governance, 
+          $scope.compared.aum_levels_and_growth, $scope.compared.banking_system, $scope.compared.ease_of_doing_business,
+          $scope.compared.political_environment, $scope.compared.accounting_system];
         }
     });
-  }
+  };
 }]);

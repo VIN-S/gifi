@@ -573,6 +573,7 @@ body, html {
 /* ------------- detail css ------------- */
 .detail-table table{
 	overflow-x: auto;   
+	display: block;
 }
 
 .detail-table table .column-1{
@@ -619,6 +620,16 @@ body, html {
 	text-align: center;
 	width: 84%;
 } 
+
+.detail-table table>tbody>tr>td{
+	border-right:1px solid #dddddd;
+	padding: 15px 5px 15px 5px;
+	vertical-align: middle;
+}
+
+.radar-chart-holder canvas{
+	top: 20px !important;
+}
 
 /* ------------- end of detail css ------------- */
 
