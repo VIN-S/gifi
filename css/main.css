@@ -15,7 +15,7 @@ body, html {
 /* ------------- index css ------------- */
 .container{
 	margin: 0 auto;
-	padding-top: 3%; 
+	padding-top: 1%; 
 	width: 85%;
 }
 
@@ -45,11 +45,17 @@ body, html {
 }
 
 .nus-logo img{
-	width: 70%;
-	max-width: 200px;
-}
-.cornell-logo img{
 	width: 100%;
+}
+
+.cornell-logo img{
+	padding-top: 5%;
+	width: 100%;
+	max-width: 300px;
+}
+
+.pwc-logo img{
+	width: 75%;
 	max-width: 300px;
 }
 
@@ -64,7 +70,7 @@ body, html {
 
 .sub-header{
 	font-size: 1.5vw;
-	padding-top: 1.1vw;
+	padding-top: 0.9vw;
 }
 
 .navbar{
@@ -132,7 +138,7 @@ body, html {
 	padding: 1vw 0 1vw 0;
 	text-align: center;
 	background-color: rgb(6,68,128);
-	font-size:1.2vw;
+	font-size:0.8vw;
 	color:white;
 }
 /* ------------- end of index css ------------- */
