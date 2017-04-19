@@ -70,7 +70,7 @@ app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', f
           $scope.selected.political_environment = results['political_environment'];
           $scope.selected.accounting_system = results['accounting_system'];
 
-          $scope.series.push(country);
+          $scope.series[0]=country;
           $scope.data[0] = [$scope.selected.legal_and_regulatory_environment, $scope.selected.market_development,
           $scope.selected.exchange_controls_and_capital_restriction,  $scope.selected.corporate_governance, 
           $scope.selected.aum_levels_and_growth, $scope.selected.banking_system, $scope.selected.ease_of_doing_business,
@@ -116,7 +116,7 @@ app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', f
           $scope.region.political_environment = parseInt(results['political_environment']);
           $scope.region.accounting_system = parseInt(results['accounting_system']);
 
-          $scope.series.push($scope.region.regionName);
+          $scope.series[1]=$scope.region.regionName;
           $scope.data[1] = [$scope.region.legal_and_regulatory_environment, $scope.region.market_development,
           $scope.region.exchange_controls_and_capital_restriction,  $scope.region.corporate_governance, 
           $scope.region.aum_levels_and_growth, $scope.region.banking_system, $scope.region.ease_of_doing_business,
