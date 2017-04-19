@@ -12,8 +12,11 @@
     		<span>
     			Quick Links: 
     		</span>
+        <span style="color: rgb(6,100,160);">
+          &nbsp;| 
+        </span>
     		<span ng-repeat="year in yearLists" class="link" ng-click="updateRankingByYear(year)">
-  			  {{ year }} Ranking  			
+  			  {{ year }} Ranking  &nbsp;|&nbsp;			
     		</span>
     	</div>
     </div>
@@ -42,7 +45,7 @@
             <td title="'Banking System'" filter="{ banking_system: 'number'}" sortable="'banking_system'"><p>{{country.banking_system}}</p></td>
             <td title="'Ease of Doing Business'" filter="{ ease_of_doing_business: 'number'}" sortable="'ease_of_doing_business'"><p>{{country.ease_of_doing_business}}</p></td>
             <td title="'Political Environment'" filter="{ political_environment: 'number'}" sortable="'political_environment'"><p>{{country.political_environment}}</p></td>
-            <td title="'Accounting System'" filter="{ accounting_system: 'number'}" sortable="'accounting_system'"><p>{{country.accounting_system}}</p></td>
+            <td title="'Account System'" filter="{ accounting_system: 'number'}" sortable="'accounting_system'"><p>{{country.accounting_system}}</p></td>
         </tr>
       </table>
     </div>

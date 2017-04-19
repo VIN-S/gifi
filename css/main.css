@@ -214,6 +214,10 @@ body, html {
 	color: rgb(58, 153, 216);
 }
 
+.barchart-holder canvas{
+	max-height: 200px !important;
+}
+
 .legend-container{
 	margin-top: 5px;
 	border: 1px solid #aaaaaa;
@@ -226,7 +230,7 @@ body, html {
 }
 
 .legend-container .name{
-	font-size: 5px;
+	font-size: 14px;
 }
 
 .gi-1x{font-size: 1em;display: block;}
@@ -503,7 +507,15 @@ body, html {
 .ranking-table{
 	width: 100%;
 	margin-top: 4%;
-	font-size: 8px;
+}
+
+.ng-table th.sortable .sort-indicator {
+    display: inherit;
+}
+
+.ranking-table table>thead{
+	text-align: center;
+	font-size: 13px;
 }
 
 .ranking-table .btn{
@@ -512,7 +524,8 @@ body, html {
 
 .ranking-table table{
 	display: block;
-    overflow-x: auto;   
+    overflow-x: auto;  
+    text-align: center; 
 }
 
 .ng-table th{
@@ -524,7 +537,6 @@ body, html {
   	text-overflow: ellipsis !important;
     overflow: hidden; 
     white-space: nowrap;
-    width:150px;
 }
 
 .ranking-table thead{
@@ -532,12 +544,16 @@ body, html {
 	color: white;
 }
 
+.ranking-table thead>tr>th .ng-table-header{
+	text-align: center;
+    width: 180px;
+}
+
 .ng-table th.sortable .sort-indicator:after, .ng-table th.sortable .sort-indicator:before{
 	border-color: #fff transparent !important;
 }
 
 .ng-table th.sortable .sort-indicator {
-    padding-right: 115px !important;
     position: relative !important;
 }
 

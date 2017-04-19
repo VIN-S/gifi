@@ -46,7 +46,7 @@ app.controller('gifiMainController',
       'Banking System', 
       'Ease of Doing Business', 
       'Political Environment', 
-      'Accounting System'
+      'Account System'
     ];
 
     updateViewCount();

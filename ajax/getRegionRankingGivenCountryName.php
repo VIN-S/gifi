@@ -17,7 +17,7 @@ if(isset($_GET['country']) and isset($_GET['year'])){
 			AVG(accounting_system) as accounting_system 
 			FROM ranks 
 			WHERE year_of_data = '$year' AND region = 
-			(SELECT region FROM ranks WHERE country = '$selectedCountry')";
+			(SELECT region FROM ranks WHERE country = '$selectedCountry' AND year_of_data = '$year')";
 	$result = mysqli_query($connect, $query);
 
 	while ($row = mysqli_fetch_array($result)) {
