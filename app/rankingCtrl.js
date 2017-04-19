@@ -31,7 +31,7 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
         var latestYear = response.data['latestYear'];
         $scope.updateRankingByYear(latestYear);
         $scope.selectedYear = latestYear;
-    }, function(response){}).finally(function(){$scope.loader = false;});
+    });
   }
 
   $scope.loadDetail = function(country, selectedYear){

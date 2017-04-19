@@ -672,6 +672,7 @@ body, html {
 }
 
 .spinner {
+	top:35%;
 	width: 100%;
     position: absolute;
     display: block;
@@ -684,13 +685,14 @@ body, html {
 }
 
 .ranking-spinner {
-	width: 100%;
+	top:40%;
+	width: 90%;
     position: absolute;
     display: block;
     margin: auto 0;  
 }
 
 .ranking-spinner img{
-	margin-left: 30%;
-    width: 30%;
+	margin-left: 36%;
+    width: 10%;
 }
