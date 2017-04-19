@@ -4,7 +4,7 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
   getListOfCountries();
 
   function getListOfCountries() {
-    $http.post("ajax/getListOfCountries.php")
+    $http.post("ajax/getListOfCountries.php?year="+$rootScope.latestYear)
     .then(function(response) {
         var temp = response.data.substring(1, response.data.length-1);
         $scope.countryLists = temp.split("\"\"");

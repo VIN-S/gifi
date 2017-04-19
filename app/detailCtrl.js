@@ -32,7 +32,7 @@ app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', f
   getListOfCountries();
 
   function getListOfCountries() {
-    $http.post("ajax/getListOfCountries.php")
+    $http.post("ajax/getListOfCountries.php?year="+year)
     .then(function(response) {
         var temp = response.data.substring(1, response.data.length-1);
         $scope.countryLists = temp.split("\"\"");
@@ -144,7 +144,7 @@ app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', f
           $scope.compared.political_environment = "N.A.";
           $scope.compared.accounting_system = "N.A.";
         }else{
-          $scope.compared.countryName =  country;
+          $scope.compared.countryName =  comparedCountry;
           if(results['investor_friendliness_rank'] == 0) 
             $scope.compared.investor_friendliness_rank = ">100";
           else
@@ -159,7 +159,7 @@ app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', f
           $scope.compared.political_environment = results['political_environment'];
           $scope.compared.accounting_system = results['accounting_system'];
 
-          $scope.series.push($scope.compared.countryName);
+          $scope.series[2]=comparedCountry;
           $scope.data[2] = [$scope.compared.legal_and_regulatory_environment, $scope.compared.market_development,
           $scope.compared.exchange_controls_and_capital_restriction,  $scope.compared.corporate_governance, 
           $scope.compared.aum_levels_and_growth, $scope.compared.banking_system, $scope.compared.ease_of_doing_business,

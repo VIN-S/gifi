@@ -65,11 +65,11 @@ body, html {
 
 .main-header{
 	font-weight: 500;
-	font-size: 2.3vw;
+	font-size: 28px;
 }
 
 .sub-header{
-	font-size: 1.5vw;
+	font-size: 18px;
 	padding-top: 0.9vw;
 }
 
@@ -95,12 +95,19 @@ body, html {
     .glyphicon{
     	display: none;
     }
+    .main-header{
+		font-size: 18px;
+	}
+
+	.sub-header{
+		font-size: 14px;
+	}
 }
 
 .navbar .nav{
 	width:100%;
 	text-align: center;
-	font-size: 1.1vw;
+	font-size: 13px;
 }
 
 .navbar .nav .tab{
@@ -138,7 +145,7 @@ body, html {
 	padding: 1vw 0 1vw 0;
 	text-align: center;
 	background-color: rgb(6,68,128);
-	font-size:0.8vw;
+	font-size:10px;
 	color:white;
 }
 /* ------------- end of index css ------------- */
@@ -155,7 +162,7 @@ body, html {
 .top-country-container{
 	margin-top: 8px;
     font-weight: 600;
-    font-size: 1.5vw;
+    font-size: 17px;
 }
 
 .back-to-top-ten-container{
@@ -165,16 +172,16 @@ body, html {
 
 .top-ten-tab .ranking-container .ranking{
 	position: relative;
-	bottom: 0.3vw;
-    font-size: 1.4vw;
+	bottom: 3px;
+    font-size: 18px;
     font-weight: 800;
     padding-left: 6px;
-    border-bottom: 0.4vw solid rgb(181,46,52);
+    border-bottom: 3px solid rgb(181,46,52);
 }
 
 .top-ten-tab .ranking-container .country{
 	padding-left: 10px;
-	font-size: 1.4vw;
+	font-size: 18px;
 	color: rgb(58, 153, 216);
 	cursor: pointer;
 }
@@ -185,7 +192,7 @@ body, html {
 }
 
 .graph-header{
-	font-size: 1.2vw;
+	font-size: 16px;
 	display: inline-block;
 	padding:5px 0 0 0;
 }
@@ -201,16 +208,16 @@ body, html {
 
 .home-ranking-container .ranking{
 	position: relative;
-	bottom: 0.7vw;
-    font-size: 2.4vw;
+	bottom: 8px;
+    font-size: 30px;
     font-weight: 800;
     padding-left: 6px;
-    border-bottom: 0.4vw solid rgb(181,46,52);
+    border-bottom: 4px solid rgb(181,46,52);
 }
 
 .home-ranking-container .country{
 	padding-left: 10px;
-	font-size: 3.4vw;
+	font-size: 40px;
 	color: rgb(58, 153, 216);
 }
 
@@ -320,7 +327,7 @@ body, html {
 }
 
 .introduction-content{
-	font-size: 1vw;
+	font-size: 12px;
 }
 
 .tab-panel{
@@ -334,15 +341,11 @@ body, html {
 }
 
 .component-selector ul li{
-	font-size: 1.2vw;
+	font-size: 13px;
 	list-style-type: none;
 	padding: 5px 0 5px 0;
     border-bottom: 1px solid #aaaaaa;
     border-bottom-style: dotted;
-}
-
-.component-selector .component-title{
-	padding-left: 10px;
 }
 
 .component-selector .tab-content-container{
@@ -366,16 +369,16 @@ body, html {
 }
 
 .component-selector .tab-content .content-title{
-	font-size: 2vw;
+	font-size: 20px;
 	padding-bottom: 10px;
 }
 
 .tab-content .row .content{
-	font-size: 1.2vw;
+	font-size: 15px;
 }
 
 .content-factor{
-	font-size: 1.1vw;
+	font-size: 13px;
 }
 
 .content-factor .gi-1x{
@@ -464,9 +467,9 @@ body, html {
 }
 
 .selector{
-	font-size: 1.4vw;
+	font-size: 16px;
 	text-align: center;
-	width: 90%;
+	width: 100%;
 	margin: 0 auto;
 }
 
@@ -475,7 +478,7 @@ body, html {
 }
 
 .quick-links{
-	font-size: 1vw;
+	font-size: 13px;
 	text-align: center;
 	width: 90%;
 	padding-top: 1vw;
@@ -489,7 +492,7 @@ body, html {
 
 .ranking-options{
 	margin-top: 4%;
-	font-size: 1.2vw;
+	font-size: 13px;
 }
 
 .ranking-options select{
@@ -651,6 +654,7 @@ body, html {
 
 .radar-chart-holder canvas{
 	top: 20px !important;
+	min-width: 800px;
 }
 
 /* ------------- end of detail css ------------- */
