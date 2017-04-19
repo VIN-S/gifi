@@ -73,6 +73,7 @@ app.controller('gifiMainController',
           var maxRanks = 170;
           //set no.1 country as the selected country
           setDefaultRanking(maxRanks, latestYear);
+          getCountryLists(latestYear);
 
           function getTopTenCountries(latestYear){
             $http.post("ajax/getTopTenCountries.php?year="+latestYear)
@@ -109,6 +110,14 @@ app.controller('gifiMainController',
                   ],
                 ];
             })};
+
+            function getCountryLists(year){
+              $http.post("ajax/getListOfCountries.php?year="+year)
+              .then(function(response) {
+                  var temp = response.data.substring(1, response.data.length-1);
+                  $scope.countryLists = temp.split("\"\"");
+              });
+            }
         });
     }
 

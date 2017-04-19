@@ -1,15 +1,5 @@
 //controller for home page
 app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $scope, $rootScope) {
-  //Get list of countries
-  getListOfCountries();
-
-  function getListOfCountries() {
-    $http.post("ajax/getListOfCountries.php?year="+$rootScope.latestYear)
-    .then(function(response) {
-        var temp = response.data.substring(1, response.data.length-1);
-        $scope.countryLists = temp.split("\"\"");
-    });
-  };
 
   //set up graph color
   var colors = ['#e54d42', '#f19b2c', '#f0c330', '#239f85', '#3a99d8', '#2f81b7', '#9a5cb4', '#be3a31', '#29bb9c'];
