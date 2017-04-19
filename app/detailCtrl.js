@@ -80,6 +80,7 @@ app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', f
   };
 
   function getRegionDetail(){
+    $scope.loader = true;
     $scope.region = [];
 
     $http.post("ajax/getRegionNameGivenCountryName.php?country="+country+"&year="+year)
@@ -122,10 +123,11 @@ app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', f
           $scope.region.aum_levels_and_growth, $scope.region.banking_system, $scope.region.ease_of_doing_business,
           $scope.region.political_environment, $scope.region.accounting_system];
         }
-    });
+    }, function(response){}).finally(function(){$scope.loader = false;});
   };
 
   $scope.selectComparedCountry = function(comparedCountry){
+    $scope.loader = true;
     $http.post("ajax/getCountryRanking.php?country="+comparedCountry+"&year="+year)
     .then(function(response) {
         var results = response.data;
@@ -165,6 +167,6 @@ app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', f
           $scope.compared.aum_levels_and_growth, $scope.compared.banking_system, $scope.compared.ease_of_doing_business,
           $scope.compared.political_environment, $scope.compared.accounting_system];
         }
-    });
+    }, function(response){}).finally(function(){$scope.loader = false;});
   };
 }]);

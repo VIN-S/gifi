@@ -670,3 +670,27 @@ body, html {
 .orange{
 	color: rgb(255,128,0);
 }
+
+.spinner {
+	width: 100%;
+    position: absolute;
+    display: block;
+    margin: auto 0;  
+}
+
+.spinner img{
+	margin-left: 30%;
+    width: 30%;
+}
+
+.ranking-spinner {
+	width: 100%;
+    position: absolute;
+    display: block;
+    margin: auto 0;  
+}
+
+.ranking-spinner img{
+	margin-left: 30%;
+    width: 30%;
+}

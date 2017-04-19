@@ -64,6 +64,7 @@ app.controller('gifiMainController',
 
     //Get latest year that has the ranking data
     function getLatestYearRanking(){
+      $scope.loader = true;
       $http.post("ajax/getLatestYear.php")
       .then(function(response) {
           $rootScope.latestYear = response.data['latestYear'];
@@ -116,7 +117,7 @@ app.controller('gifiMainController',
               .then(function(response) {
                   var temp = response.data.substring(1, response.data.length-1);
                   $scope.countryLists = temp.split("\"\"");
-              });
+              }, function(response){}).finally(function(){$scope.loader = false;});
             }
         });
     }

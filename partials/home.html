@@ -45,6 +45,9 @@
 				</span>
 				<select ng-model="selectedCountry" ng-options="x for x in countryLists" ng-change="updateGraph(selectedCountry)"></select>
 			</div>
+			<div class="spinner" ng-show="loader">
+				<img src="img/ajax-loader.gif"/>
+			</div>
 			<div class="top-ten-tab" ng-class="getActiveTab(0)">
 				<div class="row">
 					<div class="col-xs-12 top-country-container">
@@ -72,6 +75,9 @@
 				</div>
 			</div>
 			<div class="bar-chart-tab" ng-class="getActiveTab(1)">
+				<div class="spinner" ng-show="loader">
+					<img src="img/ajax-loader.gif"/>
+				</div>
 				<div class="graph-header">
 					<div class="back-to-top-ten-container" ng-click="backToTopTen()">
 					<span>

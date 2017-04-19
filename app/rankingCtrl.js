@@ -25,12 +25,13 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
   };
 
   function getLatestYearRanking(){
+    $scope.loader = true;
     $http.post("ajax/getLatestYear.php")
     .then(function(response) {
         var latestYear = response.data['latestYear'];
         $scope.updateRankingByYear(latestYear);
         $scope.selectedYear = latestYear;
-    });
+    }, function(response){}).finally(function(){$scope.loader = false;});
   }
 
   $scope.loadDetail = function(country, selectedYear){
@@ -39,6 +40,7 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
   }
 
   $scope.updateRankingByYear = function(year){
+    $scope.loader = true;
     $scope.selectedYear = year;
 
     $http.post("ajax/updateRankingByYear.php?year="+year)
@@ -70,12 +72,12 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
         });
 
         // console.log($scope.tableParams);
-    });
+    }, function(response){}).finally(function(){$scope.loader = false;});
   }
 
   $scope.updateRankingByRegion = function(region){
     $scope.selectedRegion = region;
-
+    $scope.loader = true;
     $http.post("ajax/updateRankingByRegion.php?year="+$scope.selectedYear+"&region="+$scope.selectedRegion)
     .then(function(response) {
         var temp=response.data.split("//");
@@ -105,7 +107,7 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
         });
 
         // console.log($scope.tableParams);
-    });
+    }, function(response){}).finally(function(){$scope.loader = false;});
   }
 
   $scope.exportToCsv = function(){

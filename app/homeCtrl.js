@@ -93,6 +93,7 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
 
   //update graph when select
   $scope.updateGraph = function(selectedCountry){
+    $scope.loader = true;
     $http.post("ajax/getCountryRanking.php?country="+selectedCountry+"&year="+$rootScope.latestYear)
     .then(function(response) {
         activeTab[0] = 'inactive'
@@ -132,7 +133,7 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
             ],
           ];
         }
-    });
+    }, function(response){}).finally(function(){$scope.loader = false;});
   };
 
   $scope.getActiveTab = function (tabNum) {
