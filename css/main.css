@@ -759,10 +759,6 @@ body, html {
 		font-size: 18px;
 	}
 
-	.barchart-holder canvas{
-		max-height: 200px !important;
-	}
-
 	.legend-container .name{
 		font-size: 14px;
 	}
