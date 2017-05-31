@@ -27,9 +27,14 @@ app.config(function ($routeProvider) {
     {
       templateUrl:    'partials/countryDetail.html'
     })
+    .when('/error',
+    {
+      templateUrl:    'partials/error.html',
+      controller:     'ErrorCtrl'
+    })
     .otherwise(
     {
-      redirectTo:     '/home'
+      redirectTo:     '/error'
     }
   );
 });
@@ -160,4 +165,8 @@ app.controller('ResearchPublicationCtrl', function($scope, $compile) {
 
 app.controller('AboutCtrl', function($scope, $compile) {
   console.log('inside about controller');
+});
+
+app.controller('ErrorCtrl', function($scope, $compile) {
+  console.log('inside error controller');
 });
