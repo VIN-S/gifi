@@ -120,8 +120,8 @@ body, html {
 }
 
 .footer-logo{
-	border: 1px solid rgb(6,68,128);
-	margin-top: 5%;
+	border: 1px solid rgb(6,68,128) !important;
+	margin-top: 5% !important;
 }
 
 .nus-logo img{
@@ -760,7 +760,7 @@ body, html {
 	}
 
 	.legend-container .name{
-		font-size: 14px;
+		font-size: 13px;
 	}
 
 	.gi-1x{font-size: 1em;display: block;}
