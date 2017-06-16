@@ -198,15 +198,4 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
       });
     }
 }
-
-
-//   var dataset = [{name: "Moroni", age: 50}, {name: "hi", age: 30} /*,*/];
-// console.log(dataset);
-  // $scope.tableParams = new NgTableParams({
-  //     count: 10 
-  // }, {
-  //     data: dataset
-  // });
-
-  // console.log($scope.tableParams);
 }]);

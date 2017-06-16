@@ -14,6 +14,11 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl:    'partials/login.html',
       controller:     'LoginCtrl'
     })
+    .when('/home-introduction',
+    {
+      templateUrl:    'partials/home-introduction.html',
+      controller:     'HomeIntroductionCtrl'
+    })
     .otherwise(
     {
       redirectTo:     '/login'
@@ -65,4 +70,8 @@ app.controller('DashboardCtrl', function($scope, $compile) {
 
 app.controller('LoginCtrl', function($scope, $compile) {
   console.log('inside login controller');
+});
+
+app.controller('HomeIntroductionCtrl', function($scope, $compile) {
+  console.log('inside home introduction controller');
 });

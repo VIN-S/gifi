@@ -235,5 +235,18 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
   //Initialize 
   initTabs();
   $scope.setActiveTab(1);
+
+  //Modular Content
+  getIntroductionText();
+
+  function getIntroductionText(){
+    $http.post("ajax/getIntroductionContent.php")
+    .then(function(response) {
+      var results = response.data;
+      var content =  results['content']; 
+
+      document.getElementById('introduction').innerHTML += content;
+    })
+  }
 }]);
 //enf of controler for home page

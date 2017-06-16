@@ -51,6 +51,76 @@ app.controller('dashboardController',
             $scope.totalDownloadCount = response.data['totaldownload'];
       });
     }
+
+    //Left Col Tabs Control
+    function initTabs() {
+        tabClasses = ["",""];
+        $scope.scroll_menu = "notDisplay";
+    }
+
+    $scope.getTabClass = function (tabNum) {
+        return tabClasses[tabNum];
+    };
+  
+    $scope.setActiveTab = function (tabNum) {
+        initTabs();
+        tabClasses[tabNum] = "active";
+        if(tabNum == 2){
+            if($scope.scroll_menu == "notDisplay")
+                $scope.scroll_menu = "display";
+            else if($scope.scroll_menu == "display")
+                $scope.scroll_menu = "notDisplay";
+        }
+    };
+
+    //Initialize 
+    initTabs();
+    $scope.setActiveTab(1);
+    //End of Left Col Tabs Control
+
+    $scope.homeIntroduction = function(){
+        $location.url('/home-introduction');
+        tabClasses[2] = "active";
+        $scope.scroll_menu = "display";
+
+        getCurrentIntroductionText();
+
+        function getCurrentIntroductionText(){
+            $http.post("ajax/getCurrentHomeIntroductionContent.php")
+            .then(function(response) {
+                var results = response.data;
+                var content = results['content']; 
+
+                document.getElementById('current-introduction-content').innerHTML += content;
+            })
+        } 
+    }
+
+    $scope.changeHomeIntroduction = function(newIntroduction){
+        var flag = confirm("Are you going to change the content?");
+        if (flag == true) {
+            $http.post("ajax/updateCurrentHomeIntroductionContent.php?content="+newIntroduction)
+            .then(function(response) {
+                $location.url('/home-introduction');
+                tabClasses[2] = "active";
+                $scope.scroll_menu = "display";
+
+                document.getElementById('current-introduction-content').innerHTML = "";
+
+                getCurrentIntroductionText();
+
+                function getCurrentIntroductionText(){
+                    $http.post("ajax/getCurrentHomeIntroductionContent.php")
+                    .then(function(response) {
+                        var results = response.data;
+                        var content = results['content']; 
+
+                        document.getElementById('current-introduction-content').innerHTML += content;
+                    })
+                } 
+            });
+        } 
+    }
 }]);
 
 app.controller("LineCtrl", ['$http', '$scope', function ($http, $scope) {
