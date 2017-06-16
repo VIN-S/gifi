@@ -50,6 +50,25 @@ body, html {
 
 .main-header{
 	font-weight: 500;
+	border-right: 2px solid rgb(6,68,128);
+	line-height: 1;
+	margin-bottom: 15px;
+}
+
+@media screen and (max-width : 768px)
+{
+	.main-header{
+		font-weight: 500;
+	    margin-bottom: 15px;
+	    border-right: none;
+	}
+}
+
+.sub-header{
+	color: rgb(181,46,52);
+	font-style: italic;
+	font-weight: 600;
+	line-height: 2;
 }
 
 .navbar{
@@ -642,11 +661,11 @@ body, html {
 @media screen and (max-width : 2400px){
 	.main-header{
 		font-weight: 500;
-		font-size: 36px;
+		font-size: 35px;
 	}
 
 	.sub-header{
-		font-size: 24px;
+		font-size: 22px;
 	}
 
 	.navbar .nav{
@@ -732,7 +751,7 @@ body, html {
 
 @media screen and (max-width : 1440px){
 	.main-header{
-		font-size: 28px;
+		font-size: 30px;
 	}
 
 	.sub-header{
