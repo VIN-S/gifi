@@ -116,6 +116,10 @@ body, html {
 	color: white;
 }
 
+.nav div{
+	padding-bottom: 5px;
+}
+
 .navbar .nav .tab:hover a{
 	color: rgb(6,68,128);
 	text-decoration: none;
@@ -133,9 +137,49 @@ body, html {
 }
 
 .navbar .nav .active{
-
 	background-color: white;
 	border-radius: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 89%;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+.dropdown-content a {
+    color: #666666;
+    padding: 8px 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;  
+    cursor: pointer; 
+}
+
+.dropdown-content a:hover {
+    color: rgb(6,68,128); 
+}
+
+.dropdown-content .underline{
+	border-bottom: 1px solid #cccccc;
+}
+
+.dropdown-title:hover .dropdown-content{
+	display : block;
+}
+
+.dropdown-title:focus .dropdown-content{
+	display : block;
+}
+
+.dropdown-title:active .dropdown-content{
+	display : block;
 }
 
 .footer-logo{
