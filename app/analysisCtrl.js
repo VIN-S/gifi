@@ -1,7 +1,12 @@
 //controller for home page
-app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', function ($http, $scope, $rootScope, $routeParams) {
+app.controller("analysisCtrl", ['$http', '$scope', '$rootScope', '$routeParams', function ($http, $scope, $rootScope, $routeParams) {
   var country = $routeParams.countryName;
   var year = $routeParams.selectedYear;
+  $scope.analysisYear = $routeParams.selectedYear;
+  if($routeParams.selectedYear == null || $routeParams.selectedYear == ""){
+    year = $rootScope.latestYear;
+    $scope.analysisYear = $rootScope.latestYear;
+  }
   $scope.comparedCountry = "None"
 
   $scope.options = {  
@@ -25,10 +30,8 @@ app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', f
     []
   ];
 
-  getCountryDetail();
-  getRegionDetail();
-
-  //Get list of countries
+  getCountryDetail(null);
+  getRegionDetail(null);
   getListOfCountries();
 
   function getListOfCountries() {
@@ -39,7 +42,13 @@ app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', f
     });
   };
 
-  function getCountryDetail(){
+  $scope.selectCountry = function(selectedCountry){
+    getCountryDetail(selectedCountry);
+    getRegionDetail(selectedCountry);
+  }
+
+  function getCountryDetail(selectedCountry){
+    if(selectedCountry != null) country = selectedCountry;
     $http.post("ajax/getCountryRanking.php?country="+country+"&year="+year)
     .then(function(response) {
         var results = response.data;
@@ -59,7 +68,10 @@ app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', f
           $scope.selected.accounting_system = "N.A.";
         }else{
           $scope.selected.countryName =  country;
-          $scope.selected.investor_friendliness_rank = results['investor_friendliness_rank'];
+          if(results['investor_friendliness_rank'] == 0) 
+            $scope.selected.investor_friendliness_rank = ">100";
+          else
+            $scope.selected.investor_friendliness_rank = results['investor_friendliness_rank'];
           $scope.selected.legal_and_regulatory_environment = results['legal_and_regulatory_environment'];
           $scope.selected.market_development = results['market_development'];
           $scope.selected.exchange_controls_and_capital_restriction = results['exchange_controls_and_capital_restriction'];
@@ -79,7 +91,9 @@ app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', f
     });
   };
 
-  function getRegionDetail(){
+  function getRegionDetail(selectedCountry){
+    if(selectedCountry != null) country = selectedCountry;
+
     $scope.loader = true;
     $scope.region = [];
 
@@ -107,7 +121,10 @@ app.controller("detailCtrl", ['$http', '$scope', '$rootScope', '$routeParams', f
           $scope.region.political_environment = "N.A.";
           $scope.region.accounting_system = "N.A.";
         }else{
-          $scope.region.investor_friendliness_rank = parseInt(results['investor_friendliness_rank']);
+          if(results['investor_friendliness_rank'] == 0) 
+            $scope.region.investor_friendliness_rank = ">100";
+          else
+            $scope.region.investor_friendliness_rank = parseInt(results['investor_friendliness_rank']);
           $scope.region.legal_and_regulatory_environment = parseInt(results['legal_and_regulatory_environment']);
           $scope.region.market_development = parseInt(results['market_development']);
           $scope.region.exchange_controls_and_capital_restriction = parseInt(results['exchange_controls_and_capital_restriction']);

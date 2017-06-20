@@ -112,7 +112,7 @@ body, html {
 	font-size: 13px;
 }
 
-.navbar .nav .tab{
+.navbar .dropdown-title{
 	cursor: pointer;
 }
 
@@ -647,6 +647,16 @@ body, html {
 	width: 16%;
 	background-color: rgb(6,68,128);
 	color: white;
+}
+
+.detail-table table .select{
+	text-align: center;
+}
+
+.detail-table table .select span{
+	color: rgb(6,68,128);
+	font-weight: 500;
+	font-size: 20px;
 }
 
 .detail-table table .column-2{

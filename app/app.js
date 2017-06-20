@@ -23,9 +23,13 @@ app.config(function ($routeProvider) {
       templateUrl:    'partials/about.html',
       controller:     'AboutCtrl'
     })
-    .when('/countryDetail/:countryName/year/:selectedYear',
+    .when('/analysis/:countryName/year/:selectedYear',
     {
-      templateUrl:    'partials/countryDetail.html'
+      templateUrl:    'partials/analysis.html'
+    })
+    .when('/analysis',
+    {
+      templateUrl:    'partials/analysis.html'
     })
     .when('/error',
     {
@@ -139,6 +143,10 @@ app.controller('gifiMainController',
     $scope.loadRanking = function () {
         $location.url('/ranking');
     };
+
+    $scope.loadAnalysis = function() {
+        $location.url('/analysis');
+    }
     
     $scope.loadResearchPublication = function () {
         $location.url('/research_publication');
@@ -157,6 +165,10 @@ app.controller('HomeCtrl', function($scope, $compile) {
 
 app.controller('RankingCtrl', function($scope, $compile) {
   console.log('inside ranking controller');
+});
+
+app.controller('AnalysisCtrl', function($scope, $compile) {
+  console.log('inside analysis controller');
 });
 
 app.controller('ResearchPublicationCtrl', function($scope, $compile) {

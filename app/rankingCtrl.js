@@ -35,7 +35,7 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
   }
 
   $scope.loadDetail = function(country, selectedYear){
-    $location.url('/countryDetail/'+country+'/year/'+selectedYear);
+    $location.url('/analysis/'+country+'/year/'+selectedYear);
     $anchorScroll();
   }
 

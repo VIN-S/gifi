@@ -1,18 +1,21 @@
 <div class="detail-container">
-  <div class="row nopadding nomargin" id="detailCtrl" ng-controller="detailCtrl">
+  <div class="row nopadding nomargin" id="analysisCtrl" ng-controller="analysisCtrl">
     <div class="detail-table">
       <div class="ranking-spinner" ng-show="loader">
         <img src="img/ajax-loader.gif"/>
       </div>
-      <span>*The ranking for the continent(e.g. Asia) is an average value.</span>
+      <span>*The ranking for the continent(e.g. Asia) is an average value.</span><br/>
+      <span>Year of Data: {{ analysisYear }}</span>
       <table class="table">
 
         <tr>
           <td class="column-1">
             Country/Region*
           </td>
-          <td class="column-2">
-            {{selected.countryName}}
+          <td class="select">
+              Select one country: <br/><br/>
+              <select ng-model="selected.countryName" ng-options="x for x in countryLists" ng-change="selectCountry(selected.countryName)"></select> <br/><br/>
+              <span>{{selected.countryName}}</span>
           </td>
           <td class="column-3"> 
             {{region.regionName}}
