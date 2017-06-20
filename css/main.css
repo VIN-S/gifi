@@ -44,6 +44,10 @@ body, html {
 	margin-bottom: 0 !important;
 }
 
+.max-740{
+	max-width: 740px;
+}
+
 .header{
 	padding-top: 5px;
 }
@@ -120,20 +124,20 @@ body, html {
 	padding-bottom: 5px;
 }
 
-.navbar .nav .tab:hover a{
+
+.dropdown-title:focus .tab a, .dropdown-title:active .tab a, .dropdown-title:hover .tab a{
 	color: rgb(6,68,128);
 	text-decoration: none;
+}
+
+.dropdown-title:hover .tab, .dropdown-title:focus .tab, .dropdown-title:active .tab{
+	background-color: white;
+	border-radius: 5px;
 }
 
 .navbar .nav .active a{
 	color: rgb(6,68,128);
 	text-decoration: none;
-}
-
-.navbar .nav .tab:hover{
-
-	background-color: white;
-	border-radius: 5px;
 }
 
 .navbar .nav .active{
@@ -702,6 +706,7 @@ body, html {
 	.main-header{
 		font-weight: 500;
 		font-size: 35px;
+		max-width: 720px;
 	}
 
 	.sub-header{

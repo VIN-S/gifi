@@ -10,7 +10,7 @@
     	<div class="container">
     		<div class="header">
     			<div class="row">
-    				<div class="col-sm-7 nopadding-right">
+    				<div class="col-sm-7 nopadding-right max-740">
     					<div class="main-header">
     						<span class="blue">
     							GLOBAL INVESTOR
@@ -35,27 +35,27 @@
 
 			<div class="navbar">
 		    	<ul class="nav navbar-nav row">
-                    <div class="col-sm-3 col-xs-3">
+                    <div class="col-sm-3 col-xs-3 dropdown-title">
                         <li ng-class="navClass('home')" class="tab" ng-click="loadHome()"><a href='' ><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
                     </div>
                     <div class="col-sm-3 col-xs-3 dropdown-title">
-                        <li ng-class="navClass('ranking')" class="tab" ng-click="loadRanking()"><a href='' ><span class="glyphicon glyphicon-stats"></span>&nbsp;Ranking<span class="nav-text"> & Analysis</span></a></li>
+                        <li ng-class="navClass('ranking')" class="tab"><a href='' ><span class="glyphicon glyphicon-stats"></span>&nbsp;Ranking<span class="nav-text"> & Analysis</span></a></li>
                         <div class="dropdown-content">
-                          <a href="#" class="underline">Ranking</a>
+                          <a ng-click="loadRanking()" class="underline">Ranking</a>
                           <a href="#">Analysis</a>
                         </div>
                     </div>
                     <div class="col-sm-3 col-xs-3 dropdown-title">
-                        <li ng-class="navClass('research_publication')" class="tab" ng-click="loadResearchPublication()"><a href=''><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Research<span class="nav-text"> & Publications</span></a></li>
+                        <li ng-class="navClass('research_publication')" class="tab"><a href=''><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Research<span class="nav-text"> & Publications</span></a></li>
                          <div class="dropdown-content">
-                          <a href="#" class="underline">NUS-Cornell GIFI publications</a>
+                          <a class="underline" ng-click="loadResearchPublication()">NUS-Cornell GIFI publications</a>
                           <a href="#">Research Papers and Thought Leadership</a>
                         </div>
                     </div>
                     <div class="col-sm-3 col-xs-3 dropdown-title">
-                        <li ng-class="navClass('about')" class="tab" ng-click="loadAbout()"><a href='' ><span class="glyphicon glyphicon-user"></span>&nbsp;About<span class="nav-text"> Us</span></a></li>
+                        <li ng-class="navClass('about')" class="tab"><a href='' ><span class="glyphicon glyphicon-user"></span>&nbsp;About<span class="nav-text"> Us</span></a></li>
                         <div class="dropdown-content">
-                          <a href="#" class="underline">Background of the Index</a>
+                          <a class="underline" ng-click="loadAbout()">Background of the Index</a>
                           <a href="#">About the Co-publishers</a>
                         </div>
                     </div>                
