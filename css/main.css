@@ -549,9 +549,16 @@ body, html {
 	border: none;
 }
 
+.reminder{
+	margin-bottom: 3px;
+	font-weight: 600;
+	color:rgb(181,46,52);
+	font-style: italic;
+}
+
 .ranking-table{
 	width: 100%;
-	margin-top: 4%;
+	margin-top: 3%;
 }
 
 .ng-table th.sortable .sort-indicator {
@@ -634,9 +641,28 @@ body, html {
 	box-shadow: inset 0 0 0 3px #3a79
 }
 
+.numberOfCountriesPage{
+	float: right;
+}
+
+@media screen and (max-width : 648px){
+	.numberOfCountriesPage{
+		position: relative;
+		bottom: 62px;
+		right: 170px;
+		font-size: 13px;
+	}
+}
+
 /* ------------- end of ranking css ------------- */
 
 /* ------------- detail css ------------- */
+.backToRanking{
+	float: right;
+	color: rgb(181,46,52);
+	cursor: pointer;
+}
+
 .detail-table table{
 	overflow-x: auto;   
 	display: block;
@@ -651,6 +677,7 @@ body, html {
 
 .detail-table table .select{
 	text-align: center;
+	background-color: #efefef;
 }
 
 .detail-table table .select span{
@@ -663,12 +690,14 @@ body, html {
 	color: rgb(6,68,128);
 	font-weight: 500;
 	font-size: 20px;
+	background-color: #efefef;
 }
 
 .detail-table table .column-3{
 	color: #94ce58;
 	font-weight: 500;
 	font-size: 20px;
+	background-color: #efefef;
 }
 
 .detail-table table .column-4{
@@ -703,9 +732,22 @@ body, html {
 	vertical-align: middle;
 }
 
+.radar-chart-holder{
+	min-width: 1000px;
+}
+
 .radar-chart-holder canvas{
 	top: 20px !important;
-	min-width: 800px;
+}
+
+.tips{
+	max-width: 250px;
+    font-size: 9px;
+    background-color: #deebf6;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /* ------------- end of detail css ------------- */
@@ -784,6 +826,10 @@ body, html {
 	}
 
 	.ranking-options{
+		font-size: 18px;
+	}
+
+	.reminder{
 		font-size: 18px;
 	}
 
@@ -872,8 +918,16 @@ body, html {
 		font-size: 13px;
 	}
 
+	.reminder{
+		font-size: 15px;
+	}
+
 	.ranking-table table>thead{
 		font-size: 13px;
+	}
+
+	.ng-table-pager{
+		font-size: 9px;
 	}
 
 	.footer{
@@ -925,4 +979,8 @@ body, html {
 .ranking-spinner img{
 	margin-left: 36%;
     width: 10%;
+}
+
+.pagination {
+	margin: 0;
 }

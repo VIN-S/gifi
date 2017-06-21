@@ -36,6 +36,11 @@
     </div>
 
     <div class="ranking-table">
+      <div class="reminder">
+        <span>
+          Click on country names for cross-country and regional comparisons
+        </span>
+      </div>
       <table ng-table="tableParams" class="table" show-filter="false">
         <tr ng-repeat="country in $data" ng-class="'row' + ($index % 2)" ng-click="loadDetail(country.country, selectedYear)">
             <td title="'Country'" filter="{ country: 'text'}" sortable="'country'"><p>{{country.country}}</p></td>
@@ -48,9 +53,14 @@
             <td title="'Banking System'" filter="{ banking_system: 'number'}" sortable="'banking_system'"><p>{{country.banking_system}}</p></td>
             <td title="'Ease of Doing Business'" filter="{ ease_of_doing_business: 'number'}" sortable="'ease_of_doing_business'"><p>{{country.ease_of_doing_business}}</p></td>
             <td title="'Political Environment'" filter="{ political_environment: 'number'}" sortable="'political_environment'"><p>{{country.political_environment}}</p></td>
-            <td title="'Account System'" filter="{ accounting_system: 'number'}" sortable="'accounting_system'"><p>{{country.accounting_system}}</p></td>
+            <td title="'Accounting System'" filter="{ accounting_system: 'number'}" sortable="'accounting_system'"><p>{{country.accounting_system}}</p></td>
         </tr>
       </table>
+      <div class="numberOfCountriesPage">
+        <span>
+          Number of countries per page
+        </span>
+      </div>
     </div>
   </div>
 </div>

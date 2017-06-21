@@ -4,8 +4,13 @@
       <div class="ranking-spinner" ng-show="loader">
         <img src="img/ajax-loader.gif"/>
       </div>
-      <span>*The ranking for the continent(e.g. Asia) is an average value.</span><br/>
-      <span>Year of Data: {{ analysisYear }}</span>
+      <span>*The ranking for the continent(e.g. Asia) is an average value.</span>
+      <div class="analysis-reminder">
+        <span>Year of Data: {{ analysisYear }}</span>
+        <span class="backToRanking" style="font-weight: 600; font-style: italic;" ng-click="loadRanking()">
+          <- Back to ranking table
+        </span>
+      </div>
       <table class="table">
 
         <tr>
@@ -47,9 +52,21 @@
             Radar Chart
           </td>
           <td colspan="3" class="radar-chart-holder">
+            <div class="tips nomargin col-md-3 col-sm-3 col-xs-3 nopadding-right">
+              
+              The radar chart depict the 9 area rankings of the NUS-Cornell GIFI for the selected countries and region. The rankings range from 1 to 160.</br></br>
+ 
+              To read the chart:</br>
+              -A larger score (positioned on the outer lines of the chart) means the country presented ranks better favourably in that area relative to the other countries in the rankings</br></br>
+
+              -A lower score (positioned closer to the center of the graph) means country presented ranks less favourably in that area relative to the other countries in the rankings
+             
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-9 nopadding">
             <canvas id="radar" class="chart chart-radar"
               chart-data="data" chart-options="options" chart-labels="labels" chart-series="series" chart-colors="colours" chart-dataset-override="datasetOverride">
             </canvas>
+            </div>
           </td>
         </tr>
 

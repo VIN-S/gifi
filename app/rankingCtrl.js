@@ -120,7 +120,7 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
         var temp=response.data.split("//");
 
         var field = ['Country', 'Investor Friendliness Rank', 'Legal and Regulatory Environment', 'Market Development', 'Exchange Controls and Capital Restriction',
-         'Corporate Governance', 'Aum Levels and Growth', 'Banking System', 'Ease of Doing Business', 'Political Environment', 'Account System'];
+         'Corporate Governance', 'Aum Levels and Growth', 'Banking System', 'Ease of Doing Business', 'Political Environment', 'Accounting System'];
 
         var excelData = [];
         excelData[0] = field;
