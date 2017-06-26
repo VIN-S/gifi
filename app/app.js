@@ -8,6 +8,11 @@ app.config(function ($routeProvider) {
       templateUrl:    'partials/home.html',
       controller:     'HomeCtrl'
     })
+    .when('/',
+    {
+      templateUrl:    'partials/home.html',
+      controller:     'HomeCtrl'
+    })
     .when('/ranking',
     {
       templateUrl:    'partials/ranking.html',
