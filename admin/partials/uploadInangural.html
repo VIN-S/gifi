@@ -22,14 +22,14 @@
                   </li>
 <!--                   <li><a href="ajax/upload_csv.php" target="_blank"><i class="fa fa-edit"></i> Edit Ranking & Analysis Context</a>
                   </li> -->
-                  <li ng-click="scroll(2)" class="active"><a><i class="fa fa-edit"></i> Edit Content <span class="fa fa-chevron-down"></span></a>
+                  <li ng-class="getTabClass(2)" ng-click="setActiveTab(2)"><a><i class="fa fa-edit"></i> Edit Content <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" ng-class="scroll_menu_edit">
-                      <li class="background-active"><a ng-click="homeIntroduction()">Home - Introduction</a></li>
+                      <li><a ng-click="homeIntroduction()">Home - Introduction</a></li>
                     </ul>
                   </li>
-                  <li ng-class="getTabClass(3)" ng-click="setActiveTab(3)"><a><i class="fa fa-upload"></i> Upload Files <span class="fa fa-chevron-down"></span></a>
+                  <li ng-click="scroll(3)" class="active"><a><i class="fa fa-upload"></i> Upload Files <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" ng-class="scroll_menu_upload">
-                      <li><a ng-click="uploadInangural()">Upload Inangural GIFI</a></li>
+                      <li class="background-active"><a ng-click="uploadInangural()">Upload Inangural GIFI</a></li>
                       <li><a ng-click="uploadResearch()">Upload Research Papers</a></li>
                       <li><a href="ajax/upload_csv.php" target="_blank">Upload Ranking CSV </a></li>
                     </ul>
@@ -80,25 +80,8 @@
                 <div class="dashboard_graph" ng-controller="LineCtrl">
                   <div class="row x_title">
                     <div class="col-md-5">
-                      <h3>Edit Home Introduction Content<small></small></h3>
+                      <h3>Upload Inangural GIFI<small></small></h3>
                     </div>
-                  </div>
-
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                    <h2>
-                      Current Introduction Content
-                    </h2>
-                    <div class="current-introduction-content" id="current-introduction-content">
-                    </div>
-                    <div class="partingline"></div>
-                    <h2>
-                      New Introduction Content
-                    </h2>
-                    <span>
-                      Important: Insert &lt;/br&gt; to start a new line
-                    </span>
-                    <textarea rows="8" ng-model="newIntroductionContent"/>
-                    <button ng-click="changeHomeIntroduction(newIntroductionContent)" style="margin-top: 5px">Update</button>
                   </div>
                   
                   <div class="clearfix"></div>

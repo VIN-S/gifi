@@ -19,6 +19,16 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl:    'partials/home-introduction.html',
       controller:     'HomeIntroductionCtrl'
     })
+    .when('/uploadInangural',
+    {
+      templateUrl:    'partials/uploadInangural.html',
+      controller:     'UploadInanguralCtrl'
+    })
+    .when('/uploadResearch',
+    {
+      templateUrl:    'partials/uploadResearch.html',
+      controller:     'UploadResearchCtrl'
+    })
     .otherwise(
     {
       redirectTo:     '/login'
@@ -74,4 +84,12 @@ app.controller('LoginCtrl', function($scope, $compile) {
 
 app.controller('HomeIntroductionCtrl', function($scope, $compile) {
   console.log('inside home introduction controller');
+});
+
+app.controller('UploadInanguralCtrl', function($scope, $compile) {
+  console.log('inside upload inangural controller');
+});
+
+app.controller('UploadResearchCtrl', function($scope, $compile) {
+  console.log('inside upload research controller');
 });

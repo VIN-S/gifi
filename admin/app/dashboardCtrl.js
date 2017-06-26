@@ -96,11 +96,11 @@ app.controller('dashboardController',
         }
     }
 
-    //Initialize 
     initTabs();
     $scope.setActiveTab(1);
     //End of Left Col Tabs Control
 
+    //Edit home introduction
     $scope.homeIntroduction = function(){
         $location.url('/home-introduction');
         $scope.newIntroductionContent = "";
@@ -143,6 +143,17 @@ app.controller('dashboardController',
             });
         } 
     }
+    //end of edit home introduction
+
+    //upload files
+    $scope.uploadInangural = function(){
+        $location.url('/uploadInangural');
+    }
+
+    $scope.uploadResearch = function(){
+        $location.url('/uploadResearch');
+    }
+    //end of upload files
 }]);
 
 app.controller("LineCtrl", ['$http', '$scope', function ($http, $scope) {
