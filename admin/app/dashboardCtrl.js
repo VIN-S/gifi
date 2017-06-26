@@ -54,8 +54,9 @@ app.controller('dashboardController',
 
     //Left Col Tabs Control
     function initTabs() {
-        tabClasses = ["",""];
-        $scope.scroll_menu = "notDisplay";
+        tabClasses = ["","",""];
+        $scope.scroll_menu_edit = "notDisplay";
+        $scope.scroll_menu_upload = "notDisplay";
     }
 
     $scope.getTabClass = function (tabNum) {
@@ -63,15 +64,37 @@ app.controller('dashboardController',
     };
   
     $scope.setActiveTab = function (tabNum) {
-        initTabs();
-        tabClasses[tabNum] = "active";
+        if(tabClasses[tabNum] == "active")
+            tabClasses[tabNum] = "inActive";
+        else
+            tabClasses[tabNum] = "active";
+        
         if(tabNum == 2){
-            if($scope.scroll_menu == "notDisplay")
-                $scope.scroll_menu = "display";
-            else if($scope.scroll_menu == "display")
-                $scope.scroll_menu = "notDisplay";
+            if($scope.scroll_menu_edit == "notDisplay")
+                $scope.scroll_menu_edit = "display";
+            else if($scope.scroll_menu_edit == "display")
+                $scope.scroll_menu_edit = "notDisplay";
+        }else if(tabNum == 3){
+            if($scope.scroll_menu_upload == "notDisplay")
+                $scope.scroll_menu_upload = "display";
+            else if($scope.scroll_menu_upload == "display")
+                $scope.scroll_menu_upload = "notDisplay";
         }
     };
+
+    $scope.scroll = function (tabNum){
+        if(tabNum == 2){
+            if($scope.scroll_menu_edit == "notDisplay")
+                $scope.scroll_menu_edit = "display";
+            else if($scope.scroll_menu_edit == "display")
+                $scope.scroll_menu_edit = "notDisplay";
+        }else if(tabNum == 3){
+            if($scope.scroll_menu_upload == "notDisplay")
+                $scope.scroll_menu_upload = "display";
+            else if($scope.scroll_menu_upload == "display")
+                $scope.scroll_menu_upload = "notDisplay";
+        }
+    }
 
     //Initialize 
     initTabs();
@@ -80,8 +103,7 @@ app.controller('dashboardController',
 
     $scope.homeIntroduction = function(){
         $location.url('/home-introduction');
-        tabClasses[2] = "active";
-        $scope.scroll_menu = "display";
+        $scope.newIntroductionContent = "";
 
         getCurrentIntroductionText();
 
@@ -91,7 +113,7 @@ app.controller('dashboardController',
                 var results = response.data;
                 var content = results['content']; 
 
-                document.getElementById('current-introduction-content').innerHTML += content;
+                document.getElementById('current-introduction-content').innerHTML = content;
             })
         } 
     }

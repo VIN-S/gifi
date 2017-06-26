@@ -18,17 +18,23 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li ng-class="getTabClass(1)" ng-click="setActiveTab(1)"><a href="#!/dashboard" ng-click="loadDashboard"><i class="fa fa-home"></i> Home </a>
+                  <li class="active"><a href="#!/dashboard" ng-click="loadDashboard"><i class="fa fa-home"></i> Home </a>
                   </li>
 <!--                   <li><a href="ajax/upload_csv.php" target="_blank"><i class="fa fa-edit"></i> Edit Ranking & Analysis Context</a>
                   </li> -->
                   <li ng-class="getTabClass(2)" ng-click="setActiveTab(2)"><a><i class="fa fa-edit"></i> Edit Content <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu" ng-class="scroll_menu">
+                    <ul class="nav child_menu" ng-class="scroll_menu_edit">
                       <li><a ng-click="homeIntroduction()">Home - Introduction</a></li>
                     </ul>
                   </li>
-                  <li><a href="ajax/upload_csv.php" target="_blank"><i class="fa fa-upload"></i> Upload Ranking CSV </a>
+                  <li ng-class="getTabClass(3)" ng-click="setActiveTab(3)"><a><i class="fa fa-upload"></i> Upload Files <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu" ng-class="scroll_menu_upload">
+                      <li><a ng-click="homeIntroduction()">Upload Inangural GIFI</a></li>
+                      <li><a ng-click="homeIntroduction()">Upload Research Papers</a></li>
+                      <li><a href="ajax/upload_csv.php" target="_blank">Upload Ranking CSV </a></li>
+                    </ul>
                   </li>
+                  
               </div>
 
             </div>

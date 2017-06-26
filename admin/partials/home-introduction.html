@@ -22,12 +22,17 @@
                   </li>
 <!--                   <li><a href="ajax/upload_csv.php" target="_blank"><i class="fa fa-edit"></i> Edit Ranking & Analysis Context</a>
                   </li> -->
-                  <li class="active"><a><i class="fa fa-edit"></i> Edit Content <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu display">
+                  <li ng-click="scroll(2)" class="active"><a><i class="fa fa-edit"></i> Edit Content <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu" ng-class="scroll_menu_edit">
                       <li class="background-active"><a ng-click="homeIntroduction()">Home - Introduction</a></li>
                     </ul>
                   </li>
-                  <li><a href="ajax/upload_csv.php" target="_blank"><i class="fa fa-upload"></i> Upload Ranking CSV </a>
+                  <li ng-class="getTabClass(3)" ng-click="setActiveTab(3)"><a><i class="fa fa-upload"></i> Upload Files <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu" ng-class="scroll_menu_upload">
+                      <li><a ng-click="homeIntroduction()">Upload Inangural GIFI</a></li>
+                      <li><a ng-click="homeIntroduction()">Upload Research Papers</a></li>
+                      <li><a href="ajax/upload_csv.php" target="_blank">Upload Ranking CSV </a></li>
+                    </ul>
                   </li>
               </div>
 
