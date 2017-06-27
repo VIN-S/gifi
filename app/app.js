@@ -28,10 +28,15 @@ app.config(function ($routeProvider) {
       templateUrl:    'partials/research.html',
       controller:     'ResearchCtrl'
     })
-    .when('/about',
+    .when('/background',
     {
-      templateUrl:    'partials/about.html',
-      controller:     'AboutCtrl'
+      templateUrl:    'partials/background.html',
+      controller:     'BackgroundCtrl'
+    })
+    .when('/copublisher',
+    {
+      templateUrl:    'partials/copublisher.html',
+      controller:     'CopublisherCtrl'
     })
     .when('/analysis/:countryName/year/:selectedYear',
     {
@@ -166,8 +171,12 @@ app.controller('gifiMainController',
         $location.url('/research');
     };
 
-    $scope.loadAbout = function () {
-        $location.url('/about');
+    $scope.loadBackground = function () {
+        $location.url('/background');
+    };
+
+    $scope.loadCopublisher = function () {
+        $location.url('/copublisher');
     };
 }]);
 //end of gifiMainController
@@ -193,8 +202,12 @@ app.controller('ResearchCtrl', function($scope, $compile) {
   console.log('inside research controller');
 });
 
-app.controller('AboutCtrl', function($scope, $compile) {
-  console.log('inside about controller');
+app.controller('BackgroundCtrl', function($scope, $compile) {
+  console.log('inside background controller');
+});
+
+app.controller('CopublisherCtrl', function($scope, $compile) {
+  console.log('inside copublisher controller');
 });
 
 app.controller('ErrorCtrl', function($scope, $compile) {

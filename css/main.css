@@ -781,6 +781,30 @@ body, html {
 	
 /* ------------- end of research and publication css ------------- */
 
+/* ------------- about us css ------------- */
+.background-blue{
+	padding: 20px 15px 0px 15px;
+}
+
+.background-blue span{
+	color: #3276b4;
+	font-weight: 500;
+	line-height: 1;
+}
+
+.background-side-text{
+	padding: 20px 15px 20px 15px;
+	background-color: #eff5fb;
+	border-radius: 20px;
+}
+
+.background-side-text span{
+	font-style: italic;
+	color: rgb(181,46,52);
+	font-weight: 600;
+} 
+/* ------------- end of about us css ------------- */
+
 /* ------------- reponsive text size ------------- */
 
 @media screen and (max-width : 2400px){
@@ -889,6 +913,14 @@ body, html {
 	.normal-text{
 		font-size: 18px;
 	}
+
+	.background-blue span{
+		font-size: 18px;
+	}
+
+	.background-side-text span{
+		font-size: 20px;
+	}
 }
 
 @media screen and (max-width : 1440px){
@@ -985,6 +1017,14 @@ body, html {
 
 	.normal-text{
 		font-size: 14px;
+	}
+
+	.background-blue span{
+		font-size: 15px;
+	}
+
+	.background-side-text span{
+		font-size: 18px;
 	}
 }
 
