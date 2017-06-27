@@ -656,7 +656,7 @@ body, html {
 
 /* ------------- end of ranking css ------------- */
 
-/* ------------- detail css ------------- */
+/* ------------- analysis css ------------- */
 .backToRanking{
 	float: right;
 	color: rgb(181,46,52);
@@ -750,7 +750,36 @@ body, html {
     padding-bottom: 10px;
 }
 
-/* ------------- end of detail css ------------- */
+/* ------------- end of analysis css ------------- */
+
+/* ------------- research and publication css ------------- */
+.blue-title{
+	padding: 20px 10px 20px 10px;
+}
+
+.blue-title span{
+	color: rgb(6,68,128);
+	font-weight: 600;
+}
+
+.red-title{
+	padding: 5px 15px 5px 15px;
+}
+
+.red-title span{
+	color: rgb(181,46,52);
+	font-weight: 600;
+}
+
+.normal-text{
+	padding: 5px 20px 5px 20px;
+}
+
+.download-container{
+	padding: 15px 20px 15px 20px;
+}
+	
+/* ------------- end of research and publication css ------------- */
 
 /* ------------- reponsive text size ------------- */
 
@@ -848,6 +877,18 @@ body, html {
 	.footer{
 		font-size:15px;
 	}
+
+	.blue-title span{
+		font-size: 28px;
+	}
+
+	.red-title span{
+		font-size: 25px;
+	}
+
+	.normal-text{
+		font-size: 18px;
+	}
 }
 
 @media screen and (max-width : 1440px){
@@ -932,6 +973,18 @@ body, html {
 
 	.footer{
 		font-size:10px;
+	}
+
+	.blue-title span{
+		font-size: 24px;
+	}
+
+	.red-title span{
+		font-size: 21px;
+	}
+
+	.normal-text{
+		font-size: 14px;
 	}
 }
 

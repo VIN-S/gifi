@@ -18,10 +18,15 @@ app.config(function ($routeProvider) {
       templateUrl:    'partials/ranking.html',
       controller:     'RankingCtrl'
     })
-    .when('/research_publication',
+    .when('/publication',
     {
-      templateUrl:    'partials/research_publication.html',
-      controller:     'ResearchPublicationCtrl'
+      templateUrl:    'partials/publications.html',
+      controller:     'PublicationCtrl'
+    })
+    .when('/research',
+    {
+      templateUrl:    'partials/research.html',
+      controller:     'ResearchCtrl'
     })
     .when('/about',
     {
@@ -152,9 +157,13 @@ app.controller('gifiMainController',
     $scope.loadAnalysis = function() {
         $location.url('/analysis');
     }
+
+    $scope.loadPublication = function () {
+        $location.url('/publication');
+    };
     
-    $scope.loadResearchPublication = function () {
-        $location.url('/research_publication');
+    $scope.loadResearch = function () {
+        $location.url('/research');
     };
 
     $scope.loadAbout = function () {
@@ -176,8 +185,12 @@ app.controller('AnalysisCtrl', function($scope, $compile) {
   console.log('inside analysis controller');
 });
 
-app.controller('ResearchPublicationCtrl', function($scope, $compile) {
-  console.log('inside research & publication controller');
+app.controller('PublicationCtrl', function($scope, $compile) {
+  console.log('inside publication controller');
+});
+
+app.controller('ResearchCtrl', function($scope, $compile) {
+  console.log('inside research controller');
 });
 
 app.controller('AboutCtrl', function($scope, $compile) {

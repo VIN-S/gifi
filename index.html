@@ -48,8 +48,8 @@
                     <div class="col-sm-3 col-xs-3 dropdown-title">
                         <li ng-class="navClass('research_publication')" class="tab"><a href=''><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Research<span class="nav-text"> & Publications</span></a></li>
                          <div class="dropdown-content">
-                          <a class="underline" ng-click="loadResearchPublication()">NUS-Cornell GIFI publications</a>
-                          <a href="#">Research Papers and Thought Leadership</a>
+                          <a class="underline" ng-click="loadPublication()">NUS-Cornell GIFI publications</a>
+                          <a ng-click="loadResearch()">Research Papers and Thought Leadership</a>
                         </div>
                     </div>
                     <div class="col-sm-3 col-xs-3 dropdown-title">
@@ -102,7 +102,8 @@
 	   	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 	    <script type="text/javascript" src="app/app.js"></script>
         <script type="text/javascript" src="app/homeCtrl.js"></script>  	
-        <script type="text/javascript" src="app/rankingCtrl.js"></script>      
+        <script type="text/javascript" src="app/rankingCtrl.js"></script>  
+        <script type="text/javascript" src="app/researchPublicationCtrl.js"></script>     
         <script type="text/javascript" src="app/analysisCtrl.js"></script>      
     </body>
 </html>
