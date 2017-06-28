@@ -44,10 +44,6 @@ body, html {
 	margin-bottom: 0 !important;
 }
 
-.max-740{
-	max-width: 740px;
-}
-
 .header{
 	padding-top: 5px;
 }
@@ -742,12 +738,20 @@ body, html {
 
 .tips{
 	max-width: 250px;
-    font-size: 9px;
+    font-size: 13px;
     background-color: #deebf6;
     border: 1px solid #cccccc;
     border-radius: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.text-justify{
+	text-align: justify;
+}
+
+.tips-padding{
+	padding: 0 0 0 21px !important;
 }
 
 /* ------------- end of analysis css ------------- */
@@ -812,6 +816,10 @@ body, html {
 		font-weight: 500;
 		font-size: 35px;
 		max-width: 720px;
+	}
+
+	.header-border{
+		max-width: 740px;
 	}
 
 	.sub-header{
@@ -928,6 +936,10 @@ body, html {
 		font-size: 30px;
 	}
 
+	.header-border{
+		max-width: 635px;
+	}
+
 	.sub-header{
 		font-size: 16px;
 	}
@@ -1025,6 +1037,32 @@ body, html {
 
 	.background-side-text span{
 		font-size: 18px;
+	}
+}
+
+@media screen and (max-width : 1242px){
+	.header-border{
+		max-width: 530px;
+	}
+
+	.sub-header{
+		margin-top: 34px;
+	}
+}
+
+@media screen and (max-width : 1072px){
+	.header-border{
+		max-width: 530px;
+	}
+
+	.sub-header{
+		margin-top: 0px;
+	}
+}
+
+@media screen and (max-width : 1044px){
+	.header-border{
+		max-width: 350px;
 	}
 }
 

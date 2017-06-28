@@ -10,7 +10,9 @@ app.controller("analysisCtrl", ['$http', '$scope', '$rootScope', '$routeParams',
   $scope.comparedCountry = "None"
 
   $scope.options = {  
-                      legend: { display: true },
+                      legend: { 
+                          display: true
+                          },
                       scale: {
                           reverse: true,
                           ticks: {
