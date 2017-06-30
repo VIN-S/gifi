@@ -74,7 +74,7 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
+        <div class="right_col" role="main" ng-controller="uploadInanguralCtrl">
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="dashboard_graph" ng-controller="LineCtrl">
@@ -82,6 +82,30 @@
                     <div class="col-md-5">
                       <h3>Upload Inangural GIFI<small></small></h3>
                     </div>
+                  </div>
+
+                  <div class="pdf-info">
+                    <div class="one-info">
+                      <span>Select Document Type: </span>
+                      <select ng-model="pdfType" ng-options="x for x in pdfTypeList" ng-change="pdfSelectType(pdfType)"></select>
+                    </div>
+                    <div class="one-info">
+                      <span>Select Year: </span>
+                      <select ng-model="pdfYear" ng-options="y for y in pdfYearList" ng-change="pdfSelectYear(pdfYear)"></select>
+                    </div>
+                    <div class="one-info">
+                      <span>Input File Name(The Name Displayed on User Side): </span>
+                      <input ng-model="fileName" ng-change="inputFileName(fileName)"></input>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button class="btn btn-warning" ngf-select="selectFile(file)" ng-model="file" ngf-pattern="'application/pdf'" ngf-accept="'application/pdf'">Select</button>
+                    <span>Selected File: {{ selectFileName }}</span>
+
+                    <div class="partingline"></div>
+
+                    <button class="btn btn-success" type="submit" ng-click="submit(file)">Submit</button>
                   </div>
                   
                   <div class="clearfix"></div>

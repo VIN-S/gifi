@@ -8,7 +8,7 @@ if (!$connect) { //Connection is possible using above setting or not
 $class="";
 $message='';
 $error=0;
-$target_dir = dirname(__FILE__)."/Uploads/";
+$target_dir = dirname(__FILE__)."/uploaded_csv/";
 if(isset($_POST["import"]) && !empty($_FILES)) {
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 	$fileType = pathinfo($target_file,PATHINFO_EXTENSION);

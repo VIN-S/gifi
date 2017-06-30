@@ -1,5 +1,5 @@
 //Define an angular module for our app
-var app = angular.module('myApp', ['ngRoute','chart.js']);
+var app = angular.module('myApp', ['ngRoute','chart.js', 'ngFileUpload']);
 
 app.config(['$routeProvider', function ($routeProvider) {
 
@@ -54,7 +54,7 @@ app.service('cookieService', function() {
 });
 
 app.controller('adminMainController', 
-['$scope', '$location', '$http', 'cookieService', function($scope, $location, $http, cookieService) {
+['$scope', '$location', '$http', 'cookieService', 'Upload', '$timeout', function($scope, $location, $http, cookieService, Upload, $timeout) {
     $scope.adminSignIn = function(username, pwd) {
         $http.post("ajax/adminSignIn.php?username="+username+"&pwd="+sha512(pwd))
         .then(function(response) {
@@ -71,6 +71,18 @@ app.controller('adminMainController',
             }
         }); 
      
+    };
+
+    $scope.loadDashboard = function(){
+        $location.url('/dashboard');
+    }
+
+    $scope.homeIntroduction = function(){
+        $location.url('/home-introduction');
+    }
+
+    $scope.uploadInangural = function(){
+        $location.url('/uploadInangural');
     };
 }]);
 

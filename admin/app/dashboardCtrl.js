@@ -5,12 +5,8 @@ app.controller('dashboardController',
     }
 
     $scope.adminLogout = function(){
-        cookieService.setUserName('');
-        $location.url('/login');
-    }
-
-    $scope.loadDashboard = function(){
-        $location.url('/dashboard');
+      cookieService.setUserName('');
+      $location.url('/login');
     }
 
     getLatestCount();
@@ -99,61 +95,6 @@ app.controller('dashboardController',
     initTabs();
     $scope.setActiveTab(1);
     //End of Left Col Tabs Control
-
-    //Edit home introduction
-    $scope.homeIntroduction = function(){
-        $location.url('/home-introduction');
-        $scope.newIntroductionContent = "";
-
-        getCurrentIntroductionText();
-
-        function getCurrentIntroductionText(){
-            $http.post("ajax/getCurrentHomeIntroductionContent.php")
-            .then(function(response) {
-                var results = response.data;
-                var content = results['content']; 
-
-                document.getElementById('current-introduction-content').innerHTML = content;
-            })
-        } 
-    }
-
-    $scope.changeHomeIntroduction = function(newIntroduction){
-        var flag = confirm("Are you going to change the content?");
-        if (flag == true) {
-            $http.post("ajax/updateCurrentHomeIntroductionContent.php?content="+newIntroduction)
-            .then(function(response) {
-                $location.url('/home-introduction');
-                tabClasses[2] = "active";
-                $scope.scroll_menu = "display";
-
-                document.getElementById('current-introduction-content').innerHTML = "";
-
-                getCurrentIntroductionText();
-
-                function getCurrentIntroductionText(){
-                    $http.post("ajax/getCurrentHomeIntroductionContent.php")
-                    .then(function(response) {
-                        var results = response.data;
-                        var content = results['content']; 
-
-                        document.getElementById('current-introduction-content').innerHTML += content;
-                    })
-                } 
-            });
-        } 
-    }
-    //end of edit home introduction
-
-    //upload files
-    $scope.uploadInangural = function(){
-        $location.url('/uploadInangural');
-    }
-
-    $scope.uploadResearch = function(){
-        $location.url('/uploadResearch');
-    }
-    //end of upload files
 }]);
 
 app.controller("LineCtrl", ['$http', '$scope', function ($http, $scope) {
