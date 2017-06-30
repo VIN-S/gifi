@@ -1,6 +1,8 @@
 app.controller('uploadInanguralCtrl', 
-['$scope', '$location', '$http', 'cookieService', 'Upload', '$timeout', 'NgTableParams', 
-    function($scope, $location, $http, cookieService, Upload, $timeout, NgTableParams) {
+['$scope', '$location', '$http', 'cookieService', 'Upload', '$timeout', 'NgTableParams', '$route', 
+    function($scope, $location, $http, cookieService, Upload, $timeout, NgTableParams, $route) {
+    $scope.loader = true;
+
     $scope.pdfTypeList = [
         'Full Report', 
         'Executive Summary', 
@@ -35,7 +37,7 @@ app.controller('uploadInanguralCtrl',
         $scope.file = file;
         if (file) {
             Upload.upload({
-                url: 'ajax/upload.php',
+                url: 'ajax/uploadInanguralGIFIPDF.php',
                 method: 'POST',
                 data: {
                     file: file
@@ -50,7 +52,7 @@ app.controller('uploadInanguralCtrl',
                         $http.post("ajax/insertUploadedPDFInfo.php?type="+$scope.pdfType+"&year="+$scope.pdfYear+"&name="+$scope.selectFileName)
                         .then(function(response) {
                             alert($scope.result);
-                            $location.url('/uploadInangural');
+                            $route.reload();
                         }, function(response){}).finally(function(){$scope.loader = false;}); 
                     }
                 });
@@ -73,8 +75,6 @@ app.controller('uploadInanguralCtrl',
     getDocumensData();
 
     function getDocumensData(){
-        $scope.loader = true;
-
         $http.post("ajax/getInanguralGIFIData.php")
         .then(function(response) {
             var temp=response.data.split("//");
@@ -101,10 +101,17 @@ app.controller('uploadInanguralCtrl',
     };
 
     $scope.delete = function(name, type, year){
-        $http.delete('ajax/uploaded_pdf/'+name).then(function(response){
-               if (response.status == 200) {
-                    console.log("Success");
-               }
-         });
-    }
+        if(confirm("Are you going to delete "+name+"?"))
+        {
+            $http.post("ajax/deleteInanguralGIFIPDFRecord.php?name="+name)
+            .then(function(response) {
+            });
+
+            $http.post("ajax/deleteInanguralGIFIPDF.php?name="+name)
+            .then(function(response) {
+                alert(response.data);
+                $route.reload();
+            });
+        }
+    };
 }]);
