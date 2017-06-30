@@ -1,6 +1,9 @@
 
     <div class="container body" >
       <div class="main_container" ng-controller="dashboardController">
+        <div class="spinner" ng-show="loader">
+          <img src="../img/ajax-loader.gif"/>
+      </div>
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <!-- menu profile quick info -->
@@ -93,19 +96,31 @@
                       <span>Select Year: </span>
                       <select ng-model="pdfYear" ng-options="y for y in pdfYearList" ng-change="pdfSelectYear(pdfYear)"></select>
                     </div>
-                    <div class="one-info">
-                      <span>Input File Name(The Name Displayed on User Side): </span>
-                      <input ng-model="fileName" ng-change="inputFileName(fileName)"></input>
-                    </div>
                   </div>
 
                   <div class="form-group">
                     <button class="btn btn-warning" ngf-select="selectFile(file)" ng-model="file" ngf-pattern="'application/pdf'" ngf-accept="'application/pdf'">Select</button>
-                    <span>Selected File: {{ selectFileName }}</span>
+                    <span>Selected File: {{ selectFileName }}</span><br><br>
+                    <button class="btn btn-success" type="submit" ng-click="submit(file)">Upload</button>
+                  </div><br>
 
-                    <div class="partingline"></div>
+                  <div class="partingline"></div>
 
-                    <button class="btn btn-success" type="submit" ng-click="submit(file)">Submit</button>
+                  <div class="row x_title">
+                    <div class="col-md-5">
+                      <h3>Existing Documents<small></small></h3>
+                    </div>
+                  </div>
+                  <div class="document-table">
+                    <table ng-table="tableParams" class="table" show-filter="false">
+                    <tr ng-repeat="document in $data" ng-class="'row' + ($index % 2)">
+                        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'"><p>{{document.name}}</p></td>
+                        <td title="'Type'" filter="{ type: 'text'}" sortable="'type'"><p>{{document.type}}</p></td>
+                        <td title="'Year'" filter="{ year: 'number'}" sortable="'year'"><p>{{document.year}}</p></td>
+                        <td title="'Upload Time'" filter="{ upload_time: 'number'}" sortable="'upload_time'"><p>{{document.upload_time}}</p></td>
+                        <td><button class="btn btn-danger" ng-click="delete(document.name, document.type, document.year)" >Delete</button></td>
+                    </tr>
+                  </table>
                   </div>
                   
                   <div class="clearfix"></div>

@@ -1,5 +1,5 @@
 //Define an angular module for our app
-var app = angular.module('myApp', ['ngRoute','chart.js', 'ngFileUpload']);
+var app = angular.module('myApp', ['ngRoute','chart.js', 'ngFileUpload', "ngTable"]);
 
 app.config(['$routeProvider', function ($routeProvider) {
 

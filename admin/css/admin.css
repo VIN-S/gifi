@@ -29,3 +29,16 @@
 .one-info{
 	padding: 15px 5px 15px 5px;
 }
+
+.spinner {
+	top:40%;
+	width: 90%;
+    position: absolute;
+    display: block;
+    margin: auto 0;  
+}
+
+.spinner img{
+	margin-left: 36%;
+    width: 10%;
+}
