@@ -1,9 +1,6 @@
 
     <div class="container body" >
       <div class="main_container" ng-controller="dashboardController">
-        <div class="spinner" ng-show="loader">
-          <img src="../img/ajax-loader.gif"/>
-      </div>
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <!-- menu profile quick info -->
@@ -78,6 +75,9 @@
 
         <!-- page content -->
         <div class="right_col" role="main" ng-controller="uploadInanguralCtrl">
+          <div class="spinner" ng-show="loader">
+            <img src="../img/ajax-loader.gif"/>
+          </div>
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="dashboard_graph">
@@ -118,7 +118,7 @@
                         <td title="'Type'" filter="{ type: 'text'}" sortable="'type'"><p>{{document.type}}</p></td>
                         <td title="'Year'" filter="{ year: 'number'}" sortable="'year'"><p>{{document.year}}</p></td>
                         <td title="'Upload Time'" filter="{ upload_time: 'number'}" sortable="'upload_time'"><p>{{document.upload_time}}</p></td>
-                        <td><button class="btn btn-danger" ng-click="delete(document.name, document.type, document.year)" >Delete</button></td>
+                        <td title="'Action'"><button class="btn btn-danger" ng-click="delete(document.name, document.type, document.year)" >Delete</button></td>
                     </tr>
                   </table>
                   </div>

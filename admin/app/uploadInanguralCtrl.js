@@ -111,7 +111,7 @@ app.controller('uploadInanguralCtrl',
             .then(function(response) {
                 alert(response.data);
                 $route.reload();
-            });
+            }, function(response){}).finally(function(){$scope.loader = false;});
         }
     };
 }]);
