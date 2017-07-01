@@ -8,7 +8,7 @@ if(isset($_FILES['file'])){
 
     $file_tmp =$_FILES['file']['tmp_name']; 
 
-    $target_dir = dirname(__FILE__)."/uploaded_pdf/";
+    $target_dir = dirname(__FILE__)."/uploaded_papers/";
     $target_file = $target_dir . basename($_FILES["file"]["name"]);
          
     if(empty($errors)==true){

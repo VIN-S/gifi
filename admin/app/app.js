@@ -84,6 +84,10 @@ app.controller('adminMainController',
     $scope.uploadInangural = function(){
         $location.url('/uploadInangural');
     };
+
+    $scope.uploadResearchPaper = function(){
+        $location.url('/uploadResearch');
+    };
 }]);
 
 app.controller('DashboardCtrl', function($scope, $compile) {

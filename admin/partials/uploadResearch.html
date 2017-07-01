@@ -30,7 +30,7 @@
                   <li ng-click="scroll(3)" class="active"><a><i class="fa fa-upload"></i> Upload Files <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" ng-class="scroll_menu_upload">
                       <li><a ng-click="uploadInangural()">Upload Inangural GIFI</a></li>
-                      <li class="background-active"><a ng-click="uploadResearch()">Upload Research Papers</a></li>
+                      <li class="background-active"><a ng-click="uploadResearchPaper()">Upload Research Papers</a></li>
                       <li><a href="ajax/upload_csv.php" target="_blank">Upload Ranking CSV </a></li>
                     </ul>
                   </li>
@@ -74,14 +74,71 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
+        <div class="right_col" role="main" ng-controller="uploadResearchPaperCtrl">
+          <div class="spinner" ng-show="loader">
+            <img src="../img/ajax-loader.gif"/>
+          </div>
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="dashboard_graph" ng-controller="LineCtrl">
+                <div class="main-content">
                   <div class="row x_title">
                     <div class="col-md-5">
                       <h3>Upload Research Papers<small></small></h3>
                     </div>
+                  </div>
+
+                  <div class="pdf-info">
+                    <div class="one-info">
+                      <span>Input Title of Paper: </span>
+                      <input ng-model="paperTitle" ng-change="inputPaperTitle(paperTitle)"></input>
+                    </div>
+                    <div class="one-info">
+                      <span>Select Year: </span>
+                      <select ng-model="paperYear" ng-options="y for y in paperYearList" ng-change="paperSelectYear(paperYear)"></select>
+                    </div>
+                    <div class="one-info">
+                      <span>Input Journal Name: </span>
+                      <input ng-model="journalName" ng-change="inputJournalName(journalName)"></input>
+                    </div>
+                    <div class="one-info">
+                      <span>Input Issue Number: </span>
+                      <input ng-model="issueNumber" ng-change="inputIssueNumber(issueNumber)"></input>
+                    </div>
+                    <div class="one-info">
+                      <span>Input Volume Number: </span>
+                      <input ng-model="volumeNumber" ng-change="inputVolumeNumber(volumeNumber)"></input>
+                    </div>
+                    <div class="one-info">
+                      <span>Input Author Name(Format: Last Name, First; Last Name, First; ...): </span>
+                      <input ng-model="authorNames" size="50" ng-change="inputAuthorName(authorNames)"></input>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button class="btn btn-warning" ngf-select="selectFile(file)" ng-model="file" ngf-pattern="'application/pdf'" ngf-accept="'application/pdf'">Select</button>
+                    <span>Selected File: {{ selectFileName }}</span><br><br>
+                    <button class="btn btn-success" type="submit" ng-click="submit(file)">Upload</button>
+                  </div><br>
+
+                  <div class="row x_title">
+                    <div class="col-md-5">
+                      <h3>Existing Papers<small></small></h3>
+                    </div>
+                  </div>
+                  <div class="document-table">
+                    <table ng-table="tableParams" class="table" show-filter="false">
+                    <tr ng-repeat="paper in $data" ng-class="'row' + ($index % 2)">
+                        <td title="'Action'"><button class="btn btn-danger" ng-click="delete(paper.fileName)" >Delete</button></td>
+                        <td title="'File Name'" filter="{ fileName: 'text'}" sortable="'fileName'"><p>{{paper.fileName}}</p></td>
+                        <td title="'Title'" filter="{ title: 'text'}" sortable="'title'"><p>{{paper.title}}</p></td>
+                        <td title="'Year'" filter="{ year: 'number'}" sortable="'year'"><p>{{paper.year}}</p></td>
+                        <td title="'Journal'" filter="{ journal: 'text'}" sortable="'journal'"><p>{{paper.journal}}</p></td>
+                        <td title="'Issue Number'" filter="{ issueNumber: 'text'}" sortable="'issueNumber'"><p>{{paper.issueNumber}}</p></td>
+                        <td title="'Volume Number'" filter="{ volumeNumber: 'text'}" sortable="'volumeNumber'"><p>{{paper.volumeNumber}}</p></td>
+                        <td title="'Author(s)'" filter="{ authors: 'text'}" sortable="'authors'"><p>{{paper.authors}}</p></td>
+                        <td title="'Upload Time'" filter="{ upload_time: 'number'}" sortable="'upload_time'"><p>{{paper.upload_time}}</p></td>
+                    </tr>
+                  </table>
                   </div>
                   
                   <div class="clearfix"></div>

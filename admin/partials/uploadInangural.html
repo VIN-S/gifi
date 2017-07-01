@@ -30,7 +30,7 @@
                   <li ng-click="scroll(3)" class="active"><a><i class="fa fa-upload"></i> Upload Files <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" ng-class="scroll_menu_upload">
                       <li class="background-active"><a ng-click="uploadInangural()">Upload Inangural GIFI</a></li>
-                      <li><a ng-click="uploadResearch()">Upload Research Papers</a></li>
+                      <li><a ng-click="uploadResearchPaper()">Upload Research Papers</a></li>
                       <li><a href="ajax/upload_csv.php" target="_blank">Upload Ranking CSV </a></li>
                     </ul>
                   </li>
@@ -80,7 +80,7 @@
           </div>
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="dashboard_graph">
+                <div class="main-content">
                   <div class="row x_title">
                     <div class="col-md-5">
                       <h3>Upload Inangural GIFI<small></small></h3>
@@ -116,7 +116,7 @@
                         <td title="'Type'" filter="{ type: 'text'}" sortable="'type'"><p>{{document.type}}</p></td>
                         <td title="'Year'" filter="{ year: 'number'}" sortable="'year'"><p>{{document.year}}</p></td>
                         <td title="'Upload Time'" filter="{ upload_time: 'number'}" sortable="'upload_time'"><p>{{document.upload_time}}</p></td>
-                        <td title="'Action'"><button class="btn btn-danger" ng-click="delete(document.name, document.type, document.year)" >Delete</button></td>
+                        <td title="'Action'"><button class="btn btn-danger" ng-click="delete(document.name)" >Delete</button></td>
                     </tr>
                   </table>
                   </div>

@@ -35,40 +35,44 @@ app.controller('uploadInanguralCtrl',
     $scope.submit = function (file) {
         $scope.loader = true;
         $scope.file = file;
-        if (file) {
+        if($scope.pdfType == null || $scope.pdfType == "" || $scope.pdfYear == null || $scope.pdfYear == "" || file == null){
+            if($scope.pdfType == null || $scope.pdfType == "" || $scope.pdfYear == null || $scope.pdfYear == ""){
+                alert("Information Incomplete!");
+                $scope.loader = false;
+            }
+            else if(file == null){
+                alert("No File Selected!");
+                $scope.loader = false;
+            }
+        }else{
             Upload.upload({
-                url: 'ajax/uploadInanguralGIFIPDF.php',
-                method: 'POST',
-                data: {
-                    file: file
-                }
-            }).then(function (response) {
-                $timeout(function () {
-                    $scope.result = response.data;
-                    
-                    updateDatabase();
-
-                    function updateDatabase(){
-                        $http.post("ajax/insertUploadedPDFInfo.php?type="+$scope.pdfType+"&year="+$scope.pdfYear+"&name="+$scope.selectFileName)
-                        .then(function(response) {
-                            alert($scope.result);
-                            $route.reload();
-                        }, function(response){}).finally(function(){$scope.loader = false;}); 
+                    url: 'ajax/uploadInanguralGIFIPDF.php',
+                    method: 'POST',
+                    data: {
+                        file: file
                     }
-                });
-            }, function (response) {
-                if (response.status > 0) {
-                    $scope.errorMsg = response.status + ': ' + response.data;
-                    console.log($scope.errorMsg);
-                }
-            }, function (evt) {
-                
+                }).then(function (response) {
+                    $timeout(function () {
+                        $scope.result = response.data;
+                        
+                        updateDatabase();
+
+                        function updateDatabase(){
+                            $http.post("ajax/insertUploadedPDFInfo.php?type="+$scope.pdfType+"&year="+$scope.pdfYear+"&name="+$scope.selectFileName)
+                            .then(function(response) {
+                                alert($scope.result);
+                                $route.reload();
+                            }, function(response){}).finally(function(){$scope.loader = false;}); 
+                        }
+                    });
+                }, function (response) {
+                    if (response.status > 0) {
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                        console.log($scope.errorMsg);
+                    }
+                }, function (evt) {
+                    
             });
-        }else if($scope.pdfType == null || $scope.pdfType == "" || $scope.pdfYear == null || $scope.pdfYear == ""){
-            alert("Information Incomplete!");
-        }
-        else if(file == null){
-            alert("No File Selected!");
         }
     };
 
@@ -100,7 +104,7 @@ app.controller('uploadInanguralCtrl',
         }, function(response){}).finally(function(){$scope.loader = false;});
     };
 
-    $scope.delete = function(name, type, year){
+    $scope.delete = function(name){
         if(confirm("Are you going to delete "+name+"?"))
         {
             $http.post("ajax/deleteInanguralGIFIPDFRecord.php?name="+name)
