@@ -1,0 +1,127 @@
+
+    <div class="container body" >
+      <div class="main_container" ng-controller="dashboardController">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_info">
+                <h2>Welcome, admin!</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a href="#!/dashboard" ng-click="loadDashboard"><i class="fa fa-home"></i> Home </a>
+                  </li>
+<!--                   <li><a href="ajax/upload_csv.php" target="_blank"><i class="fa fa-edit"></i> Edit Ranking & Analysis Context</a>
+                  </li> -->
+                  <li ng-class="getTabClass(2)" ng-click="setActiveTab(2)"><a><i class="fa fa-edit"></i> Edit Content <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu" ng-class="scroll_menu_edit">
+                      <li><a ng-click="homeIntroduction()">Home - Introduction</a></li>
+                    </ul>
+                  </li>
+                  <li ng-click="scroll(3)" class="active"><a><i class="fa fa-upload"></i> Upload Files／Images <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu" ng-class="scroll_menu_upload">
+                      <li class="background-active"><a ng-click="uploadLogos()">Upload Footer Logo</a></li>
+                      <li><a ng-click="uploadComponentImages()">Upload Component Images</a></li>
+                      <li><a ng-click="uploadInangural()">Upload Inangural GIFI</a></li>
+                      <li><a ng-click="uploadResearchPaper()">Upload Research Papers</a></li>
+                      <li><a href="ajax/upload_csv.php" target="_blank">Upload Ranking CSV </a></li>
+                    </ul>
+                  </li>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" ng-click="adminLogout()">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    Admin
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a ng-click="adminLogout()"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" ng-controller="uploadComponentImagesCtrl">
+          <div class="spinner" ng-show="loader">
+            <img src="../img/ajax-loader.gif"/>
+          </div>
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="main-content">
+                  <div class="row x_title">
+                    <div class="col-md-5">
+                      <h3>Upload Component Images<small></small></h3>
+                    </div>
+                  </div>
+
+                  <div class="pdf-info">
+                    <div class="one-info">
+                      <span>Select Component: </span>
+                      <select ng-model="component" ng-options="y for y in componentList" ng-change="selectComponent(component)"></select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button class="btn btn-warning" ngf-select="selectFile(file)" ng-model="file" ngf-pattern="'image/*'" ngf-accept="'image/*'">Select</button>
+                    <span>Selected Image: {{ selectFileName }}</span><br><br>
+                    <button class="btn btn-success" type="submit" ng-click="submit(file)">Upload</button>
+                    <span>Image will be renamed after uploaded.</span>
+                  </div><br>
+
+                  <div class="row x_title">
+                    <div class="col-md-5">
+                      <h3>Existing Component Images<small></small></h3>
+                    </div>
+                  </div>
+                  <div class="document-table">
+                    <table ng-table="tableParams" class="table" show-filter="false">
+                    <tr ng-repeat="componentImage in $data" ng-class="'row' + ($index % 2)">
+                        <td title="'File Name'" filter="{ fileName: 'text'}" sortable="'fileName'"><p>{{componentImage.fileName}}</p></td>
+                        <td title="'Component'" filter="{ component: 'text'}" sortable="'component'"><p>{{componentImage.component}}</p></td>
+                        <td title="'Upload Time'" filter="{ upload_time: 'number'}" sortable="'upload_time'"><p>{{componentImage.upload_time}}</p></td>
+                        <td title="'Action'"><button class="btn btn-danger" ng-click="delete(componentImage.fileName)" >Delete</button></td>
+                    </tr>
+                  </table>
+                  </div>
+                  
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- page content -->

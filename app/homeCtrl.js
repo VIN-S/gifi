@@ -228,7 +228,25 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
     $scope.componentName = $rootScope.rankComponentNames[tabNum-1];
     $scope.content = tabContents[tabNum-1]['contents'];
     $scope.factors = tabContents[tabNum-1]['factor'];
-    $scope.componentImgSrc = 'img/components/component_'+tabNum+'.jpg';
+    if(tabNum == 1){
+        $scope.componentImgSrc = 'admin/ajax/component_images/legal_and_regulatory_environment.jpg';
+    }else if(tabNum == 2){
+        $scope.componentImgSrc = 'admin/ajax/component_images/market_development.jpg';
+    }else if(tabNum == 3){
+        $scope.componentImgSrc = 'admin/ajax/component_images/exchange_controls_and_capital_restriction.jpg';
+    }else if(tabNum == 4){
+        $scope.componentImgSrc = 'admin/ajax/component_images/corporate_governance.jpg';
+    }else if(tabNum == 5){
+        $scope.componentImgSrc = 'admin/ajax/component_images/aum_levels_and_growth.jpg';
+    }else if(tabNum == 6){
+        $scope.componentImgSrc = 'admin/ajax/component_images/banking_system.jpg';
+    }else if(tabNum == 7){
+        $scope.componentImgSrc = 'admin/ajax/component_images/ease_of_doing_business.jpg';
+    }else if(tabNum == 8){
+        $scope.componentImgSrc = 'admin/ajax/component_images/political_environment.jpg';
+    }else if(tabNum == 9){
+        $scope.componentImgSrc = 'admin/ajax/component_images/accounting_system.jpg';
+    }
 
   };
   
