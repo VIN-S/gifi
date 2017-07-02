@@ -20,27 +20,25 @@
       To access the full report, executive summary or appendices please click on the icons below:
     </div>
 
-    <div class="download-container col-md-10">
-      <div class="col-md-2 col-sm-2 col-xs-2 one-pdf-container" ng-repeat="pdf in pdfLists">
+    <div class="download-container col-md-9 col-sm-9 col-xs-9">
+      <div class="col-md-2 col-sm-3 col-xs-4 one-pdf-container" ng-repeat="pdf in pdfLists">
         <div class="download-image">
           <img ng-src="{{ pdf.downloadImageSrc }}"/>
         </div>
         <br>
         <div class="download-fileName">
-          <span>
-            {{ pdf.name }}
-          </span>
+          <a ng-href="{{pdf.link}}" target="_blank">{{ pdf.name }}</a>
         </div>
       </div>
     </div>
 
-    <div class="red-title">
+    <div class="red-title col-md-12 col-sm-12 col-xs-12">
       <span>
         Historical indices
       </span>
     </div>
 
-    <div class="normal-text">
+    <div class="normal-text col-md-12 col-sm-12 col-xs-12">
       For the full reports of previous indices, please click on the links below:
     </div>
 

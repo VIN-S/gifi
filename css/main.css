@@ -768,7 +768,6 @@ body, html {
 
 .red-title{
 	padding: 5px 15px 5px 15px;
-	display: inline-block;
 }
 
 .red-title span{
@@ -792,7 +791,7 @@ body, html {
 	text-align: center;
 }	
 
-.download-fileName span{
+.download-fileName a{
 	color: #5e9cd3;
 	text-decoration: underline;
 	cursor: pointer;
