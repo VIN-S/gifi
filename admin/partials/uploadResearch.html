@@ -27,8 +27,10 @@
                       <li><a ng-click="homeIntroduction()">Home - Introduction</a></li>
                     </ul>
                   </li>
-                  <li ng-click="scroll(3)" class="active"><a><i class="fa fa-upload"></i> Upload Files <span class="fa fa-chevron-down"></span></a>
+                  <li ng-click="scroll(3)" class="active"><a><i class="fa fa-upload"></i> Upload Files／Images <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" ng-class="scroll_menu_upload">
+                      <li><a ng-click="uploadLogos()">Upload Footer Logo</a></li>
+                      <li><a ng-click="uploadComponentImages()">Upload Component Images</a></li>
                       <li><a ng-click="uploadInangural()">Upload Inangural GIFI</a></li>
                       <li class="background-active"><a ng-click="uploadResearchPaper()">Upload Research Papers</a></li>
                       <li><a href="ajax/upload_csv.php" target="_blank">Upload Ranking CSV </a></li>

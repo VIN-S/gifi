@@ -29,6 +29,16 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl:    'partials/uploadResearch.html',
       controller:     'UploadResearchCtrl'
     })
+    .when('/uploadLogos',
+    {
+      templateUrl:    'partials/uploadLogos.html',
+      controller:     'UploadLogosCtrl'
+    })
+    .when('/uploadComponentImages',
+    {
+      templateUrl:    'partials/uploadComponentImages.html',
+      controller:     'UploadComponentImagesCtrl'
+    })
     .otherwise(
     {
       redirectTo:     '/login'
@@ -88,6 +98,14 @@ app.controller('adminMainController',
     $scope.uploadResearchPaper = function(){
         $location.url('/uploadResearch');
     };
+
+    $scope.uploadLogos = function(){
+        $location.url('/uploadLogos');
+    };
+
+    $scope.uploadComponentImages = function(){
+        $location.url('/uploadComponentImages');
+    };
 }]);
 
 app.controller('DashboardCtrl', function($scope, $compile) {
@@ -108,4 +126,12 @@ app.controller('UploadInanguralCtrl', function($scope, $compile) {
 
 app.controller('UploadResearchCtrl', function($scope, $compile) {
   console.log('inside upload research controller');
+});
+
+app.controller('UploadLogosCtrl', function($scope, $compile) {
+  console.log('inside upload logos controller');
+});
+
+app.controller('UploadComponentImagesCtrl', function($scope, $compile) {
+  console.log('inside upload component images controller');
 });
