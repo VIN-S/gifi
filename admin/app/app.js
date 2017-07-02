@@ -39,6 +39,11 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl:    'partials/uploadComponentImages.html',
       controller:     'UploadComponentImagesCtrl'
     })
+    .when('/manageRankingCSV',
+    {
+      templateUrl:    'partials/manageRankingCSV.html',
+      controller:     'ManageRankingCSVCtrl'
+    })
     .otherwise(
     {
       redirectTo:     '/login'
@@ -106,6 +111,10 @@ app.controller('adminMainController',
     $scope.uploadComponentImages = function(){
         $location.url('/uploadComponentImages');
     };
+
+    $scope.manageRankingCSV = function(){
+        $location.url('/manageRankingCSV');
+    }
 }]);
 
 app.controller('DashboardCtrl', function($scope, $compile) {
@@ -134,4 +143,8 @@ app.controller('UploadLogosCtrl', function($scope, $compile) {
 
 app.controller('UploadComponentImagesCtrl', function($scope, $compile) {
   console.log('inside upload component images controller');
+});
+
+app.controller('ManageRankingCSVCtrl', function($scope, $compile) {
+  console.log('inside manage ranking csv controller');
 });
