@@ -768,6 +768,7 @@ body, html {
 
 .red-title{
 	padding: 5px 15px 5px 15px;
+	display: inline-block;
 }
 
 .red-title span{
@@ -782,7 +783,20 @@ body, html {
 .download-container{
 	padding: 15px 20px 15px 20px;
 }
-	
+
+.download-container .download-image img{
+	width: 100%;
+}
+
+.one-pdf-container{
+	text-align: center;
+}	
+
+.download-fileName span{
+	color: #5e9cd3;
+	text-decoration: underline;
+	cursor: pointer;
+}
 /* ------------- end of research and publication css ------------- */
 
 /* ------------- about us css ------------- */
