@@ -49,11 +49,17 @@ if(isset($_POST["import"]) && !empty($_FILES)) {
 			 }
 
 			 $import_data = implode(",", $import_data);
-
-			 $query = "INSERT INTO ranks(country, investor_friendliness_rank,legal_and_regulatory_environment,market_development,exchange_controls_and_capital_restriction,corporate_governance,aum_levels_and_growth,banking_system,ease_of_doing_business,political_environment,accounting_system,year_of_data,region) VALUES  $import_data ;";
+			 //insert csv data
+			 $query = "REPLACE INTO ranks(country, investor_friendliness_rank,legal_and_regulatory_environment,market_development,exchange_controls_and_capital_restriction,corporate_governance,aum_levels_and_growth,banking_system,ease_of_doing_business,political_environment,accounting_system,year_of_data,region) VALUES  $import_data ;";
 			 $result = mysqli_query($connect ,$query);
 			 $message .="Data imported successfully.";
 			 fclose($getdata);
+
+			 //insert csv file info
+			 $fileName = basename($_FILES["fileToUpload"]["name"]);
+
+			 $query_rankingcsv = "REPLACE INTO rankingcsv(csvname, year) VALUES('$fileName', '$year_of_data');";
+			 $result = mysqli_query($connect ,$query_rankingcsv);
 			}
  
 		} else {
