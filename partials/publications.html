@@ -42,8 +42,12 @@
       For the full reports of previous indices, please click on the links below:
     </div>
 
-    <div class="download-container">
-
+    <div class="download-container col-md-9 col-sm-9 col-xs-9">
+      <div class="col-md-2 col-sm-3 col-xs-4 one-pdf-container" ng-repeat="pdf in historicalIndicesList">
+        <div class="download-fileName">
+          <a ng-href="{{pdf.link}}" target="_blank">{{ pdf.displayName }}</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

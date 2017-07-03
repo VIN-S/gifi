@@ -1,10 +1,11 @@
 //controller for home page
 app.controller("researchPublicationCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams', '$location', '$anchorScroll',  
   function ($http, $scope, $rootScope, NgTableParams, $location, $anchorScroll) {
-  	getLatestInanguralPDF();
+  	$scope.loader = true;
+
+    getLatestInanguralPDF();
 
   	function getLatestInanguralPDF(){
-  		$scope.loader = true;
   		$http.post("ajax/getInanguralGIFIData.php")
         .then(function(response) {
 
@@ -50,6 +51,34 @@ app.controller("researchPublicationCtrl", ['$http', '$scope', '$rootScope', 'NgT
                   }
               }
 
-        }, function(response){}).finally(function(){$scope.loader = false;});
+        })
   	};
+
+    getHistoricalIndices();
+
+    function getHistoricalIndices(){
+        $http.post("ajax/getHistoricalIndices.php")
+        .then(function(response) {
+
+            var temp=response.data.split("//");
+
+            $scope.historicalIndicesList = [];
+            var tempList = [];
+
+            for(var i = 0;i<temp.length;i++){
+              if(temp[i] !== undefined && temp[i] !==null && temp[i] !== ""){
+                tempList[i] = JSON.parse(temp[i]);
+                tempList[i]['year'] = parseInt(tempList[i]['yearOfDocument']);
+
+                $scope.historicalIndicesList[i] = tempList[i];
+              }
+            };
+
+            for(var i=0;i < temp.length-1;i++){
+                $scope.historicalIndicesList[i]['link'] = 'admin/ajax/uploaded_pdf/'+$scope.historicalIndicesList[i]['name'];
+                $scope.historicalIndicesList[i]['displayName'] = $scope.historicalIndicesList[i]['yearOfDocument'] + " GIFI";
+            }
+
+        }, function(response){}).finally(function(){$scope.loader = false;});
+    }
 }]);
