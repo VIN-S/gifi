@@ -29,7 +29,8 @@
                   </li>
                   <li ng-click="scroll(3)" class="active"><a><i class="fa fa-upload"></i> Upload Files／Images <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" ng-class="scroll_menu_upload">
-                      <li class="background-active"><a ng-click="uploadLogos()">Upload Footer Logo</a></li>
+                      <li><a ng-click="uploadFooterLogos()">Upload Footer Logo</a></li>
+                      <li class="background-active"><a ng-click="uploadGIFILogo()">Upload GIFI Logo</a></li>
                       <li><a ng-click="uploadComponentImages()">Upload Component Images</a></li>
                       <li><a ng-click="uploadInangural()">Upload Inangural GIFI</a></li>
                       <li><a ng-click="uploadResearchPaper()">Upload Research Papers</a></li>
@@ -77,7 +78,7 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main" ng-controller="uploadLogosCtrl">
+        <div class="right_col" role="main" ng-controller="uploadGIFILogoCtrl">
           <div class="spinner" ng-show="loader">
             <img src="../img/ajax-loader.gif"/>
           </div>
@@ -86,14 +87,7 @@
                 <div class="main-content">
                   <div class="row x_title">
                     <div class="col-md-5">
-                      <h3>Upload Footer Logos<small></small></h3>
-                    </div>
-                  </div>
-
-                  <div class="pdf-info">
-                    <div class="one-info">
-                      <span>Select Logo Type: </span>
-                      <select ng-model="logoType" ng-options="y for y in logoTypeList" ng-change="selectLogoType(logoType)"></select>
+                      <h3>Upload GIFI Logos<small></small></h3>
                     </div>
                   </div>
 
@@ -106,14 +100,13 @@
 
                   <div class="row x_title">
                     <div class="col-md-5">
-                      <h3>Existing Footer Logos<small></small></h3>
+                      <h3>Existing GIFI Logos<small></small></h3>
                     </div>
                   </div>
                   <div class="document-table">
                     <table ng-table="tableParams" class="table" show-filter="false">
                     <tr ng-repeat="logo in $data" ng-class="'row' + ($index % 2)">
                         <td title="'File Name'" filter="{ fileName: 'text'}" sortable="'fileName'"><p>{{logo.fileName}}</p></td>
-                        <td title="'Type'" filter="{ type: 'text'}" sortable="'type'"><p>{{logo.type}}</p></td>
                         <td title="'Upload Time'" filter="{ upload_time: 'number'}" sortable="'upload_time'"><p>{{logo.upload_time}}</p></td>
                         <td title="'Action'"><button class="btn btn-danger" ng-click="delete(logo.fileName)" >Delete</button></td>
                     </tr>

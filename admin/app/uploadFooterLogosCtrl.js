@@ -1,4 +1,4 @@
-app.controller('uploadLogosCtrl', 
+app.controller('uploadFooterLogosCtrl', 
 ['$scope', '$location', '$http', 'cookieService', 'Upload', '$timeout', 'NgTableParams', '$route', 
     function($scope, $location, $http, cookieService, Upload, $timeout, NgTableParams, $route) {
     $scope.loader = true;
@@ -52,7 +52,7 @@ app.controller('uploadLogosCtrl',
                     updateDatabase();
 
                     function updateDatabase(){
-                        $http.post("ajax/insertUploadedLogoInfo.php?name="+$scope.newFileName+"&type="+$scope.logoType)
+                        $http.post("ajax/insertUploadedFooterLogoInfo.php?name="+$scope.newFileName+"&type="+$scope.logoType)
                         .then(function(response) {
                             alert($scope.result);
                             $route.reload();

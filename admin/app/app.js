@@ -29,10 +29,15 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl:    'partials/uploadResearch.html',
       controller:     'UploadResearchCtrl'
     })
-    .when('/uploadLogos',
+    .when('/uploadFooterLogos',
     {
-      templateUrl:    'partials/uploadLogos.html',
-      controller:     'UploadLogosCtrl'
+      templateUrl:    'partials/uploadFooterLogos.html',
+      controller:     'UploadFooterLogosCtrl'
+    })
+    .when('/uploadGIFILogo',
+    {
+      templateUrl:    'partials/uploadGIFILogo.html',
+      controller:     'UploadGIFILogoCtrl'
     })
     .when('/uploadComponentImages',
     {
@@ -104,8 +109,12 @@ app.controller('adminMainController',
         $location.url('/uploadResearch');
     };
 
-    $scope.uploadLogos = function(){
-        $location.url('/uploadLogos');
+    $scope.uploadFooterLogos = function(){
+        $location.url('/uploadFooterLogos');
+    };
+
+    $scope.uploadGIFILogo = function(){
+        $location.url('/uploadGIFILogo');
     };
 
     $scope.uploadComponentImages = function(){
@@ -137,8 +146,12 @@ app.controller('UploadResearchCtrl', function($scope, $compile) {
   console.log('inside upload research controller');
 });
 
-app.controller('UploadLogosCtrl', function($scope, $compile) {
-  console.log('inside upload logos controller');
+app.controller('UploadFooterLogosCtrl', function($scope, $compile) {
+  console.log('inside upload footer logos controller');
+});
+
+app.controller('UploadGIFILogoCtrl', function($scope, $compile) {
+  console.log('inside upload gifi logo controller');
 });
 
 app.controller('UploadComponentImagesCtrl', function($scope, $compile) {
