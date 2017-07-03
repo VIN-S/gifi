@@ -58,7 +58,7 @@ if(isset($_POST["import"]) && !empty($_FILES)) {
 			 //insert csv file info
 			 $fileName = basename($_FILES["fileToUpload"]["name"]);
 
-			 $query_rankingcsv = "REPLACE INTO rankingcsv(csvname, year) VALUES('$fileName', '$year_of_data');";
+			 $query_rankingcsv = "REPLACE INTO rankingCSV(csvname, year) VALUES('$fileName', '$year_of_data');";
 			 $result = mysqli_query($connect ,$query_rankingcsv);
 			}
  

@@ -2,6 +2,8 @@ app.controller('manageRankingCSVCtrl',
 ['$scope', '$location', '$http', 'cookieService', 'Upload', '$timeout', 'NgTableParams', '$route', 
     function($scope, $location, $http, cookieService, Upload, $timeout, NgTableParams, $route) {
     
+    $scope.loader = true;
+
     getDocumensData();
 
     function getDocumensData(){
