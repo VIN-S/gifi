@@ -11,7 +11,20 @@
     </div>
 
     <div class="download-container">
-
+      <div class="one-paper-container" ng-repeat="pdf in researchPapers">
+        <div class="download-image col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-2 col-sm-4 col-xs-5">
+            <img src="img/pdf_icon.jpg"/>
+          </div>
+          <div class="research-paper col-md-3 col-sm-3 col-xs-3">
+            <a ng-href="{{pdf.link}}" target="_blank">
+              {{ pdf.displayNameFirstLine }}<br>
+              {{ pdf.displayNameSecondLine }}<br>
+              {{ pdf.displayNameThirdLine }}
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -55,6 +55,14 @@ app.controller('uploadResearchPaperCtrl',
                 $scope.loader = false;
             }
         }else{
+            if($scope.issueNumber == null || $scope.issueNumber == ""){
+                $scope.issueNumber = "N.A.";
+            }
+
+            if($scope.volumeNumber == null || $scope.volumeNumber == ""){
+                $scope.volumeNumber = "N.A.";
+            }
+
             Upload.upload({
                 url: 'ajax/uploadResearchPaper.php',
                 method: 'POST',

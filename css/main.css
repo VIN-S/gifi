@@ -787,14 +787,26 @@ body, html {
 	width: 100%;
 }
 
+.one-paper-container .download-image img{
+	width: 80%;
+}
+
 .one-pdf-container{
 	text-align: center;
+}	
+
+.one-paper-container{
+	text-align: left;
 }	
 
 .download-fileName a{
 	color: #5e9cd3;
 	text-decoration: underline;
 	cursor: pointer;
+}
+
+.research-paper{
+	margin-top: 20px;
 }
 /* ------------- end of research and publication css ------------- */
 
