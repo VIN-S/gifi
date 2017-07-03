@@ -33,12 +33,14 @@ app.controller("researchPublicationCtrl", ['$http', '$scope', '$rootScope', 'NgT
             };
 
             for(var i = 0;i < 5;i++){
-            	$scope.pdfLists[i]['link'] = 'admin/ajax/uploaded_pdf/'+$scope.pdfLists[i]['name'];
-            	if($scope.pdfLists[i]['documentType'] == 'Full Report'){
-                	$scope.pdfLists[i]['downloadImageSrc'] = 'admin/ajax/uploaded_gifi_logo/gifi-logo.jpg';
-                }else{
-                	$scope.pdfLists[i]['downloadImageSrc'] = 'img/pdf_icon.jpg';
-                }
+            	if($scope.pdfLists[i]['name'] != null && $scope.pdfLists[i]['name'] != ''){
+	            	$scope.pdfLists[i]['link'] = 'admin/ajax/uploaded_pdf/'+$scope.pdfLists[i]['name'];
+	            	if($scope.pdfLists[i]['documentType'] == 'Full Report'){
+	                	$scope.pdfLists[i]['downloadImageSrc'] = 'admin/ajax/uploaded_gifi_logo/gifi-logo.jpg';
+	                }else{
+	                	$scope.pdfLists[i]['downloadImageSrc'] = 'img/pdf_icon.jpg';
+	                }
+            	}
             }
 
         }, function(response){}).finally(function(){$scope.loader = false;});
