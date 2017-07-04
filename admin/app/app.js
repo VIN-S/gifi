@@ -19,6 +19,11 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl:    'partials/home-introduction.html',
       controller:     'HomeIntroductionCtrl'
     })
+    .when('/home-component',
+    {
+      templateUrl:    'partials/home-component.html',
+      controller:     'HomeComponentCtrl'
+    })
     .when('/uploadInangural',
     {
       templateUrl:    'partials/uploadInangural.html',
@@ -101,6 +106,10 @@ app.controller('adminMainController',
         $location.url('/home-introduction');
     }
 
+    $scope.homeComponent = function(){
+        $location.url('/home-component');
+    }
+
     $scope.uploadInangural = function(){
         $location.url('/uploadInangural');
     };
@@ -136,6 +145,10 @@ app.controller('LoginCtrl', function($scope, $compile) {
 
 app.controller('HomeIntroductionCtrl', function($scope, $compile) {
   console.log('inside home introduction controller');
+});
+
+app.controller('HomeComponentCtrl', function($scope, $compile) {
+  console.log('inside home component controller');
 });
 
 app.controller('UploadInanguralCtrl', function($scope, $compile) {

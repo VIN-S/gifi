@@ -25,6 +25,7 @@
                   <li ng-click="scroll(2)" class="active"><a><i class="fa fa-edit"></i> Edit Content <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" ng-class="scroll_menu_edit">
                       <li class="background-active"><a ng-click="homeIntroduction()">Home - Introduction</a></li>
+                      <li><a ng-click="homeComponent()">Home - Component</a></li>
                     </ul>
                   </li>
                   <li ng-class="getTabClass(3)" ng-click="setActiveTab(3)"><a><i class="fa fa-upload"></i> Upload Files／Images <span class="fa fa-chevron-down"></span></a>
@@ -98,9 +99,6 @@
                     <h2>
                       New Introduction Content
                     </h2>
-                    <span>
-                      Important: Insert &lt;/br&gt; to start a new line
-                    </span>
                     <textarea rows="8" ng-model="newIntroductionContent"/>
                     <button ng-click="changeHomeIntroduction(newIntroductionContent)" style="margin-top: 5px">Update</button>
                   </div>
