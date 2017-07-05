@@ -79,31 +79,59 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main" ng-controller="homeIntroductionCtrl">
+        <div class="right_col" role="main" ng-controller="homeComponentCtrl">
+          <div class="spinner" ng-show="loader">
+            <img src="../img/ajax-loader.gif"/>
+          </div>
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="main-content">
                   <div class="row x_title">
                     <div class="col-md-5">
-                      <h3>Edit Home Introduction Content<small></small></h3>
+                      <h3>Edit Home Component Content<small></small></h3>
                     </div>
                   </div>
 
                   <div class="col-md-12 col-sm-12 col-xs-12">
                     <h2>
-                      Current Introduction Content
+                      Current Component Content
                     </h2>
-                    <div class="current-introduction-content" id="current-introduction-content">
+                    <div class="pdf-info">
+                      <div class="one-info">
+                        <span>Select Component: </span>
+                        <select ng-model="component" ng-options="y for y in componentList" ng-change="selectComponent(component)"></select>
+                      </div>
+                    </div>
+                    <div class="pdf-info current-component">
+                      <span>
+                        {{component}}
+                      </span>
+                      <div class="current-component-description" id="current-component-description"></div>
+                      <div ng-repeat="factor in factors" class='content-factor'>
+                        <span class="glyphicon glyphicon-chevron-right orange"></span>&nbsp;{{factor}}
+                      </div>
                     </div>
                     <div class="partingline"></div>
                     <h2>
-                      New Introduction Content
+                      New Component Content
                     </h2>
-                    <span>
-                      Important: Insert &lt;/br&gt; to start a new line
-                    </span>
-                    <textarea rows="8" ng-model="newIntroductionContent"/>
-                    <button ng-click="changeHomeIntroduction(newIntroductionContent)" style="margin-top: 5px">Update</button>
+                    <div class="pdf-info">
+                      <div class="one-info">
+                        <span>Select Component: </span>
+                        <select ng-model="componentNew" ng-options="y for y in componentList" ng-change="selectComponentNew(componentNew)"></select>
+                      </div>
+                    </div>
+                    <div class="pdf-info new-component">
+                      <span>New Component Description: </span>
+                      <textarea rows="3" ng-model="newComponentContent" ng-change="inputNewComponentContent(newComponentContent)" style="width: 30%;" /><br>
+                      <span>New Component Factor: </span>
+                      <div ng-repeat="factor in newFactors">
+                        <span>factor {{factor.id}}:&nbsp;&nbsp;</span><input ng-model="factor.factor" ></input>
+                      </div>
+
+                      <button ng-click="addNewFactor()">Add More Factor</button>
+                    </div>
+                    <button class="btn btn-success" ng-click="changeHomeComponent(newComponentContent)" style="margin-top: 5px">Update</button>
                   </div>
                   
                   <div class="clearfix"></div>
