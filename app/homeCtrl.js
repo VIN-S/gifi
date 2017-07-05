@@ -10,6 +10,21 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
   ];
 
+  var tabClasses;
+
+  //Initialize 
+  initTabs();
+  
+  function initTabs() {
+    tabClasses = ["","","","","","","","",""];
+  }
+
+  tabClasses[1] = 'active';
+
+  $scope.getTabClass = function (tabNum) {
+    return tabClasses[tabNum];
+  };
+
   $scope.goal.series = [ 'Ranks' ];
   $scope.goal.labels = $rootScope.rankComponentNames;
 
@@ -140,94 +155,59 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
     return activeTab[tabNum];
   };
 
-  var tabClasses;
-  var tabContents = 
-      [
-        {
-          'contents': 'Measures the degree to which the rule of the law is implemented: ',
-          'factor':[
-            'Strength of Institutions',
-            'Effectiveness of enforcement',
-            'Commitment to Global AML'
-          ]
-        },
-        {
-          'contents': 'Measures the volume, breadth and depth of the instruments and facilities to investors: ',
-          'factor':[
-            'Market activity',
-            'Access to credit',
-            'Efficiency of Financial services sector'
-          ]
-        },
-        {
-          'contents': 'Measures the ease with which investments can flow in and out of the country: ',
-          'factor':[
-            'Currecy stability',
-            'Investment Flow'
-          ]
-        },
-        {
-          'contents': 'Measures the state of corporate governance in the country: ',
-          'factor':[
-            'Shareholder protection',
-            'Ethical Behaviour of firms',
-            'Efficacy of Corporate Boards'
-          ]
-        },
-        {
-          'contents': 'Measures the level of growth of assets under management by managers: ',
-          'factor':[
-            'Growth of assets under management',
-            'Global inflows and outflows of assets'
-          ]
-        },
-        {
-          'contents': 'Measures the development of the banking system in terms of the soundness of banks, their ability to handle financial crisis as well as confidence in the banking system: ',
-          'factor':[
-            'Banking system stability',
-            'Risk of sovereign debt crisis',
-            'Size of banking sector',
-            'Efficieny of banking system'
-          ]
-        },
-        {
-          'contents': 'Measures the ease with which business can be conducted and an investment advisor(corporate form) can be setup: ',
-          'factor':[
-            'Cost of doing business',
-            'Taxation',
-            'Infrastructure'
-          ]
-        },
-        {
-          'contents': 'Measures the stability of the political environment, including policy making, transfer of political power and political risk: ',
-          'factor':[
-            'Ethics and corruption',
-            'Government Efficiency',
-            'Constraints on government policies'
-          ]
-        },
-        {
-          'contents': 'Measures the degree to which international accounting standards are adopted and implemented: ',
-          'factor':[
-            'Commitment to Global Financial Reporting Standards'
-          ]
+  var tabContents = [];
+
+  getComponentContent();
+
+  function getComponentContent(){
+    for(var i = 0; i < $rootScope.rankComponentNames.length; i++){
+      var component = $rootScope.rankComponentNames[i]
+
+      if(i == 0 || i == 2 || i == 4){
+        component = component.replace('&', 'and');
+      }
+      $http.post("ajax/getComponentContent.php?component="+component)
+      .then(function(response) {
+        var temp=response.data.split("//");
+
+        var dataset = [];
+
+        var tempFactors = [];
+
+        var tempContent;
+
+        for(var i=0;i<temp.length;i++){
+          if(temp[i] !== undefined && temp[i] !==null && temp[i] !== ""){
+            dataset[i] = JSON.parse(temp[i]);
+            
+            tempContent = dataset[i]['description'];
+            tempFactors.push(dataset[i]['factor']);
+
+            if(i == 0){
+              $scope.componentImgSrc = 'admin/ajax/component_images/legal_and_regulatory_environment.jpg';
+              $scope.componentName = $rootScope.rankComponentNames[0];
+              $scope.content = tempContent;
+              $scope.factors = tempFactors;
+            }      
+          }
         }
-      ];
-  
-  function initTabs() {
-    tabClasses = ["","","","","","","","",""];
+
+        var tempComponent = {
+          'contents': tempContent,
+          'factors': tempFactors
+        }
+
+        tabContents.push(tempComponent);
+      });
+    }
   }
-  
-  $scope.getTabClass = function (tabNum) {
-    return tabClasses[tabNum];
-  };
   
   $scope.setActiveTab = function (tabNum) {
     initTabs();
     tabClasses[tabNum] = "active";
     $scope.componentName = $rootScope.rankComponentNames[tabNum-1];
     $scope.content = tabContents[tabNum-1]['contents'];
-    $scope.factors = tabContents[tabNum-1]['factor'];
+    $scope.factors = tabContents[tabNum-1]['factors'];
     if(tabNum == 1){
         $scope.componentImgSrc = 'admin/ajax/component_images/legal_and_regulatory_environment.jpg';
     }else if(tabNum == 2){
@@ -247,13 +227,8 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
     }else if(tabNum == 9){
         $scope.componentImgSrc = 'admin/ajax/component_images/accounting_system.jpg';
     }
-
   };
   
-  //Initialize 
-  initTabs();
-  $scope.setActiveTab(1);
-
   //Modular Content
   getIntroductionText();
 
