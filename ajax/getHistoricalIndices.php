@@ -1,7 +1,7 @@
 <?php 
 require_once '../includes/db.php'; // The mysql database connection script
 
-	$query="SELECT * FROM inanguralPDF WHERE documentType = 'Full Report' ORDER BY yearOfDocument DESC";
+	$query="SELECT * FROM inauguralPDF WHERE documentType = 'Full Report' ORDER BY yearOfDocument DESC";
 	$result = mysqli_query($connect, $query);
 
 	while ($row = mysqli_fetch_array($result)) {

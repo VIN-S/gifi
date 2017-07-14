@@ -24,10 +24,10 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl:    'partials/home-component.html',
       controller:     'HomeComponentCtrl'
     })
-    .when('/uploadInangural',
+    .when('/uploadInaugural',
     {
-      templateUrl:    'partials/uploadInangural.html',
-      controller:     'UploadInanguralCtrl'
+      templateUrl:    'partials/uploadInaugural.html',
+      controller:     'UploadInauguralCtrl'
     })
     .when('/uploadResearch',
     {
@@ -110,8 +110,8 @@ app.controller('adminMainController',
         $location.url('/home-component');
     }
 
-    $scope.uploadInangural = function(){
-        $location.url('/uploadInangural');
+    $scope.uploadInaugural = function(){
+        $location.url('/uploadInaugural');
     };
 
     $scope.uploadResearchPaper = function(){
@@ -151,8 +151,8 @@ app.controller('HomeComponentCtrl', function($scope, $compile) {
   console.log('inside home component controller');
 });
 
-app.controller('UploadInanguralCtrl', function($scope, $compile) {
-  console.log('inside upload inangural controller');
+app.controller('UploadInauguralCtrl', function($scope, $compile) {
+  console.log('inside upload inaugural controller');
 });
 
 app.controller('UploadResearchCtrl', function($scope, $compile) {

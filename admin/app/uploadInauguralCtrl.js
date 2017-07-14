@@ -1,4 +1,4 @@
-app.controller('uploadInanguralCtrl', 
+app.controller('uploadInauguralCtrl', 
 ['$scope', '$location', '$http', 'cookieService', 'Upload', '$timeout', 'NgTableParams', '$route', 
     function($scope, $location, $http, cookieService, Upload, $timeout, NgTableParams, $route) {
     $scope.loader = true;
@@ -46,7 +46,7 @@ app.controller('uploadInanguralCtrl',
             }
         }else{
             Upload.upload({
-                    url: 'ajax/uploadInanguralGIFIPDF.php',
+                    url: 'ajax/uploadInauguralGIFIPDF.php',
                     method: 'POST',
                     data: {
                         file: file
@@ -79,7 +79,7 @@ app.controller('uploadInanguralCtrl',
     getDocumensData();
 
     function getDocumensData(){
-        $http.post("ajax/getInanguralGIFIData.php")
+        $http.post("ajax/getInauguralGIFIData.php")
         .then(function(response) {
             var temp=response.data.split("//");
 
@@ -107,11 +107,11 @@ app.controller('uploadInanguralCtrl',
     $scope.delete = function(name){
         if(confirm("Are you going to delete "+name+"?"))
         {
-            $http.post("ajax/deleteInanguralGIFIPDFRecord.php?name="+name)
+            $http.post("ajax/deleteInauguralGIFIPDFRecord.php?name="+name)
             .then(function(response) {
             });
 
-            $http.post("ajax/deleteInanguralGIFIPDF.php?name="+name)
+            $http.post("ajax/deleteInauguralGIFIPDF.php?name="+name)
             .then(function(response) {
                 alert(response.data);
                 $route.reload();

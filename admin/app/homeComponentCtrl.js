@@ -1,7 +1,5 @@
 app.controller('homeComponentCtrl', 
 ['$scope', '$location', '$http', 'cookieService', '$route', function($scope, $location, $http, cookieService, $route) {
-    $scope.loader = true;
-
     $scope.componentList = [
       'Legal and Regulatory Environment', 
       'Market Development', 
@@ -16,9 +14,9 @@ app.controller('homeComponentCtrl',
 
     $scope.component = $scope.componentList[0];
 
-    getCurrentComponentText($scope.componentList[0]);
-
     $scope.selectComponent = function(component){
+        $scope.loader = true;
+        
         getCurrentComponentText(component);
 
         function getCurrentComponentText(component){
@@ -115,35 +113,4 @@ app.controller('homeComponentCtrl',
             } 
         }
     };
-
-    function getCurrentComponentText(component){
-            $http.post("ajax/getCurrentHomeComponentText.php?component="+component)
-            .then(function(response) {
-                var results = response.data;
-                var content = results['description']; 
-                document.getElementById('current-component-description').innerHTML = content;
-            })
-
-            $http.post("ajax/getCurrentHomeComponentFactors.php?component="+component)
-            .then(function(response) {
-
-                var temp=response.data.split("//");
-
-                var dataset = [];
-                for(var i=0;i<temp.length;i++){
-                  if(temp[i] !== undefined && temp[i] !==null && temp[i] !== ""){
-                    dataset[i] = JSON.parse(temp[i]);
-                  }
-                }
-
-                $scope.tempList = [];
-
-                for(var i=0;i<dataset.length;i++){
-                    $scope.tempList.push(dataset[i]['factor']);
-                }
-
-                $scope.factors = $scope.tempList;
-
-            }, function(response){}).finally(function(){$scope.loader = false;})
-    }; 
 }]);

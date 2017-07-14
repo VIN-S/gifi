@@ -2,7 +2,7 @@
 require_once '../includes/db.php'; // The mysql database connection script
 
 
-	$query="SELECT * FROM inanguralPDF WHERE yearOfDocument = (SELECT MAX(yearOfDocument) FROM inanguralPDF)";
+	$query="SELECT * FROM inauguralPDF WHERE yearOfDocument = (SELECT MAX(yearOfDocument) FROM inauguralPDF)";
 	$result = mysqli_query($connect, $query);
 
 	while ($row = mysqli_fetch_array($result)) {

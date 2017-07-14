@@ -5,6 +5,6 @@ require_once '../includes/dbConfig.php'; // The mysql database connection script
 	$year = $_GET['year'];
 	$name = $_GET['name'];
 
-	$query="REPLACE INTO inanguralPDF(name, yearOfDocument, documentType) VALUES('$name', '$year', '$type');";
+	$query="REPLACE INTO inauguralPDF(name, yearOfDocument, documentType) VALUES('$name', '$year', '$type');";
 	$result = mysqli_query($connect, $query);
 ?>

@@ -3,10 +3,10 @@ app.controller("researchPublicationCtrl", ['$http', '$scope', '$rootScope', 'NgT
   function ($http, $scope, $rootScope, NgTableParams, $location, $anchorScroll) {
   	$scope.loader = true;
 
-    getLatestInanguralPDF();
+    getLatestInauguralPDF();
 
-  	function getLatestInanguralPDF(){
-  		$http.post("ajax/getInanguralGIFIData.php")
+  	function getLatestInauguralPDF(){
+  		$http.post("ajax/getInauguralGIFIData.php")
         .then(function(response) {
 
             var temp=response.data.split("//");
