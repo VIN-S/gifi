@@ -12,8 +12,6 @@ app.controller('homeComponentCtrl',
       'Accounting System'
     ];
 
-    $scope.component = $scope.componentList[0];
-
     $scope.selectComponent = function(component){
         $scope.loader = true;
         
@@ -113,4 +111,5 @@ app.controller('homeComponentCtrl',
             } 
         }
     };
+
 }]);
