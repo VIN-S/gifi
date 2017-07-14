@@ -157,15 +157,11 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
 
   var tabContents = [];
 
-  getComponentContent();
+  function getComponentContent(component){
+      $scope.componentloader = true;
 
-  function getComponentContent(){
-    for(var i = 0; i < $rootScope.rankComponentNames.length; i++){
-      var component = $rootScope.rankComponentNames[i]
+      component = component.replace('&', 'and');
 
-      if(i == 0 || i == 2 || i == 4){
-        component = component.replace('&', 'and');
-      }
       $http.post("ajax/getComponentContent.php?component="+component)
       .then(function(response) {
         var temp=response.data.split("//");
@@ -183,31 +179,22 @@ app.controller("homeCtrl", ['$http', '$scope', '$rootScope',  function ($http, $
             tempContent = dataset[i]['description'];
             tempFactors.push(dataset[i]['factor']);
 
-            if(i == 0){
+            if(component == 'Legal and Regulatory Environment')
               $scope.componentImgSrc = 'admin/ajax/component_images/legal_and_regulatory_environment.jpg';
-              $scope.componentName = $rootScope.rankComponentNames[0];
-              $scope.content = tempContent;
-              $scope.factors = tempFactors;
-            }      
+            $scope.componentName = component;
+            $scope.content = tempContent;
+            $scope.factors = tempFactors;      
           }
         }
-
-        var tempComponent = {
-          'contents': tempContent,
-          'factors': tempFactors
-        }
-
-        tabContents.push(tempComponent);
-      });
-    }
+      }, function(response){}).finally(function(){$scope.componentloader = false;});  
   }
+
+  getComponentContent($rootScope.rankComponentNames[0]);
   
   $scope.setActiveTab = function (tabNum) {
     initTabs();
     tabClasses[tabNum] = "active";
-    $scope.componentName = $rootScope.rankComponentNames[tabNum-1];
-    $scope.content = tabContents[tabNum-1]['contents'];
-    $scope.factors = tabContents[tabNum-1]['factors'];
+    getComponentContent($rootScope.rankComponentNames[tabNum-1]);
     if(tabNum == 1){
         $scope.componentImgSrc = 'admin/ajax/component_images/legal_and_regulatory_environment.jpg';
     }else if(tabNum == 2){
