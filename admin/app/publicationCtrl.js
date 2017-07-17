@@ -1,7 +1,6 @@
 app.controller('publicationCtrl', 
 ['$scope', '$location', '$http', 'cookieService', '$route', function($scope, $location, $http, cookieService, $route) {
     $scope.headerList = [
-      'Blue Color Header', 
       'First Red Color Header', 
       'Second Red Color Header'
     ];
@@ -20,12 +19,8 @@ app.controller('publicationCtrl',
                 var headerContent = results['headerContent']; 
                 var headerDescription = results['headerDescription']; 
                 if(headerContent != null && headerDescription != null){
-                    console.log(headerContent+headerDescription);
                     document.getElementById('current-header-content').innerHTML = headerContent;
-                    if(publicationHeader != 'Blue Color Header')
-                        document.getElementById('current-header-description').innerHTML = headerDescription;
-                    else
-                        document.getElementById('current-header-description').innerHTML = '';
+                    document.getElementById('current-header-description').innerHTML = headerDescription;
                 }          
             }, function(response){}).finally(function(){$scope.loader = false;})
         }; 
@@ -33,11 +28,6 @@ app.controller('publicationCtrl',
 
     $scope.selectPublicationHeaderNew = function(publicationHeaderNew){
         $scope.publicationHeaderNew = publicationHeaderNew;
-        if(publicationHeaderNew == 'Blue Color Header'){
-            $scope.showDescription = false;
-        }else{
-            $scope.showDescription = true;
-        }
     }
 
     $scope.inputNewHeaderContent = function(newHeaderContent){
@@ -48,22 +38,10 @@ app.controller('publicationCtrl',
         $scope.newHeaderDescription = newHeaderDescription;
     };
     
-    $scope.changeHeaderContentAndDescription = function(newHeaderContent, newHeaderDescription){
+    $scope.changeHeaderContentAndDescription = function(){
         $scope.loader = true;
         var informationIncomplete = false;
-        if( 
-            (
-                ($scope.newHeaderContent == '' || $scope.newHeaderContent == null || $scope.newHeaderDescription == '' || $scope.newHeaderDescription == null) 
-                    && 
-                $scope.publicationHeaderNew != 'Blue Color Header'
-            )
-                ||  
-            (
-                ($scope.newHeaderContent == '' || $scope.newHeaderContent == null)
-                    && 
-                $scope.publicationHeaderNew == 'Blue Color Header'
-            ) 
-          )
+        if(undefined == typeof $scope.publicationHeaderNew || $scope.publicationHeaderNew == '' || $scope.publicationHeaderNew == null || $scope.newHeaderContent == '' || $scope.newHeaderContent == null || $scope.newHeaderDescription == '' || $scope.newHeaderDescription == null)
         {
             informationIncomplete = true;
         }
@@ -75,8 +53,7 @@ app.controller('publicationCtrl',
             var flag = confirm("Are you going to change the content?");
             if (flag == true) {
                 $scope.newHeaderContent = $scope.newHeaderContent.replace(/\r\n|\r|\n/g,"<br />");
-                if($scope.publicationHeaderNew != 'Blue Color Header')
-                    $scope.newHeaderDescription = $scope.newHeaderDescription.replace(/\r\n|\r|\n/g,"<br />");
+                $scope.newHeaderDescription = $scope.newHeaderDescription.replace(/\r\n|\r|\n/g,"<br />");
                 $http.post("ajax/updateCurrentPublicationHeaderAndDescription.php?header="+$scope.publicationHeaderNew+"&headerContent="
                     +$scope.newHeaderContent+"&newHeaderDescription="+$scope.newHeaderDescription)
                 .then(function(response) {

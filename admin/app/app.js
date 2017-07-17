@@ -29,6 +29,11 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl:    'partials/publication.html',
       controller:     'PublicationCtrl'
     })
+    .when('/aboutUs-background',
+    {
+      templateUrl:    'partials/aboutUs-background.html',
+      controller:     'AboutUsBackgroundCtrl'
+    })
     .when('/uploadInaugural',
     {
       templateUrl:    'partials/uploadInaugural.html',
@@ -119,6 +124,10 @@ app.controller('adminMainController',
         $location.url('/publication');
     }
 
+    $scope.aboutUsBackground = function(){
+        $location.url('/aboutUs-background');
+    }
+
     $scope.uploadInaugural = function(){
         $location.url('/uploadInaugural');
     };
@@ -162,6 +171,10 @@ app.controller('HomeComponentCtrl', function($scope, $compile) {
 
 app.controller('PublicationCtrl', function($scope, $compile) {
   console.log('inside publication controller');
+});
+
+app.controller('AboutUsBackgroundCtrl', function($scope, $compile) {
+  console.log('inside about us background controller');
 });
 
 app.controller('UploadInauguralCtrl', function($scope, $compile) {

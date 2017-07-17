@@ -22,15 +22,15 @@
                   </li>
 <!--                   <li><a href="ajax/upload_csv.php" target="_blank"><i class="fa fa-edit"></i> Edit Ranking & Analysis Context</a>
                   </li> -->
-                  <li ng-class="getTabClass(2)" ng-click="setActiveTab(2)"><a><i class="fa fa-edit"></i> Edit Content <span class="fa fa-chevron-down"></span></a>
+                  <li ng-click="scroll(2)" class="active"><a><i class="fa fa-edit"></i> Edit Content <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" ng-class="scroll_menu_edit">
                       <li><a ng-click="homeIntroduction()">Home - Introduction</a></li>
                       <li><a ng-click="homeComponent()">Home - Component</a></li>
                       <li><a ng-click="publication()">Publication - Header</a></li>
-                      <li><a ng-click="aboutUsBackground()">AboutUs - Background</a></li>
+                      <li class="background-active"><a ng-click="aboutUsBackground()">AboutUs - Background</a></li>
                     </ul>
                   </li>
-                  <li ng-click="scroll(3)" class="active"><a><i class="fa fa-upload"></i> Upload Files／Images <span class="fa fa-chevron-down"></span></a>
+                  <li ng-class="getTabClass(3)" ng-click="setActiveTab(3)"><a><i class="fa fa-upload"></i> Upload Files／Images <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" ng-class="scroll_menu_upload">
                       <li><a ng-click="uploadFooterLogos()">Upload Footer Logo</a></li>
                       <li><a ng-click="uploadGIFILogo()">Upload GIFI Logo</a></li>
@@ -38,7 +38,7 @@
                       <li><a ng-click="uploadInaugural()">Upload Inaugural GIFI</a></li>
                       <li><a ng-click="uploadResearchPaper()">Upload Research Papers</a></li>
                       <li><a href="ajax/upload_csv.php" target="_blank">Upload Ranking CSV </a></li>
-                      <li class="background-active"><a ng-click="manageRankingCSV()">Manage Ranking CSV </a></li>
+                      <li><a ng-click="manageRankingCSV()">Manage Ranking CSV </a></li>
                     </ul>
                   </li>
               </div>
@@ -81,7 +81,7 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main" ng-controller="manageRankingCSVCtrl">
+        <div class="right_col" role="main" ng-controller="aboutUsBackgroundCtrl">
           <div class="spinner" ng-show="loader">
             <img src="../img/ajax-loader.gif"/>
           </div>
@@ -89,20 +89,39 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="main-content">
                   <div class="row x_title">
-                    <div class="col-md-5">
-                      <h3>Manage Ranking CSV<small></small></h3>
+                    <div class="col-md-8">
+                      <h3>Edit About Us Background Content<small></small></h3>
                     </div>
                   </div>
 
-                  <div class="document-table">
-                    <table ng-table="tableParams" class="table" show-filter="false">
-                    <tr ng-repeat="csv in $data" ng-class="'row' + ($index % 2)">
-                        <td title="'File Name'" filter="{ fileName: 'text'}" sortable="'fileName'"><p>{{csv.fileName}}</p></td>
-                        <td title="'Year'" filter="{ year: 'number'}" sortable="'year'"><p>{{csv.year}}</p></td>
-                        <td title="'Upload Time'" filter="{ upload_time: 'number'}" sortable="'upload_time'"><p>{{csv.upload_time}}</p></td>
-                        <td title="'Action'"><button class="btn btn-danger" ng-click="delete(csv.fileName, csv.year)" >Delete</button></td>
-                    </tr>
-                  </table>
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h2>
+                      Current Background Content
+                    </h2>
+                    <div class="pdf-info">
+                      <div class="one-info">
+                        <span>Select Text position: </span>
+                        <select ng-model="textPosition" ng-options="y for y in positionList" ng-change="selectTextPosition(textPosition)"></select>
+                      </div>
+                    </div>
+                    <div class="pdf-info">
+                      <div class="current-background-content" id="current-background-content"></div>
+                    </div>
+                    <div class="partingline"></div>
+                    <h2>
+                      New Background Text
+                    </h2>
+                    <div class="pdf-info">
+                      <div class="one-info">
+                        <span>Select Text Position: </span>
+                        <select ng-model="textPositionNew" ng-options="y for y in positionList" ng-change="selectTextPositionNew(textPositionNew)"></select>
+                      </div>
+                    </div>
+                    <div class="pdf-info new-component">
+                      <span>New Content: </span>
+                      <textarea rows="10" ng-model="newContent" ng-change="inputNewBackgroundContent(newContent)" style="width: 70%;" /><br><br>
+                    </div>
+                    <button class="btn btn-success" ng-click="changeBackgroundText()" style="margin-top: 5px">Update</button>
                   </div>
                   
                   <div class="clearfix"></div>
