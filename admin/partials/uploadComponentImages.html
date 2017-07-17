@@ -26,6 +26,7 @@
                     <ul class="nav child_menu" ng-class="scroll_menu_edit">
                       <li><a ng-click="homeIntroduction()">Home - Introduction</a></li>
                       <li><a ng-click="homeComponent()">Home - Component</a></li>
+                      <li><a ng-click="publication()">Publication - Header</a></li>
                     </ul>
                   </li>
                   <li ng-click="scroll(3)" class="active"><a><i class="fa fa-upload"></i> Upload Files／Images <span class="fa fa-chevron-down"></span></a>
@@ -92,6 +93,9 @@
                     </div>
                   </div>
 
+                  <label>Image will be renamed after uploaded.</label><br>
+                  <label>Recommended size: 450*300</label>
+
                   <div class="pdf-info">
                     <div class="one-info">
                       <span>Select Component: </span>
@@ -103,7 +107,6 @@
                     <button class="btn btn-warning" ngf-select="selectFile(file)" ng-model="file" ngf-pattern="'image/*'" ngf-accept="'image/*'">Select</button>
                     <span>Selected Image: {{ selectFileName }}</span><br><br>
                     <button class="btn btn-success" type="submit" ng-click="submit(file)">Upload</button>
-                    <span>Image will be renamed after uploaded.</span>
                   </div><br>
 
                   <div class="row x_title">

@@ -22,14 +22,14 @@
                   </li>
 <!--                   <li><a href="ajax/upload_csv.php" target="_blank"><i class="fa fa-edit"></i> Edit Ranking & Analysis Context</a>
                   </li> -->
-                  <li ng-class="getTabClass(2)" ng-click="setActiveTab(2)"><a><i class="fa fa-edit"></i> Edit Content <span class="fa fa-chevron-down"></span></a>
+                  <li ng-click="scroll(2)" class="active"><a><i class="fa fa-edit"></i> Edit Content <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" ng-class="scroll_menu_edit">
                       <li><a ng-click="homeIntroduction()">Home - Introduction</a></li>
                       <li><a ng-click="homeComponent()">Home - Component</a></li>
-                      <li><a ng-click="publication()">Publication - Header</a></li>
+                      <li class="background-active"><a ng-click="publication()">Publication - Header</a></li>
                     </ul>
                   </li>
-                  <li ng-click="scroll(3)" class="active"><a><i class="fa fa-upload"></i> Upload Files／Images <span class="fa fa-chevron-down"></span></a>
+                  <li ng-class="getTabClass(3)" ng-click="setActiveTab(3)"><a><i class="fa fa-upload"></i> Upload Files／Images <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" ng-class="scroll_menu_upload">
                       <li><a ng-click="uploadFooterLogos()">Upload Footer Logo</a></li>
                       <li><a ng-click="uploadGIFILogo()">Upload GIFI Logo</a></li>
@@ -37,7 +37,7 @@
                       <li><a ng-click="uploadInaugural()">Upload Inaugural GIFI</a></li>
                       <li><a ng-click="uploadResearchPaper()">Upload Research Papers</a></li>
                       <li><a href="ajax/upload_csv.php" target="_blank">Upload Ranking CSV </a></li>
-                      <li class="background-active"><a ng-click="manageRankingCSV()">Manage Ranking CSV </a></li>
+                      <li><a ng-click="manageRankingCSV()">Manage Ranking CSV </a></li>
                     </ul>
                   </li>
               </div>
@@ -80,7 +80,7 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main" ng-controller="manageRankingCSVCtrl">
+        <div class="right_col" role="main" ng-controller="publicationCtrl">
           <div class="spinner" ng-show="loader">
             <img src="../img/ajax-loader.gif"/>
           </div>
@@ -88,20 +88,42 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="main-content">
                   <div class="row x_title">
-                    <div class="col-md-5">
-                      <h3>Manage Ranking CSV<small></small></h3>
+                    <div class="col-md-8">
+                      <h3>Edit Publication Header and Description<small></small></h3>
                     </div>
                   </div>
 
-                  <div class="document-table">
-                    <table ng-table="tableParams" class="table" show-filter="false">
-                    <tr ng-repeat="csv in $data" ng-class="'row' + ($index % 2)">
-                        <td title="'File Name'" filter="{ fileName: 'text'}" sortable="'fileName'"><p>{{csv.fileName}}</p></td>
-                        <td title="'Year'" filter="{ year: 'number'}" sortable="'year'"><p>{{csv.year}}</p></td>
-                        <td title="'Upload Time'" filter="{ upload_time: 'number'}" sortable="'upload_time'"><p>{{csv.upload_time}}</p></td>
-                        <td title="'Action'"><button class="btn btn-danger" ng-click="delete(csv.fileName, csv.year)" >Delete</button></td>
-                    </tr>
-                  </table>
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h2>
+                      Current Publication Header and Description
+                    </h2>
+                    <div class="pdf-info">
+                      <div class="one-info">
+                        <span>Select Header: </span>
+                        <select ng-model="publicationHeader" ng-options="y for y in headerList" ng-change="selectPublicationHeader(publicationHeader)"></select>
+                      </div>
+                    </div>
+                    <div class="pdf-info current-component">
+                      <div class="current-header-content" id="current-header-content"></div>
+                      <div class="current-header-description" id="current-header-description"></div>
+                    </div>
+                    <div class="partingline"></div>
+                    <h2>
+                      New Publication Header and Description
+                    </h2>
+                    <div class="pdf-info">
+                      <div class="one-info">
+                        <span>Select Header: </span>
+                        <select ng-model="publicationHeaderNew" ng-options="y for y in headerList" ng-change="selectPublicationHeaderNew(publicationHeaderNew)"></select>
+                      </div>
+                    </div>
+                    <div class="pdf-info new-component">
+                      <span>New Header Content: </span>
+                      <input rows="3" ng-model="newHeaderContent" ng-change="inputNewHeaderContent(newHeaderContent)" style="width: 30%;" /><br><br>
+                      <span ng-show="showDescription">New Header Description: </span>
+                      <textarea rows="3" ng-model="newHeaderDescription" ng-change="inputNewHeaderDescription(newHeaderDescription)" ng-show="showDescription" style="width: 30%;" /><br>
+                    </div>
+                    <button class="btn btn-success" ng-click="changeHeaderContentAndDescription(newHeaderContent, newHeaderDescription)" style="margin-top: 5px">Update</button>
                   </div>
                   
                   <div class="clearfix"></div>

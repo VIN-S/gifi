@@ -24,6 +24,11 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl:    'partials/home-component.html',
       controller:     'HomeComponentCtrl'
     })
+    .when('/publication',
+    {
+      templateUrl:    'partials/publication.html',
+      controller:     'PublicationCtrl'
+    })
     .when('/uploadInaugural',
     {
       templateUrl:    'partials/uploadInaugural.html',
@@ -110,6 +115,10 @@ app.controller('adminMainController',
         $location.url('/home-component');
     }
 
+    $scope.publication = function(){
+        $location.url('/publication');
+    }
+
     $scope.uploadInaugural = function(){
         $location.url('/uploadInaugural');
     };
@@ -149,6 +158,10 @@ app.controller('HomeIntroductionCtrl', function($scope, $compile) {
 
 app.controller('HomeComponentCtrl', function($scope, $compile) {
   console.log('inside home component controller');
+});
+
+app.controller('PublicationCtrl', function($scope, $compile) {
+  console.log('inside publication controller');
 });
 
 app.controller('UploadInauguralCtrl', function($scope, $compile) {

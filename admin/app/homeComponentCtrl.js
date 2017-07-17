@@ -22,7 +22,9 @@ app.controller('homeComponentCtrl',
             .then(function(response) {
                 var results = response.data;
                 var content = results['description']; 
-                document.getElementById('current-component-description').innerHTML = content;
+                if(content != null){
+                    document.getElementById('current-component-description').innerHTML = content;
+                }   
             })
 
             $http.post("ajax/getCurrentHomeComponentFactors.php?component="+component)
