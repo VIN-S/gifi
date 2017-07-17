@@ -22,6 +22,8 @@ app.controller('homeIntroductionCtrl',
         var flag = confirm("Are you going to change the content?");
         if (flag == true) {
             newIntroduction = newIntroduction.replace(/\r\n|\r|\n/g,"<br />");
+            newIntroduction = newIntroduction.replace(/'/g,'%26apos;');
+            newIntroduction = newIntroduction.replace('&','and'); 
             $http.post("ajax/updateCurrentHomeIntroductionContent.php?content="+newIntroduction)
             .then(function(response) {
                 $route.reload();

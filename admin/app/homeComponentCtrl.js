@@ -97,6 +97,8 @@ app.controller('homeComponentCtrl',
             var flag = confirm("Are you going to change the content?");
             if (flag == true) {
                 $scope.newComponentContent = $scope.newComponentContent.replace(/\r\n|\r|\n/g,"<br />");
+                $scope.newComponentContent = $scope.newComponentContent.replace(/'/g,'%26apos;');
+                $scope.newComponentContent = $scope.newComponentContent.replace('&','and');  
                 $http.post("ajax/updateCurrentHomeComponentDescription.php?description="+$scope.newComponentContent+"&component="+$scope.componentNew)
                 .then(function(response) {
                 });
@@ -106,6 +108,8 @@ app.controller('homeComponentCtrl',
 
                 for(var i = 0; i < $scope.newFactors.length; i++){
                     var tempFactor = $scope.newFactors[i]['factor'];
+                    tempFactor = tempFactor.replace(/'/g,'%26apos;');
+                    tempFactor = tempFactor.replace('&','and'); 
                     $http.post("ajax/updateCurrentHomeComponentFactor.php?factor="+tempFactor+"&date="+today+"&component="+$scope.componentNew)
                     .then(function(response) {
                     }, function(response){}).finally(function(){$scope.loader = false;$route.reload();})

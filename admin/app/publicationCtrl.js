@@ -53,7 +53,13 @@ app.controller('publicationCtrl',
             var flag = confirm("Are you going to change the content?");
             if (flag == true) {
                 $scope.newHeaderContent = $scope.newHeaderContent.replace(/\r\n|\r|\n/g,"<br />");
+                $scope.newHeaderContent = $scope.newHeaderContent.replace(/'/g,'%26apos;');
+                $scope.newHeaderContent = $scope.newHeaderContent.replace('&','and'); 
+
                 $scope.newHeaderDescription = $scope.newHeaderDescription.replace(/\r\n|\r|\n/g,"<br />");
+                $scope.newHeaderDescription = $scope.newHeaderDescription.replace(/'/g,'%26apos;');
+                $scope.newHeaderDescription = $scope.newHeaderDescription.replace('&','and'); 
+
                 $http.post("ajax/updateCurrentPublicationHeaderAndDescription.php?header="+$scope.publicationHeaderNew+"&headerContent="
                     +$scope.newHeaderContent+"&newHeaderDescription="+$scope.newHeaderDescription)
                 .then(function(response) {

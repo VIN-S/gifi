@@ -25,10 +25,10 @@
                   <li ng-click="scroll(2)" class="active"><a><i class="fa fa-edit"></i> Edit Content <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu" ng-class="scroll_menu_edit">
                       <li><a ng-click="homeIntroduction()">Home - Introduction</a></li>
-                      <li class="background-active"><a ng-click="homeComponent()">Home - Component</a></li>
+                      <li><a ng-click="homeComponent()">Home - Component</a></li>
                       <li><a ng-click="publication()">Publication - Header</a></li>
                       <li><a ng-click="aboutUsBackground()">AboutUs - Background</a></li>
-                      <li><a ng-click="aboutUsCopublishers()">AboutUs - Copublishers</a></li>
+                      <li class="background-active"><a ng-click="aboutUsCopublishers()">AboutUs - Copublishers</a></li>
                     </ul>
                   </li>
                   <li ng-class="getTabClass(3)" ng-click="setActiveTab(3)"><a><i class="fa fa-upload"></i> Upload Files／Images <span class="fa fa-chevron-down"></span></a>
@@ -82,7 +82,7 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main" ng-controller="homeComponentCtrl">
+        <div class="right_col" role="main" ng-controller="aboutUsCopublishersCtrl">
           <div class="spinner" ng-show="loader">
             <img src="../img/ajax-loader.gif"/>
           </div>
@@ -90,51 +90,39 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="main-content">
                   <div class="row x_title">
-                    <div class="col-md-5">
-                      <h3>Edit Home Component Content<small></small></h3>
+                    <div class="col-md-8">
+                      <h3>Edit About Us Copublishers Introduction<small></small></h3>
                     </div>
                   </div>
 
                   <div class="col-md-12 col-sm-12 col-xs-12">
                     <h2>
-                      Current Component Content
+                      Current Co-publisher Introduction
                     </h2>
                     <div class="pdf-info">
                       <div class="one-info">
-                        <span>Select Component: </span>
-                        <select ng-model="component" ng-options="y for y in componentList" ng-change="selectComponent(component)"></select>
+                        <span>Select Copublisher: </span>
+                        <select ng-model="copublisher" ng-options="y for y in copublisherList" ng-change="selectCopublisher(copublisher)"></select>
                       </div>
                     </div>
-                    <div class="pdf-info current-component">
-                      <span>
-                        {{component}}
-                      </span>
-                      <div class="current-component-description" id="current-component-description"></div>
-                      <div ng-repeat="factor in factors" class='content-factor'>
-                        <span class="glyphicon glyphicon-chevron-right orange"></span>&nbsp;{{factor}}
-                      </div>
+                    <div class="pdf-info">
+                      <div class="current-copublisher-introduction" id="current-copublisher-introduction"></div>
                     </div>
                     <div class="partingline"></div>
                     <h2>
-                      New Component Content
+                      New Co-publisher Introduction
                     </h2>
                     <div class="pdf-info">
                       <div class="one-info">
-                        <span>Select Component: </span>
-                        <select ng-model="componentNew" ng-options="y for y in componentList" ng-change="selectComponentNew(componentNew)"></select>
+                        <span>Select Copublisher: </span>
+                        <select ng-model="copublisherNew" ng-options="y for y in copublisherList" ng-change="selectCopublisherNew(copublisherNew)"></select>
                       </div>
                     </div>
-                    <div class="pdf-info new-component">
-                      <span>New Component Description: </span>
-                      <textarea rows="3" ng-model="newComponentContent" ng-change="inputNewComponentContent(newComponentContent)" style="width: 30%;" /><br>
-                      <span>New Component Factor: </span>
-                      <div ng-repeat="factor in newFactors">
-                        <span>factor {{factor.id}}:&nbsp;&nbsp;</span><input ng-model="factor.factor" ></input>
-                      </div>
-
-                      <button ng-click="addNewFactor()">Add More Factor</button>
+                    <div class="pdf-info">
+                      <span>New Content: </span>
+                      <textarea rows="10" ng-model="newContent" ng-change="inputNewCopublisherIntroduction(newContent)" style="width: 70%;" /><br><br>
                     </div>
-                    <button class="btn btn-success" ng-click="changeHomeComponent(newComponentContent)" style="margin-top: 5px">Update</button>
+                    <button class="btn btn-success" ng-click="changeIntroduction()" style="margin-top: 5px">Update</button>
                   </div>
                   
                   <div class="clearfix"></div>

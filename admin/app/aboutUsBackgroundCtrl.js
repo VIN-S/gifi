@@ -47,6 +47,8 @@ app.controller('aboutUsBackgroundCtrl',
             var flag = confirm("Are you going to change the content?");
             if (flag == true) {
                 $scope.newContent = $scope.newContent.replace(/\r\n|\r|\n/g,"<br />");
+                $scope.newContent = $scope.newContent.replace(/'/g,'%26apos;');
+                $scope.newContent = $scope.newContent.replace('&','and');  
                 $http.post("ajax/updateCurrentBackgroundText.php?position="+$scope.textPositionNew+"&content="
                     +$scope.newContent)
                 .then(function(response) {
