@@ -112,4 +112,29 @@ app.controller("researchPublicationCtrl", ['$http', '$scope', '$rootScope', 'NgT
 
         }, function(response){}).finally(function(){$scope.loader = false;});
     }
+
+    //Modular Content
+    getHeaderContent();
+
+    function getHeaderContent(){
+      $http.post("ajax/getPublicationHeaderContent.php?header=First Red Color Header")
+      .then(function(response) {
+        var results = response.data;
+        var headerContent =  results['headerContent']; 
+        var headerDescription =  results['headerDescription']; 
+
+        document.getElementById('firstHeader').innerHTML = headerContent;
+        document.getElementById('firstHeaderDescription').innerHTML = headerDescription;
+      })
+
+      $http.post("ajax/getPublicationHeaderContent.php?header=Second Red Color Header")
+      .then(function(response) {
+        var results = response.data;
+        var headerContent =  results['headerContent']; 
+        var headerDescription =  results['headerDescription']; 
+
+        document.getElementById('secondHeader').innerHTML = headerContent;
+        document.getElementById('secondHeaderDescription').innerHTML = headerDescription;
+      })
+    }
 }]);
