@@ -148,7 +148,7 @@ app.controller('gifiMainController',
 
     $scope.navClass = function (page) {
       var currentRoute = $location.path().substring(1) || 'home';
-      return page === currentRoute ? 'active' : '';
+      return  (page.indexOf(currentRoute) !== -1) ? 'active' : '';
     };
 
     $scope.loadHome = function () {
