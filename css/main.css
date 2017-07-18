@@ -815,10 +815,10 @@ body, html {
 	padding: 20px 15px 0px 15px;
 }
 
-.background-blue span{
+.background-blue .top{
 	color: #3276b4;
 	font-weight: 500;
-	line-height: 1;
+	line-height: 1.5;
 }
 
 .background-side-text{

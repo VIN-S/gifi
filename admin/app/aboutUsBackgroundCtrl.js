@@ -3,7 +3,7 @@ app.controller('aboutUsBackgroundCtrl',
     $scope.positionList = [
       'Top(light blue text)', 
       'Left Bottom(black text)',
-      'Left Right(light blue background and red text)'
+      'Right Bottom(light blue background and red text)'
     ];
 
     $scope.selectTextPosition = function(textPosition){
