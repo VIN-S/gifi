@@ -1,5 +1,5 @@
 //Define an angular module for our app
-var app = angular.module('myApp', ["ngRoute", "chart.js", "ngTable"]);
+var app = angular.module('myApp', ["ngRoute", "chart.js", "ngTable", "ui.grid", "ui.grid.pinning", "ui.grid.selection"]);
 app.config(function ($routeProvider) {
 
     $routeProvider
@@ -16,6 +16,11 @@ app.config(function ($routeProvider) {
     .when('/ranking',
     {
       templateUrl:    'partials/ranking.html',
+      controller:     'RankingCtrl'
+    })
+    .when('/ranking2',
+    {
+      templateUrl:    'partials/ranking2.html',
       controller:     'RankingCtrl'
     })
     .when('/publication',

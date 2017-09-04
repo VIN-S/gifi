@@ -1,0 +1,52 @@
+<div class="ranking-container">
+  <div class="row nopadding nomargin" id="rankingCtrl" ng-controller="rankingCtrl2">
+    <div class="ranking-spinner" ng-show="loader">
+        <img src="img/ajax-loader.gif"/>
+    </div>
+    <!-- Year Selector -->
+  	<div class="year-selector">
+      <div class="selector">
+  	  	<span>
+  			Select Rankings by Year:		
+  		</span>
+  		<select ng-model="selectedYear" ng-options="x for x in yearLists" ng-change="updateRankingByYear(selectedYear)"></select>
+    	</div>
+    	<div class="quick-links">
+    		<span>
+    			Quick Links: 
+    		</span>
+        <span style="color: rgb(6,100,160);">
+          &nbsp;| 
+        </span>
+    		<span ng-repeat="year in yearLists" class="link" ng-click="updateRankingByYear(year)">
+  			  {{ year }} Ranking  &nbsp;|&nbsp;			
+    		</span>
+    	</div>
+    </div>
+    <!-- End of Year Selector -->
+
+    <div class="ranking-options">
+        <span>
+          Select Rankings by Region:    
+        </span>
+        <select ng-model="selectedRegion" ng-options="x for x in regionLists" ng-change="updateRankingByRegion(selectedRegion)"></select>
+
+
+        <button ng-click="exportToCsv()">Download</button>
+    </div>
+
+    <div class="ranking-table">
+      <div class="reminder">
+        <span>
+          Click on country names for cross-country and regional comparisons
+        </span>
+      </div>
+      <div ui-grid="gridOptions" class="table grid-fixed-height" ui-grid-selection ui-grid-pinning></div>
+      <div class="numberOfCountriesPage">
+        <span>
+          Number of countries per page
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
