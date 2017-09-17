@@ -145,7 +145,7 @@ app.controller("rankingCtrl2", ['$http', '$scope', '$rootScope', 'NgTableParams'
         .then(function(response) {
             var temp=response.data.split("//");
 
-            var field = ['Country', 'Investor Friendliness Rank', 'Legal and Regulatory Environment', 'Market Development', 'Exchange Controls and Capital Restriction',
+            var field = ['Region', 'Country', 'Investor Friendliness Rank', 'Legal and Regulatory Environment', 'Market Development', 'Exchange Controls and Capital Restriction',
              'Corporate Governance', 'Aum Levels and Growth', 'Banking System', 'Ease of Doing Business', 'Political Environment', 'Accounting System'];
 
             var excelData = [];
@@ -155,6 +155,7 @@ app.controller("rankingCtrl2", ['$http', '$scope', '$rootScope', 'NgTableParams'
                 if(temp[i] !== undefined && temp[i] !==null && temp[i] !== ""){
                     dataset[i] = JSON.parse(temp[i]);
                     var row = [];
+                    row.push(dataset[i]['region']);
                     row.push(dataset[i]['country']);
                     row.push(parseInt(dataset[i]['investor_friendliness_rank']));
                     row.push(parseInt(dataset[i]['legal_and_regulatory_environment']));
