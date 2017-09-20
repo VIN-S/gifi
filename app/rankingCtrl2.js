@@ -18,16 +18,16 @@ app.controller("rankingCtrl2", ['$http', '$scope', '$rootScope', 'NgTableParams'
  
     $scope.gridOptions.columnDefs = [
         { name: 'country', width: 170, pinnedLeft:true},
-        { name: 'investor_friendliness_rank', width: 170, pinnedLeft:true },
-        { name:'legal_and_regulatory_environment', width:150 },
-        { name:'market_development', width:150 },
-        { name:'exchange_controls_and_capital_restriction', width:150 },
-        { name:'corporate_governance', width:150 },
-        { name:'aum_levels_and_growth', width:150 },
-        { name:'banking_system', width:150 },
-        { name:'ease_of_doing_business', width:150 },
-        { name:'political_environment', width:150 },
-        { name:'accounting_system', width:150 }
+        { name: 'investor_friendliness_rank', type:'number', width: 170 },
+        { name:'legal_and_regulatory_environment', type:'number', width:150 },
+        { name:'market_development', type:'number', width:150 },
+        { name:'exchange_controls_and_capital_restriction', type:'number', width:150 },
+        { name:'corporate_governance', type:'number', width:150 },
+        { name:'aum_levels_and_growth', type:'number', width:150 },
+        { name:'banking_system', type:'number', width:150 },
+        { name:'ease_of_doing_business', type:'number', width:150 },
+        { name:'political_environment', type:'number', width:150 },
+        { name:'accounting_system', type:'number', width:150 }
     ];
 
     function getListOfYears() {
