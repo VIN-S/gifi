@@ -12,25 +12,25 @@ app.controller("rankingCtrl2", ['$http', '$scope', '$rootScope', 'NgTableParams'
         enableRowSelection: true, 
         enableRowHeaderSelection: false,
         multiSelect: false,
-        // selectionRowHeaderWidth: 35,
-        // rowHeight: 35
+        // rowHeight: 38
     };
 
     $scope.gridOptions.columnDefs = [
         { name: 'country', width: 170, pinnedLeft:true},
         { name: 'investor_friendliness_rank', type:'number', width: 170 },
-        { name:'legal_and_regulatory_environment', type:'number', width:150 },
-        { name:'market_development', type:'number', width:150 },
-        { name:'exchange_controls_and_capital_restriction', type:'number', width:150 },
-        { name:'corporate_governance', type:'number', width:150 },
-        { name:'aum_levels_and_growth', type:'number', width:150 },
-        { name:'banking_system', type:'number', width:150 },
-        { name:'ease_of_doing_business', type:'number', width:150 },
-        { name:'political_environment', type:'number', width:150 },
-        { name:'accounting_system', type:'number', width:150 }
+        { name:'legal_and_regulatory_environment', displayName: "Legal & Regulatory Environment", type:'number', width:160 },
+        { name:'market_development', type:'number', width:160 },
+        { name:'exchange_controls_and_capital_restriction', displayName: "Exchange Controls & Capital Restriction", type:'number', width:160 },
+        { name:'corporate_governance', type:'number', width:160 },
+        { name:'aum_levels_and_growth', displayName: "AUM Level & Growth", type:'number', width:160 },
+        { name:'banking_system', type:'number', width:160 },
+        { name:'ease_of_doing_business', displayName: "Ease of Doing Business", type:'number', width:160 },
+        { name:'political_environment', type:'number', width:160 },
+        { name:'accounting_system', type:'number', width:160 }
     ];
 
     $scope.gridOptions.rowTemplate = '<div class="row-uid-{{row.uid}}">  <div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"  ng-mouseover="grid.appScope.onRowHover(row.uid);"  ng-mouseout="grid.appScope.onRowOut(row.uid);"  ui-grid-one-bind-id-grid="rowRenderIndex + \'-\' + col.uid + \'-cell\'"  class="ui-grid-cell"  ng-class="{\'ui-grid-row-header-cell\': col.isRowHeader}"  role="{{col.isRowHeader ? \'rowheader\' : \'gridcell\'}}"  ui-grid-cell></div></div>';
+    $scope.gridOptions.headerCellTemplate = 'uiGridHeaderCell.html';
 
     $scope.onRowHover = function (rowUid) {
         $('.row-uid-' + rowUid + ' .ui-grid-cell-contents').addClass("ranking-table-row-hover");
