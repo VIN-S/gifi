@@ -11,11 +11,11 @@ app.controller("rankingCtrl2", ['$http', '$scope', '$rootScope', 'NgTableParams'
         enableColumnMenus: false, 
         enableRowSelection: true, 
         enableRowHeaderSelection: false,
-        multiSelect: false
+        multiSelect: false,
         // selectionRowHeaderWidth: 35,
         // rowHeight: 35
     };
- 
+
     $scope.gridOptions.columnDefs = [
         { name: 'country', width: 170, pinnedLeft:true},
         { name: 'investor_friendliness_rank', type:'number', width: 170 },
@@ -29,6 +29,16 @@ app.controller("rankingCtrl2", ['$http', '$scope', '$rootScope', 'NgTableParams'
         { name:'political_environment', type:'number', width:150 },
         { name:'accounting_system', type:'number', width:150 }
     ];
+
+    $scope.gridOptions.rowTemplate = '<div class="row-uid-{{row.uid}}">  <div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"  ng-mouseover="grid.appScope.onRowHover(row.uid);"  ng-mouseout="grid.appScope.onRowOut(row.uid);"  ui-grid-one-bind-id-grid="rowRenderIndex + \'-\' + col.uid + \'-cell\'"  class="ui-grid-cell"  ng-class="{\'ui-grid-row-header-cell\': col.isRowHeader}"  role="{{col.isRowHeader ? \'rowheader\' : \'gridcell\'}}"  ui-grid-cell></div></div>';
+
+    $scope.onRowHover = function (rowUid) {
+        $('.row-uid-' + rowUid + ' .ui-grid-cell-contents').addClass("ranking-table-row-hover");
+    };
+
+    $scope.onRowOut = function (rowUid) {
+        $('.row-uid-' + rowUid + ' .ui-grid-cell-contents').removeClass("ranking-table-row-hover");
+    };
 
     function getListOfYears() {
         $http.post("ajax/getListOfYears.php")
@@ -57,11 +67,6 @@ app.controller("rankingCtrl2", ['$http', '$scope', '$rootScope', 'NgTableParams'
             $scope.selectedYear = latestYear;
         });
     }
-
-    // $scope.loadDetail = function(country, selectedYear){
-    //     $location.url('/analysis/'+country+'/year/'+selectedYear);
-    //     $anchorScroll();
-    // }
 
     $scope.gridOptions.onRegisterApi = function(gridApi){
         $scope.gridApi = gridApi;

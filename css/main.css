@@ -557,6 +557,11 @@ body, html {
 	margin-top: 3%;
 }
 
+.ranking-table-row-hover{
+	background-color: #CCCCCC;
+	cursor: pointer;
+}
+
 .ng-table th.sortable .sort-indicator {
     display: inherit;
 }
