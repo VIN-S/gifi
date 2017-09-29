@@ -4,24 +4,24 @@
         <img src="img/ajax-loader.gif"/>
     </div>
     <!-- Year Selector -->
-  	<div class="year-selector">
+    <div class="year-selector">
       <div class="selector">
-  	  	<span>
-  			Select Rankings by Year:		
-  		</span>
-  		<select ng-model="selectedYear" ng-options="x for x in yearLists" ng-change="updateRankingByYear(selectedYear)"></select>
-    	</div>
-    	<div class="quick-links">
-    		<span>
-    			Quick Links: 
-    		</span>
+        <span>
+            Select Rankings by Year:        
+        </span>
+        <select ng-model="selectedYear" ng-options="x for x in yearLists" ng-change="updateRankingByYear(selectedYear)"></select>
+        </div>
+        <div class="quick-links">
+            <span>
+                Quick Links: 
+            </span>
         <span style="color: rgb(6,100,160);">
           &nbsp;| 
         </span>
-    		<span ng-repeat="year in yearLists" class="link" ng-click="updateRankingByYear(year)">
-  			  {{ year }} Ranking  &nbsp;|&nbsp;			
-    		</span>
-    	</div>
+            <span ng-repeat="year in yearLists" class="link" ng-click="updateRankingByYear(year)">
+              {{ year }} Ranking  &nbsp;|&nbsp;         
+            </span>
+        </div>
     </div>
     <!-- End of Year Selector -->
 
@@ -41,26 +41,7 @@
           Click on country names for cross-country and regional comparisons
         </span>
       </div>
-      <table ng-table="tableParams" class="table" show-filter="false">
-        <tr ng-repeat="country in $data" ng-class="'row' + ($index % 2)" ng-click="loadDetail(country.country, selectedYear)">
-            <td title="'Country'" filter="{ country: 'text'}" sortable="'country'"><p>{{country.country}}</p></td>
-            <td title="'Investor Friendliness Rank'" filter="{ investor_friendliness_rank: 'text'}" sortable="'investor_friendliness_rank'"><p>{{country.investor_friendliness_rank}}</p></td>
-            <td title="'Legal & Regulatory Environment'" filter="{ legal_and_regulatory_environment: 'number'}" sortable="'legal_and_regulatory_environment'"><p>{{country.legal_and_regulatory_environment}}</p></td>
-            <td title="'Market Development'" filter="{ market_development: 'number'}" sortable="'market_development'"><p>{{country.market_development}}</p></td>
-            <td title="'Exchange Controls & Capital Restriction'" filter="{ exchange_controls_and_capital_restriction: 'number'}" sortable="'exchange_controls_and_capital_restriction'"><p>{{country.exchange_controls_and_capital_restriction}}</p></td>
-            <td title="'Corporate Goverance'" filter="{ corporate_governance: 'number'}" sortable="'corporate_governance'"><p>{{country.corporate_governance}}</p></td>
-            <td title="'AUM Levels & Growth'" filter="{ aum_levels_and_growth: 'number'}" sortable="'aum_levels_and_growth'">{{country.aum_levels_and_growth}}</p></td>
-            <td title="'Banking System'" filter="{ banking_system: 'number'}" sortable="'banking_system'"><p>{{country.banking_system}}</p></td>
-            <td title="'Ease of Doing Business'" filter="{ ease_of_doing_business: 'number'}" sortable="'ease_of_doing_business'"><p>{{country.ease_of_doing_business}}</p></td>
-            <td title="'Political Environment'" filter="{ political_environment: 'number'}" sortable="'political_environment'"><p>{{country.political_environment}}</p></td>
-            <td title="'Accounting System'" filter="{ accounting_system: 'number'}" sortable="'accounting_system'"><p>{{country.accounting_system}}</p></td>
-        </tr>
-      </table>
-      <div class="numberOfCountriesPage">
-        <span>
-          Number of countries per page
-        </span>
-      </div>
+      <div ui-grid="gridOptions" class="table grid-fixed-height" ui-grid-selection ui-grid-pinning></div>
     </div>
   </div>
 </div>
