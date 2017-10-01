@@ -1,0 +1,211 @@
+<div class="detail-container">
+  <div class="row nopadding nomargin" id="analysisCtrl" ng-controller="analysisCtrl2">
+    <div class="detail-table">
+      <div class="ranking-spinner" ng-show="loader">
+        <img src="img/ajax-loader.gif"/>
+      </div>
+      <span>*The ranking for the continent(e.g. Asia) is an average value.</span>
+      <div class="analysis-reminder">
+        <span>Year of Data: {{ analysisYear }}</span>
+        <span class="backToRanking" style="font-weight: 600; font-style: italic;" ng-click="loadRanking()">
+          <- Back to ranking table
+        </span>
+      </div>
+      <table class="table">
+
+        <tr>
+          <td class="column-1">
+            Country/Region*
+          </td>
+          <td class="select">
+              Select one country: <br/><br/>
+              <select ng-model="selected.countryName" ng-options="x for x in countryLists" ng-change="selectCountry(selected.countryName)"></select> <br/><br/>
+              <span>{{selected.countryName}}</span>
+          </td>
+          <td class="column-3"> 
+            {{region.regionName}}
+          </td>
+          <td class="compared">    
+              Compare with another country: <br/><br/>
+              <select ng-model="comparedCountry" ng-options="x for x in countryLists" ng-change="selectComparedCountry(comparedCountry)"></select> <br/><br/>
+              <span>{{comparedCountry}}</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="column-1">
+            Investor Friendliness Rank
+          </td>
+          <td class="column-2">
+            {{selected.investor_friendliness_rank}}
+          </td>
+          <td class="column-3"> 
+            {{region.investor_friendliness_rank}}
+          </td>
+          <td class="column-4">    
+            {{compared.investor_friendliness_rank}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="column-1">
+            Radar Chart
+          </td>
+          <td colspan="3" class="radar-chart-holder">
+            <div class="tips nomargin col-md-3 col-sm-3 col-xs-3 text-justify">
+              
+              The radar chart depict the 9 area rankings of the NUS-Cornell GIFI for the selected countries and region. The rankings range from 1 to 160.</br></br>
+ 
+              To read the chart:</br>
+              <ul class="text-justify tips-padding"><li class="text-justify">
+              A larger score (positioned on the outer lines of the chart) means the country presented ranks better favourably in that area relative to the other countries in the rankings</br></br>
+              </li><li class="text-justify">
+              A lower score (positioned closer to the center of the graph) means country presented ranks less favourably in that area relative to the other countries in the rankings
+             </li>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-9 nopadding">
+            <canvas id="radar" class="chart chart-radar"
+              chart-data="data" chart-options="options" chart-labels="labels" chart-series="series" chart-colors="colours" chart-dataset-override="datasetOverride">
+            </canvas>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="column-1">
+            {{rankComponentNames[0]}}
+          </td>
+          <td class="column-2">
+            {{selected.legal_and_regulatory_environment}}
+          </td>
+          <td class="column-3"> 
+            {{region.legal_and_regulatory_environment}}
+          </td>
+          <td class="column-4">    
+            {{compared.legal_and_regulatory_environment}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="column-1">
+            {{rankComponentNames[1]}}
+          </td>
+          <td class="column-2">
+            {{selected.market_development}}
+          </td>
+          <td class="column-3"> 
+            {{region.market_development}}
+          </td>
+          <td class="column-4">    
+            {{compared.market_development}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="column-1">
+            {{rankComponentNames[2]}}
+          </td>
+          <td class="column-2">
+            {{selected.exchange_controls_and_capital_restriction}}
+          </td>
+          <td class="column-3"> 
+            {{region.exchange_controls_and_capital_restriction}}
+          </td>
+          <td class="column-4">    
+            {{compared.exchange_controls_and_capital_restriction}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="column-1">
+            {{rankComponentNames[3]}}
+          </td>
+          <td class="column-2">
+            {{selected.corporate_governance}}
+          </td>
+          <td class="column-3"> 
+            {{region.corporate_governance}}
+          </td>
+          <td class="column-4">    
+            {{compared.corporate_governance}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="column-1">
+            {{rankComponentNames[4]}}
+          </td>
+          <td class="column-2">
+            {{selected.aum_levels_and_growth}}
+          </td>
+          <td class="column-3"> 
+            {{region.aum_levels_and_growth}}
+          </td>
+          <td class="column-4">    
+            {{compared.aum_levels_and_growth}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="column-1">
+            {{rankComponentNames[5]}}
+          </td>
+          <td class="column-2">
+            {{selected.banking_system}}
+          </td>
+          <td class="column-3"> 
+            {{region.banking_system}}
+          </td>
+          <td class="column-4">    
+            {{compared.banking_system}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="column-1">
+            {{rankComponentNames[6]}}
+          </td>
+          <td class="column-2">
+            {{selected.ease_of_doing_business}}
+          </td>
+          <td class="column-3"> 
+            {{region.ease_of_doing_business}}
+          </td>
+          <td class="column-4">    
+            {{compared.ease_of_doing_business}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="column-1">
+            {{rankComponentNames[7]}}
+          </td>
+          <td class="column-2">
+            {{selected.political_environment}}
+          </td>
+          <td class="column-3"> 
+            {{region.political_environment}}
+          </td>
+          <td class="column-4">    
+            {{compared.political_environment}}
+          </td>
+        </tr>
+
+        <tr style="border-bottom: 1px solid #dddddd">
+          <td class="column-1">
+            {{rankComponentNames[8]}}
+          </td>
+          <td class="column-2">
+            {{selected.accounting_system}}
+          </td>
+          <td class="column-3"> 
+            {{region.accounting_system}}
+          </td>
+          <td class="column-4">    
+            {{compared.accounting_system}}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

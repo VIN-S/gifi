@@ -717,7 +717,18 @@ body, html {
 
 .detail-table table{
 	overflow-x: auto;   
-	display: block;
+	width: 100%;
+}
+
+.detail-table .header-table{
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.detail-table .header-table-fixed{
+	position: fixed;
+	top: 0px;
+	z-index: 1;
+	overflow-x: auto;
 }
 
 .detail-table table .column-1{
@@ -730,6 +741,11 @@ body, html {
 .detail-table table .select{
 	text-align: center;
 	background-color: #efefef;
+	width: 28%;
+}
+
+.detail-table table .select select{
+	font-size: 12px;
 }
 
 .detail-table table .select span{
@@ -760,6 +776,8 @@ body, html {
 
 .detail-table table .compared{
 	text-align: center;
+	width: 28%;
+	background-color: #FFFFFF;
 }
 
 .detail-table table .compared span{
@@ -785,7 +803,7 @@ body, html {
 }
 
 .radar-chart-holder{
-	min-width: 1000px;
+	min-width: 800px;
 }
 
 .radar-chart-holder canvas{

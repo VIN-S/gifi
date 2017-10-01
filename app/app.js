@@ -51,6 +51,10 @@ app.config(function ($routeProvider) {
     {
       templateUrl:    'partials/analysis.html'
     })
+    .when('/analysis2',
+    {
+      templateUrl:    'partials/analysis2.html'
+    })
     .when('/error',
     {
       templateUrl:    'partials/error.html',

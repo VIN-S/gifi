@@ -1,32 +1,5 @@
-app.directive('setClassWhenAtTop', function ($window) {
-  var $win = angular.element($window); // wrap window object as jQuery object
-
-  return {
-    restrict: 'A',
-    link: function (scope, element, attrs) {
-      var topClass = attrs.setClassWhenAtTop, // get CSS class from directive's attribute value
-      offsetTop = element.offset().top; // get element's offset top relative to document
-
-      $win.on('scroll', function (e) {
-        if ($win.scrollTop() >= offsetTop) {
-          element.addClass(topClass);
-          var parentwidth = $(".detail-table").width();
-          $(".header-table-fixed").width(parentwidth);
-
-          $(window).resize(function() {
-            var parentwidth = $(".detail-table").width();
-            $(".header-table-fixed").width(parentwidth);
-          })
-        } else {
-          element.removeClass(topClass);
-        }
-      });
-    }
-  };
-});
-
 //controller for home page
-app.controller("analysisCtrl", ['$http', '$scope', '$rootScope', '$routeParams', function ($http, $scope, $rootScope, $routeParams) {
+app.controller("analysisCtrl2", ['$http', '$scope', '$rootScope', '$routeParams', function ($http, $scope, $rootScope, $routeParams) {
   var country = $routeParams.countryName;
   var year = $routeParams.selectedYear;
   $scope.analysisYear = $routeParams.selectedYear;
