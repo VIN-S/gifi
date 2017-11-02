@@ -505,6 +505,7 @@ body, html {
     padding-bottom: 15px;
     border-bottom: 1px solid #666666;
     border-bottom-style: dashed;
+	background-color: white;
 }
 
 .selector{
@@ -715,6 +716,13 @@ body, html {
 	cursor: pointer;
 }
 
+.detail-table .sticky-header{
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
 .detail-table table{
 	overflow-x: auto;   
 	width: 100%;
@@ -722,13 +730,6 @@ body, html {
 
 .detail-table .header-table{
 	border-bottom: 1px solid #CCCCCC;
-}
-
-.detail-table .header-table-fixed{
-	position: fixed;
-	top: 0px;
-	z-index: 1;
-	overflow-x: auto;
 }
 
 .detail-table table .column-1{

@@ -4,51 +4,46 @@
             <div class="ranking-spinner" ng-show="loader">
                 <img src="img/ajax-loader.gif"/>
             </div>
-            <!-- <div class="analysis-reminder">
-                <span>Year of Data: {{ analysisYear }}</span>
-                <span class="backToRanking" style="font-weight: 600; font-style: italic;" ng-click="loadRanking()">
-                    <- Back to ranking table
-                </span>
-            </div> -->
 
-            <div class="year-selector">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <span class="backToRanking" style="font-weight: 600; font-style: italic;" ng-click="loadRanking()">
-                                <- Back to ranking table
-                            </span>
-                        </div>
-                        <div class="col-md-4 selector">
-                            <span>
-                                Select Analysis by Year:        
-                            </span>
-                            <select ng-model="analysisYear" ng-options="x for x in yearLists" ng-change="updateAnalysisByYear(analysisYear)"></select>
+            <div class="sticky-header">
+                <div class="year-selector">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <span class="backToRanking" style="font-weight: 600; font-style: italic;" ng-click="loadRanking()">
+                                    <- Back to ranking table
+                                </span>
+                            </div>
+                            <div class="col-md-4 selector">
+                                <span>
+                                    Select Analysis by Year:        
+                                </span>
+                                <select ng-model="analysisYear" ng-options="x for x in yearLists" ng-change="updateAnalysisByYear(analysisYear)"></select>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <table class="header-table" id="country-selector">
+                    <tr>
+                        <td class="column-1">
+                            Country/Region*
+                        </td>
+                        <td class="select">
+                            <span>{{selected.countryName}}</span></br></br>
+                            Select country: <select ng-model="selected.countryName" ng-options="x for x in countryLists" ng-change="selectCountry(selected.countryName)"></select> </br>
+                        </td>
+                        <td class="region"> 
+                            <span>{{region.regionName}}</span></br></br>
+                            (Average value)
+                        </td>
+                        <td class="compared">
+                            <span>{{compared.countryName}}</span></br></br>   
+                            Select country: <select ng-model="compared.countryName" ng-options="x for x in countryLists" ng-change="selectComparedCountry(compared.countryName)"></select> </br>
+                        </td>
+                    </tr>
+                </table>
             </div>
-
-            <table class="header-table" id="country-selector" set-class-when-at-top="header-table-fixed">
-                <tr>
-                    <td class="column-1">
-                        Country/Region*
-                    </td>
-                    <td class="select">
-                        <span>{{selected.countryName}}</span></br></br>
-                        Select country: <select ng-model="selected.countryName" ng-options="x for x in countryLists" ng-change="selectCountry(selected.countryName)"></select> </br>
-                    </td>
-                    <td class="region"> 
-                        <span>{{region.regionName}}</span></br></br>
-                        (Average value)
-                    </td>
-                    <td class="compared">
-                        <span>{{compared.countryName}}</span></br></br>   
-                        Select country: <select ng-model="compared.countryName" ng-options="x for x in countryLists" ng-change="selectComparedCountry(compared.countryName)"></select> </br>
-                    </td>
-                </tr>
-            </table>
-
 
             <table class="table" id="analysis-table">
                 <tr>
