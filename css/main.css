@@ -497,7 +497,7 @@ body, html {
 
 /* ------------- ranking css -------------*/
 .ranking-container{
-	margin-top: 4%;
+	/*margin-top: 4%;*/
 }
 
 .year-selector{
@@ -509,7 +509,7 @@ body, html {
 
 .selector{
 	text-align: center;
-	width: 100%;
+	/*width: 100%;*/
 	margin: 0 auto;
 }
 
@@ -710,7 +710,7 @@ body, html {
 
 /* ------------- analysis css ------------- */
 .backToRanking{
-	float: right;
+	/*float: right;*/
 	color: rgb(181,46,52);
 	cursor: pointer;
 }
@@ -766,6 +766,18 @@ body, html {
 	font-weight: 500;
 	font-size: 20px;
 	background-color: #efefef;
+}
+
+.detail-table table .region{
+	color: #94ce58;
+	text-align: center;
+	background-color: #efefef;
+}
+
+.detail-table table .region span{
+	/*color: #94ce58;*/
+	font-weight: 500;
+	font-size: 20px;
 }
 
 .detail-table table .column-4{

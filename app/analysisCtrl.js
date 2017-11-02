@@ -29,12 +29,13 @@ app.directive('setClassWhenAtTop', function ($window) {
 app.controller("analysisCtrl", ['$http', '$scope', '$rootScope', '$routeParams', function ($http, $scope, $rootScope, $routeParams) {
   var country = $routeParams.countryName;
   var year = $routeParams.selectedYear;
+  var comparedCountry = null;
   $scope.analysisYear = $routeParams.selectedYear;
   if($routeParams.selectedYear == null || $routeParams.selectedYear == ""){
     year = $rootScope.latestYear;
     $scope.analysisYear = $rootScope.latestYear;
   }
-  $scope.comparedCountry = "None"
+  
 
   $scope.options = {  
                       legend: { 
@@ -59,9 +60,17 @@ app.controller("analysisCtrl", ['$http', '$scope', '$rootScope', '$routeParams',
     []
   ];
 
-  getCountryDetail(null);
-  getRegionDetail(null);
+  getListOfYears();
   getListOfCountries();
+  updateAnalysisTable();
+  
+  function getListOfYears() {
+      $http.post("ajax/getListOfYears.php")
+      .then(function(response) {
+          var temp = response.data.substring(1, response.data.length-1);
+          $scope.yearLists = temp.split("\"\"");
+      });
+  };
 
   function getListOfCountries() {
     $http.post("ajax/getListOfCountries.php?year="+year)
@@ -71,11 +80,6 @@ app.controller("analysisCtrl", ['$http', '$scope', '$rootScope', '$routeParams',
     });
   };
 
-  $scope.selectCountry = function(selectedCountry){
-    getCountryDetail(selectedCountry);
-    getRegionDetail(selectedCountry);
-  }
-
   function getCountryDetail(selectedCountry){
     if(selectedCountry != null) country = selectedCountry;
     $http.post("ajax/getCountryRanking.php?country="+country+"&year="+year)
@@ -84,7 +88,7 @@ app.controller("analysisCtrl", ['$http', '$scope', '$rootScope', '$routeParams',
         $scope.selected = [];
 
         if (typeof results === 'undefined' || results === null || results === ""){
-          $scope.selected.countryName =  "";
+          $scope.selected.countryName =  "None";
           $scope.selected.investor_friendliness_rank = "No Record";
           $scope.selected.legal_and_regulatory_environment = "N.A.";
           $scope.selected.market_development = "N.A.";
@@ -172,7 +176,8 @@ app.controller("analysisCtrl", ['$http', '$scope', '$rootScope', '$routeParams',
     }, function(response){}).finally(function(){$scope.loader = false;});
   };
 
-  $scope.selectComparedCountry = function(comparedCountry){
+  function getComparedCountryDetail(country){
+    if(country != null) comparedCountry = country;
     $scope.loader = true;
     $http.post("ajax/getCountryRanking.php?country="+comparedCountry+"&year="+year)
     .then(function(response) {
@@ -180,7 +185,7 @@ app.controller("analysisCtrl", ['$http', '$scope', '$rootScope', '$routeParams',
         $scope.compared = [];
 
         if (typeof results === 'undefined' || results === null || results === ""){
-          $scope.compared.countryName =  "";
+          $scope.compared.countryName =  "None";
           $scope.compared.investor_friendliness_rank = "No Record";
           $scope.compared.legal_and_regulatory_environment = "N.A.";
           $scope.compared.market_development = "N.A.";
@@ -214,5 +219,26 @@ app.controller("analysisCtrl", ['$http', '$scope', '$rootScope', '$routeParams',
           $scope.compared.political_environment, $scope.compared.accounting_system];
         }
     }, function(response){}).finally(function(){$scope.loader = false;});
+  }
+
+  function updateAnalysisTable(){
+    getCountryDetail(null);
+    getRegionDetail(null);
+    getComparedCountryDetail(null);
+  }
+
+  $scope.selectCountry = function(selectedCountry){
+    getCountryDetail(selectedCountry);
+    getRegionDetail(selectedCountry);
+  }
+
+  $scope.selectComparedCountry = function(country){
+    getComparedCountryDetail(country);
   };
+
+  $scope.updateAnalysisByYear = function(selectedYear){
+    if(selectedYear != null) year = selectedYear;
+    updateAnalysisTable();
+  }
+
 }]);
