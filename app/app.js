@@ -43,10 +43,10 @@ app.config(function ($routeProvider) {
       templateUrl:    'partials/copublisher.html',
       controller:     'CopublisherCtrl'
     })
-    .when('/analysis/:countryName/year/:selectedYear',
-    {
-      templateUrl:    'partials/analysis.html'
-    })
+    // .when('/analysis/:countryName/year/:selectedYear',
+    // {
+    //   templateUrl:    'partials/analysis.html'
+    // })
     .when('/analysis',
     {
       templateUrl:    'partials/analysis.html'

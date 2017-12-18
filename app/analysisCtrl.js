@@ -1,14 +1,13 @@
 //controller for home page
-app.controller("analysisCtrl", ['$http', '$scope', '$rootScope', '$routeParams', function ($http, $scope, $rootScope, $routeParams) {
-  var country = $routeParams.countryName;
-  var year = $routeParams.selectedYear;
+app.controller("analysisCtrl", ['$http', '$scope', '$rootScope', function ($http, $scope, $rootScope) {
+  var country = $rootScope.countryName;
+  var year = $rootScope.selectedYear;
   var comparedCountry = null;
-  $scope.analysisYear = $routeParams.selectedYear;
-  if($routeParams.selectedYear == null || $routeParams.selectedYear == ""){
+  $scope.analysisYear = $rootScope.selectedYear;
+  if($rootScope.selectedYear == null || $rootScope.selectedYear == ""){
     year = $rootScope.latestYear;
     $scope.analysisYear = $rootScope.latestYear;
-  }
-  
+  }  
 
   $scope.options = {  
                       legend: { 

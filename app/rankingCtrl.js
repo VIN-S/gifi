@@ -70,9 +70,10 @@ app.controller("rankingCtrl", ['$http', '$scope', '$rootScope', 'NgTableParams',
     $scope.gridOptions.onRegisterApi = function(gridApi){
         $scope.gridApi = gridApi;
         gridApi.selection.on.rowSelectionChanged($scope,function(row){
-            var country = row.entity.country;
+            $rootScope.countryName = row.entity.country;
+            $rootScope.selectedYear = $scope.selectedYear
             // console.log($scope.selectedYear);
-            $location.url('/analysis/'+country+'/year/'+$scope.selectedYear);
+            $location.url('/analysis');
             $anchorScroll();
         });
     }
