@@ -6,7 +6,7 @@ $result = mysqli_query($connect, $query);
 
 $i=0;
 
-while ($row = mysqli_fetch_array($result)) {
+while ($row = mysqli_fetch_assoc($result)) {
 	$year = (string) $row['year_of_data'];
 
 	echo json_encode($year);
